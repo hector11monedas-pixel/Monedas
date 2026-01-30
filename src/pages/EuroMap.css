@@ -1,0 +1,62 @@
+/* Euro Map CSS */
+
+/* Legend Footer (Static) */
+.map-legend-footer {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 0.8rem 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(5px);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 0.8rem;
+    color: #eee;
+    margin: 0 0.5rem;
+}
+
+.legend-item .dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 5px;
+    display: inline-block;
+}
+
+.legend-item .dot.l0 {
+    background: #37474f;
+    border: 1px solid #455a64;
+}
+
+.legend-item .dot.l1 {
+    background: #8d6e63;
+    border: 1px solid #5d4037;
+}
+
+/* Bronze */
+.legend-item .dot.l2 {
+    background: #b0bec5;
+    border: 1px solid #78909c;
+}
+
+/* Silver */
+.legend-item .dot.l3 {
+    background: #ffd700;
+    border: 1px solid #ff6f00;
+    box-shadow: 0 0 5px #ffb300;
+}
+
+/* Gold */
+.legend-item .dot.l4 {
+    background: #00bcd4;
+    border: 1px solid #0097a7;
+    box-shadow: 0 0 5px #00e5ff;
+}
+
+/* Diamond */

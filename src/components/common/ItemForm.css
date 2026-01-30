@@ -1,0 +1,171 @@
+.item-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+}
+
+@media (max-width: 600px) {
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.form-group label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-left: 0.2rem;
+}
+
+.glass-input {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 0.8rem 1rem;
+    color: var(--text-primary);
+    font-family: inherit;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.glass-input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    background: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
+}
+
+.type-selector {
+    display: flex;
+    gap: 1rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 0.3rem;
+    border-radius: 10px;
+}
+
+.type-selector button {
+    flex: 1;
+    background: transparent;
+    border: none;
+    padding: 0.8rem;
+    color: var(--text-secondary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.type-selector button.active {
+    background: var(--primary-color);
+    color: var(--background-dark);
+    font-weight: 600;
+}
+
+.input-with-suffix {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.currency-input {
+    width: 80px;
+}
+
+textarea.glass-input {
+    resize: vertical;
+}
+
+.submit-button {
+    background: linear-gradient(135deg, var(--primary-color), #b4941f);
+    color: var(--background-dark);
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 1rem;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.3);
+}
+
+
+.submit-button:active {
+    transform: translateY(0);
+}
+
+/* COMPACT MODE STYLES */
+/* COMPACT MODE STYLES */
+.item-form.compact {
+    gap: 0.8rem;
+}
+
+/* Force side-by-side layout for Condition and Quantity even on mobile */
+.item-form.compact .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 0.8rem;
+}
+
+.item-form.compact .glass-input {
+    padding: 0.6rem;
+    font-size: 0.9rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.item-form.compact .form-group {
+    gap: 0.3rem;
+    min-width: 0;
+}
+
+/* Specific fix for Quantity Input Group in Compact Mode */
+.item-form.compact .form-group:has(#quantity)>div {
+    display: flex;
+    width: 100%;
+    gap: 5px;
+}
+
+.item-form.compact #quantity {
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+    padding: 0;
+}
+
+.item-form.compact button.glass-input {
+    width: 32px !important;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item-form.compact .form-group label {
+    font-size: 0.8rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Remove default modal header padding if title is hidden */
+.modal-overlay .modal-content:has(.item-form.compact) .modal-header {
+    display: none;
+}

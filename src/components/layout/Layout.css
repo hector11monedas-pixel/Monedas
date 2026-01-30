@@ -1,0 +1,224 @@
+.app-container {
+    display: flex;
+    min-height: 100vh;
+    background: var(--background-dark);
+    color: var(--text-primary);
+}
+
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    padding: 1.5rem;
+    border-right: 1px solid rgba(255, 255, 255, 0.1);
+    z-index: 100;
+}
+
+.logo-container {
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.logo-link {
+    text-decoration: none;
+    color: inherit;
+    transition: opacity 0.3s ease;
+}
+
+.logo-container h1 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+.logo-link:hover {
+    opacity: 0.8;
+}
+
+.main-content {
+    flex: 1;
+    padding: 0;
+    /* REMOVED 2rem to allow full screen dashboards */
+    overflow-y: auto;
+    position: relative;
+    padding-bottom: 1rem;
+    /* Reduced from 5rem */
+}
+
+/* Settings Button */
+.settings-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-secondary);
+    padding: 0.8rem;
+    border-radius: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.8rem;
+    transition: all 0.3s ease;
+    margin-top: auto;
+    /* Push to bottom */
+}
+
+.settings-btn:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: var(--text-primary);
+    border-color: var(--primary-color);
+}
+
+/* Floating Action Button (FAB) */
+.fab-add {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--primary-color), #b4941f);
+    border: none;
+    color: var(--background-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+    z-index: 200;
+    transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    animation: pulse 2s infinite;
+}
+
+.fab-add:hover {
+    transform: scale(1.1) rotate(90deg);
+    box-shadow: 0 6px 20px rgba(212, 175, 55, 0.6);
+}
+
+.fab-add:active {
+    transform: scale(0.9);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.7);
+    }
+
+    70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 10px rgba(212, 175, 55, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(212, 175, 55, 0);
+    }
+}
+
+/* Settings Options */
+.settings-options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.setting-item p {
+    margin-bottom: 0.5rem;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
+.action-btn {
+    width: 100%;
+    padding: 1rem;
+    border-radius: 8px;
+    border: none;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    transition: all 0.2s ease;
+}
+
+.action-btn.export {
+    background: rgba(96, 165, 250, 0.1);
+    color: #60a5fa;
+    border: 1px solid rgba(96, 165, 250, 0.2);
+}
+
+.action-btn.export:hover {
+    background: rgba(96, 165, 250, 0.2);
+}
+
+.action-btn.import {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+    border: 1px solid rgba(74, 222, 128, 0.2);
+}
+
+.action-btn.import:hover {
+    background: rgba(74, 222, 128, 0.2);
+}
+
+.divider {
+    border: 0;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0.5rem 0;
+}
+
+@media (max-width: 768px) {
+    .app-container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        /* Stack Logo and User Info */
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        min-height: auto;
+    }
+
+    .logo-container {
+        margin-bottom: 0;
+        width: 100%;
+        text-align: center;
+        /* Ensure logo is centered horizontally */
+        display: flex;
+        justify-content: center;
+    }
+
+    .settings-btn {
+        padding: 0.5rem;
+        border: none;
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        z-index: 200;
+        margin: 0;
+    }
+
+    .settings-btn span {
+        display: none;
+    }
+
+    .fab-add {
+        bottom: 1.5rem;
+        right: 1.5rem;
+        width: 50px;
+        height: 50px;
+    }
+}

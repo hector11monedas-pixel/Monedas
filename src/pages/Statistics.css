@@ -1,0 +1,358 @@
+.statistics-container {
+    padding: 2rem;
+    padding-bottom: 6rem;
+    /* Space for nav bar */
+    max-width: 1200px;
+    margin: 0 auto;
+    color: var(--text-primary);
+    overflow-y: auto;
+    height: 100vh;
+}
+
+.stat-header {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.stat-back-btn {
+    background: none;
+    border: none;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: color 0.2s;
+    padding: 0.5rem;
+    border-radius: 50%;
+}
+
+.stat-back-btn:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.stat-header h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0;
+    background: linear-gradient(135deg, #fff 0%, #a5b4fc 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* === TABS === */
+.stat-tabs-container {
+    margin-bottom: 2rem;
+}
+
+.stat-tabs {
+    display: flex;
+    gap: 0.8rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: none;
+}
+
+.stat-tab {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.85);
+    /* Brighter text */
+    padding: 0.8rem 1.5rem;
+    /* Slightly wider padding */
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    /* Flex Center */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-tab:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--text-primary);
+}
+
+.stat-tab.active {
+    background: linear-gradient(135deg, #3b82f6, #2563eb);
+    /* Blue Gradient */
+    color: #fff;
+    /* White text */
+    border: 1px solid #60a5fa;
+    box-shadow: 0 4px 15px rgba(37, 99, 235, 0.5);
+    /* Blue Glow */
+    font-weight: 700;
+    transform: translateY(-2px);
+}
+
+/* Sub Tabs */
+.stat-sub-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    width: fit-content;
+}
+
+.sub-tab {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+}
+
+.sub-tab:hover {
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.sub-tab.active {
+    background: rgba(255, 255, 255, 0.15);
+    color: var(--gold-400);
+    font-weight: bold;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* === GRID LAYOUT === */
+.stat-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+/* === CARDS === */
+.stat-card {
+    padding: 1.5rem;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+}
+
+.stat-card.full-width {
+    grid-column: 1 / -1;
+}
+
+.card-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* === HERO SECTION (Face Value & Global) === */
+.hero-stats {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.circular-progress-container {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.circular-svg {
+    transform: rotate(-90deg);
+    width: 100%;
+    height: 100%;
+}
+
+.circle-bg {
+    fill: none;
+    stroke: rgba(255, 255, 255, 0.1);
+    stroke-width: 8;
+}
+
+.circle-progress {
+    fill: none;
+    stroke: var(--gold-500);
+    stroke-width: 8;
+    stroke-linecap: round;
+    stroke-dasharray: 440;
+    /* 2 * PI * 70 */
+    stroke-dashoffset: 440;
+    transition: stroke-dashoffset 1.5s ease-out;
+}
+
+.progress-text {
+    position: absolute;
+    text-align: center;
+}
+
+.percent-value {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--text-primary);
+    display: block;
+}
+
+.percent-label {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.face-value-display {
+    text-align: center;
+}
+
+.face-value-amount {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--gold-400);
+    text-shadow: 0 0 20px rgba(250, 204, 21, 0.3);
+    display: block;
+}
+
+.face-value-label {
+    font-size: 1rem;
+    color: var(--text-secondary);
+}
+
+/* === RANKING BARS === */
+.ranking-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 0.5rem;
+}
+
+.ranking-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.rank-flag {
+    width: 24px;
+    height: 18px;
+    border-radius: 2px;
+    object-fit: cover;
+}
+
+.rank-info {
+    flex: 1;
+}
+
+.rank-header {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    margin-bottom: 0.3rem;
+}
+
+.rank-name {
+    font-weight: 600;
+}
+
+.rank-bar-bg {
+    width: 100%;
+    height: 6px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.rank-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--gold-600), var(--gold-400));
+    border-radius: 3px;
+    transition: width 1s ease-out;
+}
+
+/* === CHARTS (Simple CSS Bars) === */
+.bar-chart {
+    display: flex;
+    /* align-items: flex-end; Removed, let columns fill height */
+    gap: 0.5rem;
+    height: 200px;
+    padding-top: 2rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+}
+
+.chart-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    /* Push content (bar + label) to bottom */
+    align-items: center;
+    flex: 1;
+    min-width: 40px;
+    height: 100%;
+    /* Explicit height for percentage child */
+}
+
+.chart-bar {
+    width: 24px;
+    /* Slightly wider */
+    background: rgba(99, 102, 241, 0.8);
+    border-radius: 4px 4px 0 0;
+    transition: height 0.5s ease;
+    position: relative;
+    min-height: 4px;
+    /* Absolute minimum */
+}
+
+.chart-bar:hover {
+    background: rgba(99, 102, 241, 1);
+}
+
+.chart-bar:hover::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -25px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #000;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    white-space: nowrap;
+}
+
+.chart-label {
+    margin-top: 0.5rem;
+    font-size: 0.7rem;
+    color: var(--text-secondary);
+    text-align: center;
+}
+
+/* Mobile Adjustments */
+@media (max-width: 768px) {
+    .statistics-container {
+        padding: 1rem;
+        padding-bottom: 5rem;
+    }
+
+    .hero-stats {
+        gap: 1.5rem;
+    }
+
+    .face-value-amount {
+        font-size: 2rem;
+    }
+}

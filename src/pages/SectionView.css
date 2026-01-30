@@ -1,0 +1,21 @@
+.section-view {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+.empty-state {
+    color: var(--text-secondary);
+    font-style: italic;
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.02);
+    border-radius: 12px;
+}

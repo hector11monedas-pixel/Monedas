@@ -1,0 +1,327 @@
+/* Dashboard Restoration - Premium 2x2 Grid (Compact Mode) */
+
+.dashboard-menu {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    /* Align to top to control spacing */
+    align-items: center;
+    padding: 1.5rem 1rem 1rem 1rem;
+    height: 100dvh;
+    width: 100%;
+    box-sizing: border-box;
+    overflow: hidden;
+    gap: 0.8rem;
+    /* Compact gap */
+    position: relative;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Header Action (Notification) */
+/* Kept absolute to not take flow space */
+.dashboard-header-simple {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 100;
+}
+
+.action-btn {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    background: rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(5px);
+}
+
+.notification-btn .dot {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    width: 6px;
+    height: 6px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    box-shadow: 0 0 5px var(--primary-color);
+}
+
+/* Navigation Grid (2x2) */
+.nav-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.8rem;
+    /* Compact gap */
+    width: 100%;
+    aspect-ratio: 1;
+    /* Keep grid roughly square */
+}
+
+/* Nav Card Styling */
+.nav-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0.8rem;
+    /* Compact padding */
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    /* Slightly reduced radius */
+    aspect-ratio: 1;
+    /* Square cards */
+}
+
+.nav-card:hover {
+    transform: scale(1.03);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+/* Icon Wrapper */
+.icon-wrapper {
+    margin-bottom: 0.5rem;
+    /* Compact margin */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease;
+}
+
+.nav-card:hover .icon-wrapper {
+    transform: scale(1.1);
+}
+
+/* Glow Background */
+.card-bg-glow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, var(--card-glow-color) 0%, transparent 70%);
+    opacity: 0.15;
+    transition: all 0.5s ease;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 0;
+}
+
+.nav-card:hover .card-bg-glow {
+    opacity: 0.3;
+}
+
+/* Typography */
+.nav-content {
+    z-index: 2;
+}
+
+.nav-content h3 {
+    font-size: 1rem;
+    /* Compact font */
+    font-weight: 600;
+    margin: 0;
+    color: #fff;
+    letter-spacing: 0.5px;
+}
+
+.nav-content p {
+    font-size: 0.7rem;
+    /* Compact font */
+    color: rgba(255, 255, 255, 0.6);
+    margin: 0.2rem 0 0 0;
+}
+
+/* Colors */
+.text-blue {
+    color: #60a5fa;
+    --card-glow-color: rgba(96, 165, 250, 0.6);
+}
+
+.text-red {
+    color: #f87171;
+    --card-glow-color: rgba(248, 113, 113, 0.6);
+}
+
+.text-green {
+    color: #4ade80;
+    --card-glow-color: rgba(74, 222, 128, 0.6);
+}
+
+.text-gold {
+    color: #fbbf24;
+    --card-glow-color: rgba(251, 191, 36, 0.6);
+}
+
+/* Widgets Styling */
+.widgets-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.glass-panel {
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 0.6rem 0.8rem;
+    /* Compact padding */
+    backdrop-filter: blur(5px);
+}
+
+.total-widget {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.total-widget:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.total-label {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.6);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.total-count {
+    font-family: monospace;
+    font-weight: 700;
+    color: #fff;
+    font-size: 0.9rem;
+}
+
+/* Last Added Widget */
+.last-added-section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    position: relative;
+    overflow: hidden;
+    padding-right: 3rem;
+    /* Space for NEW badge */
+}
+
+.last-added-header {
+    display: flex;
+    align-items: center;
+}
+
+.last-added-label {
+    font-size: 0.6rem;
+    color: rgba(255, 255, 255, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.new-badge {
+    position: absolute;
+    top: 0.6rem;
+    right: 0.6rem;
+    background: var(--primary-color);
+    color: #000;
+    font-size: 0.6rem;
+    font-weight: 800;
+    padding: 0.1rem 0.4rem;
+    border-radius: 4px;
+}
+
+.last-added-content {
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.last-added-title {
+    color: #fff;
+    font-weight: 600;
+}
+
+.last-added-details {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+/* Updates Modal (Reused) */
+.update-item-title {
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+/* Responsive Tweak for very small screens */
+@media (max-width: 380px) {
+    .nav-grid {
+        gap: 0.5rem;
+    }
+
+    .nav-card {
+        padding: 0.5rem;
+    }
+}
+
+/* App Updates Widget */
+.app-updates-widget {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.3rem;
+    position: relative;
+    z-index: 10;
+}
+
+.updates-header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    align-items: center;
+}
+
+.updates-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.update-date {
+    font-size: 0.7rem;
+    opacity: 0.7;
+}
+
+.update-title {
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.85rem;
+    margin-bottom: 0.1rem;
+}
+
+.update-description {
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 0.75rem;
+    line-height: 1.2;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
