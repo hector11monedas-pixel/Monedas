@@ -84,8 +84,8 @@ const EuroMap = () => {
                 <ComposableMap
                     projection="geoAzimuthalEqualArea"
                     projectionConfig={{
-                        rotate: [-10.0, -38.0, 0], /* Shifted UP to fill space */
-                        scale: 850 /* Safe scale: No cutoff guaranteed */
+                        rotate: [-10.0, -34.0, 0], /* Shifted UP to fill space significantly (was -38) */
+                        scale: 1000 /* Increased scale to fill width (was 850) */
                     }}
                     style={{ width: "100%", height: "100%", background: "#1e1e1e" }}
                 >

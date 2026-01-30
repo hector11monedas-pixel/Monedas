@@ -92,11 +92,12 @@ const EuroMenu = () => {
             <div style={{
                 width: '100%',
                 flex: 1,
-                borderRadius: '16px',
+                borderRadius: '16px 16px 0 0', /* Only round top corners */
                 overflow: 'hidden',
                 border: '1px solid rgba(255,255,255,0.1)',
+                borderBottom: 'none', /* Connect to bottom edge */
                 position: 'relative',
-                minHeight: '0', /* Crucial for flex box to not overflow */
+                marginTop: '-10px', /* Slight Negative Margin to pull map up to cards */
                 zIndex: 0
             }}>
                 <EuroMap />
