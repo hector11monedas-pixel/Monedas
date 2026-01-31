@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useCoin } from '../context/CoinContext';
 import { calculateTotalEuroCatalogSize, calculateCountryEuroCatalogSize } from '../data/EuroData';
-import { ArrowLeft, Plus, Settings, CheckSquare, Square } from 'lucide-react';
+import { ArrowLeft, Plus, Settings, CheckSquare, Square, Star } from 'lucide-react';
 import Modal from '../components/common/Modal';
 import ItemForm from '../components/common/ItemForm';
 import './PageLayout.css';
@@ -38,9 +38,11 @@ const EURO_COUNTRIES = [
 
 const EuroCountries = () => {
     const navigate = useNavigate();
-    const { items, germanMintsEnabled, toggleGermanMints, greeceMintsEnabled, toggleGreeceMints } = useCoin();
+    const { items, germanMintsEnabled, toggleGermanMints, greeceMintsEnabled, toggleGreeceMints, favoriteCountry, setFavoriteCountry } = useCoin();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [isSettingsOpen, setIsSettingsOpen] = useState(false);
+    const [isConfirmOpen, setIsConfirmOpen] = useState(false);
+    const [pendingFavorite, setPendingFavorite] = useState(null);
 
     // Calculate Global Stats
     const safeItems = Array.isArray(items) ? items : [];
@@ -152,12 +154,40 @@ const EuroCountries = () => {
                     const countryCollected = countCollected(safeItems, country.name);
                     const countryTotal = calculateCountryEuroCatalogSize(country.name, calcOptions);
 
+                    const isFavorite = favoriteCountry.path === `/euro/normal/${country.name}`;
+
                     return (
                         <div
                             key={country.code}
                             className="country-card glass-panel"
                             onClick={() => navigate(`/euro/normal/${country.name}`)}
+                            style={{ position: 'relative' }}
                         >
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setPendingFavorite(country.name);
+                                    setIsConfirmOpen(true);
+                                }}
+                                style={{
+                                    position: 'absolute',
+                                    top: '10px',
+                                    right: '10px',
+                                    background: 'none',
+                                    border: 'none',
+                                    cursor: 'pointer',
+                                    zIndex: 10,
+                                    padding: '5px'
+                                }}
+                                title={isFavorite ? "País Favorito" : "Marcar como Favorito"}
+                            >
+                                <Star
+                                    size={20}
+                                    fill={isFavorite ? "#FFD700" : "rgba(0,0,0,0.2)"}
+                                    stroke={isFavorite ? "#FFD700" : "rgba(255,255,255,0.5)"}
+                                    strokeWidth={2}
+                                />
+                            </button>
                             <div className="flag-wrapper">
                                 <img
                                     src={`https://flagcdn.com/w160/${country.code}.png`}
@@ -173,6 +203,53 @@ const EuroCountries = () => {
                     );
                 })}
             </div>
+
+            {/* Confirmation Modal */}
+            <Modal
+                isOpen={isConfirmOpen}
+                onClose={() => setIsConfirmOpen(false)}
+                title="Confirmar Favorito"
+            >
+                <div style={{ padding: '1rem', textAlign: 'center' }}>
+                    <p style={{ marginBottom: '1.5rem', color: '#d1d5db' }}>
+                        ¿Quieres marcar <strong>{pendingFavorite}</strong> como tu país favorito?
+                    </p>
+                    <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
+                        <button
+                            onClick={() => setIsConfirmOpen(false)}
+                            style={{
+                                padding: '0.8rem 1.5rem',
+                                borderRadius: '12px',
+                                background: 'rgba(255,255,255,0.1)',
+                                border: '1px solid rgba(255,255,255,0.1)',
+                                color: 'white',
+                                cursor: 'pointer',
+                                fontWeight: 500
+                            }}
+                        >
+                            Cancelar
+                        </button>
+                        <button
+                            onClick={() => {
+                                setFavoriteCountry({ name: pendingFavorite, path: `/euro/normal/${pendingFavorite}` });
+                                setIsConfirmOpen(false);
+                            }}
+                            style={{
+                                padding: '0.8rem 1.5rem',
+                                borderRadius: '12px',
+                                background: 'linear-gradient(135deg, #FFD700 0%, #FFA500 100%)',
+                                border: 'none',
+                                color: 'black',
+                                cursor: 'pointer',
+                                fontWeight: 600,
+                                boxShadow: '0 4px 12px rgba(255, 215, 0, 0.3)'
+                            }}
+                        >
+                            Confirmar
+                        </button>
+                    </div>
+                </div>
+            </Modal>
 
             <Modal
                 isOpen={isModalOpen}

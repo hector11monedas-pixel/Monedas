@@ -195,3 +195,22 @@
     text-transform: uppercase;
     pointer-events: none;
 }
+/* Quantity Badge */
+.quantity-badge {
+    position: absolute;
+    top: -4px;
+    right: -4px;
+    background: #ffd700;
+    color: #000;
+    font-size: 0.65rem;
+    font-weight: 800;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.6);
+    border: 2px solid #1a1f2e;
+}

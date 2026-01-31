@@ -6,12 +6,12 @@ import './Layout.css';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useCoin } from '../../context/CoinContext';
 import { useAuth } from '../../context/AuthContext';
-import { Settings, Download, Upload, LogOut, LogIn } from 'lucide-react';
+import { Settings, Download, Upload, LogOut, LogIn, Languages } from 'lucide-react';
 import './SidebarUser.css';
 
 const Layout = () => {
   const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
-  const { items, importData } = useCoin();
+  const { items, importData, t, language, setLanguage } = useCoin();
   const { currentUser, logout } = useAuth();
   const navigate = useNavigate();
   const location = useLocation();
@@ -64,7 +64,7 @@ const Layout = () => {
           onClick={() => setIsSettingsOpen(true)}
         >
           <Settings size={24} />
-          <span>Ajustes</span>
+          <span>{t('settings')}</span>
         </button>
 
         <div className="sidebar-user">
@@ -73,13 +73,13 @@ const Layout = () => {
               <img src={currentUser.photoURL} alt="User" className="user-avatar" />
               <span className="user-name">{currentUser.displayName}</span>
               <button className="auth-btn" onClick={handleLogout}>
-                <LogOut size={16} style={{ marginRight: '5px' }} /> Salir
+                <LogOut size={16} style={{ marginRight: '5px' }} /> {t('logout')}
               </button>
             </>
           ) : (
             location.pathname !== '/login' && (
               <button className="auth-btn login" onClick={() => navigate('/login')}>
-                <LogIn size={16} style={{ marginRight: '5px' }} /> Entrar
+                <LogIn size={16} style={{ marginRight: '5px' }} /> {t('login')}
               </button>
             )
           )}
@@ -94,24 +94,47 @@ const Layout = () => {
       <Modal
         isOpen={isSettingsOpen}
         onClose={() => setIsSettingsOpen(false)}
-        title="Ajustes y Datos"
+        title={t('settingsTitle')}
       >
         <div className="settings-options">
+          {/* Language Selector */}
           <div className="setting-item">
-            <p>Guarda una copia seguridad de tu colección.</p>
+            <p>{t('selectLanguage')}</p>
+            <div className="language-selector">
+              <button
+                className={`lang-btn ${language === 'es' ? 'active' : ''}`}
+                onClick={() => setLanguage('es')}
+              >
+                <Languages size={18} />
+                <span>Español</span>
+              </button>
+              <button
+                className={`lang-btn ${language === 'en' ? 'active' : ''}`}
+                onClick={() => setLanguage('en')}
+              >
+                <Languages size={18} />
+                <span>English</span>
+              </button>
+            </div>
+          </div>
+
+          <hr className="divider" />
+
+          <div className="setting-item">
+            <p>{t('backupDesc')}</p>
             <button className="action-btn export" onClick={handleExport}>
               <Download size={20} />
-              Exportar Colección (JSON)
+              {t('exportCollection')}
             </button>
           </div>
 
           <hr className="divider" />
 
           <div className="setting-item">
-            <p>Restaura una copia de seguridad.</p>
+            <p>{t('restoreDesc')}</p>
             <label className="action-btn import">
               <Upload size={20} />
-              Importar Colección
+              {t('importCollection')}
               <input
                 type="file"
                 accept=".json"

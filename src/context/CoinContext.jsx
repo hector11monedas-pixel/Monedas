@@ -12,6 +12,7 @@ import {
 } from 'firebase/firestore';
 import { COMMEMORATIVE_CATALOG, calculateCommemorativeCatalogSize } from '../data/CommemorativeCatalog';
 import { calculateTotalEuroCatalogSize } from '../data/EuroData';
+import { TRANSLATIONS } from '../data/translations';
 
 // Helper to parse face value robustly (Shared logic)
 export const parseFaceValue = (val) => {
@@ -72,6 +73,43 @@ export const CoinProvider = ({ children }) => {
     const toggleGermanMints = () => setGermanMintsEnabled(prev => !prev);
     const toggleGreeceMints = () => setGreeceMintsEnabled(prev => !prev);
 
+    // Favorite Country State (Object: { name, path, section })
+    const [favoriteCountry, setFavoriteCountry] = useState(() => {
+        const saved = localStorage.getItem('favoriteCountry');
+        if (!saved) return { name: 'España', path: '/euro/normal/España' };
+
+        try {
+            const parsed = JSON.parse(saved);
+            // If it's a string (legacy), convert to object
+            if (typeof parsed === 'string') {
+                return { name: parsed, path: `/euro/normal/${parsed}` };
+            }
+            return parsed;
+        } catch (e) {
+            // If parsing fails (plain string in storage), treat as legacy string
+            return { name: saved, path: `/euro/normal/${saved}` };
+        }
+    });
+
+    useEffect(() => {
+        localStorage.setItem('favoriteCountry', JSON.stringify(favoriteCountry));
+    }, [favoriteCountry]);
+
+    // Language State
+    const [language, setLanguage] = useState(() => {
+        const saved = localStorage.getItem('appLanguage');
+        return saved ? JSON.parse(saved) : 'es';
+    });
+
+    useEffect(() => {
+        localStorage.setItem('appLanguage', JSON.stringify(language));
+    }, [language]);
+
+    // Translation Helper
+    const t = (key) => {
+        return TRANSLATIONS[language][key] || key;
+    };
+
     // Sync with Firestore or Local State
     useEffect(() => {
         if (!currentUser) {
@@ -117,6 +155,12 @@ export const CoinProvider = ({ children }) => {
             try {
                 await addDoc(collection(db, "users", currentUser.uid, "coins"), {
                     ...newItem,
+                    purchasePrice: newItem.purchasePrice || 0,
+                    estimatedValue: newItem.estimatedValue || 0,
+                    condition: newItem.condition || '',
+                    description: newItem.description || '',
+                    imageUrl: newItem.imageUrl || '',
+                    status: newItem.status || 'collection', // collection, duplicate, wishlist
                     createdAt: new Date(),
                     updatedAt: new Date()
                 });
@@ -221,7 +265,12 @@ export const CoinProvider = ({ children }) => {
             germanMintsEnabled,
             toggleGermanMints,
             greeceMintsEnabled,
-            toggleGreeceMints
+            toggleGreeceMints,
+            favoriteCountry,
+            setFavoriteCountry,
+            language,
+            setLanguage,
+            t
         }}>
             {children}
         </CoinContext.Provider>

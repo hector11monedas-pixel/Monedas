@@ -1,5 +1,23 @@
 export const APP_UPDATES = [
     {
+        id: -19,
+        date: '30/01/2026',
+        title: 'Versión 1.1.1 - Widget Mejorado ✨',
+        description: 'Mejora en "Última Adquisición" con historial de las 5 últimas monedas y etiqueta NEW animada.'
+    },
+    {
+        id: -18,
+        date: '30/01/2026',
+        title: 'Versión 1.1 - Layout Mejorado 🚀',
+        description: 'Nuevo diseño del Menú Euro con Mapa Interactivo integrado y controles de zoom optimizados.'
+    },
+    {
+        id: -17,
+        date: '30/01/2026',
+        title: 'Mapa Interactivo 🌍',
+        description: 'El mapa ahora tiene su propia sección dedicada. Accede desde el botón "Mapa" en el menú Euro.'
+    },
+    {
         id: -15,
         date: '29/01/2026',
         title: 'Mapa Euro Ajustado 🌍',
@@ -16,6 +34,24 @@ export const APP_UPDATES = [
         date: '29/01/2026',
         title: 'Mejora Visual Conmemorativas 🎨',
         description: 'Nuevas monedas realistas (bimetálicas) generadas por CSS con indicador de Año y País.'
+    },
+    {
+        id: -24,
+        date: "30/01/2026",
+        title: "Versión 1.3.2 - Mundo y Mejoras 🌏",
+        description: "Nuevos países en Mundo (EEUU, UK, Japón, México), mejoras visuales y corrección de botones de Ajustes."
+    },
+    {
+        id: -22,
+        date: "30/01/2025",
+        title: "Versión 1.3.1 - Estadísticas Favorito 📊",
+        description: "Estadísticas dinámicas: Ahora se muestran los datos de tu país Favorito seleccionado. Reordenación de pestañas (Mundo antes de Favorito)."
+    },
+    {
+        id: -21,
+        date: "30/01/2025",
+        title: "Versión 1.3 - Favoritos Avanzados ⭐",
+        description: "Nuevo sistema de favoritos independiente para Euro y Mundo. Incluye confirmación de seguridad y correcciones visuales."
     },
     {
         id: -12,
@@ -124,3 +160,11 @@ export const APP_UPDATES = [
 export const getLatestUpdate = () => {
     return APP_UPDATES[0]; // Assuming top is newest
 };
+
+// Add new update at the top of the array
+APP_UPDATES.unshift({
+    id: -30,
+    date: '31/01/2026',
+    title: 'Versión 1.5.0 - Gestión de Cantidades 🪙',
+    description: 'Nuevo soporte para marcar cantidades (duplicadas), indicador dorado visual para monedas repetidas y sistema unificado para Conmemorativas.'
+});

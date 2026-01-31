@@ -1,0 +1,30 @@
+export const TRANSLATIONS = {
+    es: {
+        settings: "Ajustes",
+        settingsTitle: "Ajustes y Datos",
+        exportCollection: "Exportar Colección (JSON)",
+        importCollection: "Importar Colección",
+        backupDesc: "Guarda una copia seguridad de tu colección.",
+        restoreDesc: "Restaura una copia de seguridad.",
+        language: "Idioma",
+        selectLanguage: "Seleccionar Idioma",
+        logout: "Salir",
+        login: "Entrar",
+        importSuccess: "Colección importada correctamente.",
+        importError: "Error al importar el archivo. Asegúrate de que es un JSON válido.",
+    },
+    en: {
+        settings: "Settings",
+        settingsTitle: "Settings & Data",
+        exportCollection: "Export Collection (JSON)",
+        importCollection: "Import Collection",
+        backupDesc: "Save a backup of your collection.",
+        restoreDesc: "Restore a backup.",
+        language: "Language",
+        selectLanguage: "Select Language",
+        logout: "Logout",
+        login: "Login",
+        importSuccess: "Collection imported successfully.",
+        importError: "Error importing file. Ensure it is a valid JSON.",
+    }
+};

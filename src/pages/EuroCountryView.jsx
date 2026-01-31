@@ -1,12 +1,10 @@
 import React, { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useCoin } from '../context/CoinContext';
-import { Plus, ArrowLeft } from 'lucide-react';
+import { Plus, ArrowLeft, Star } from 'lucide-react';
 import { getCountryStartYear } from '../data/EuroData';
 import { getAustriaNotIssuedCount } from '../data/AustriaEmissionData';
 import { getGermanCoinStatus } from '../data/GermanyEmissionData';
-
-// ... (existing imports)
 
 import EuroMatrix from '../components/common/EuroMatrix';
 import Modal from '../components/common/Modal';
@@ -25,7 +23,7 @@ const MINT_NAMES = {
 const EuroCountryView = () => {
     const { countryName } = useParams();
     const navigate = useNavigate();
-    const { items, removeCoin, germanMintsEnabled, greeceMintsEnabled } = useCoin();
+    const { items, removeCoin, germanMintsEnabled, greeceMintsEnabled, favoriteCountry, setFavoriteCountry } = useCoin();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCell, setSelectedCell] = useState(null);
     const [selectedMint, setSelectedMint] = useState(null);
@@ -44,6 +42,7 @@ const EuroCountryView = () => {
     const countryItems = items.filter(
         item => item.category === 'euro' &&
             item.country === countryName &&
+            !item.isCommemorative &&
             (!selectedMint || item.mint === selectedMint)
     );
 
@@ -85,7 +84,6 @@ const EuroCountryView = () => {
     if (countryName === 'Austria') {
         totalSlots -= getAustriaNotIssuedCount();
     }
-
     return (
         <div className="page-container">
             <div className="page-header euro-header">

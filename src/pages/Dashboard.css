@@ -27,7 +27,7 @@
     z-index: 100;
 }
 
-.action-btn {
+.header-action-btn {
     width: 36px;
     height: 36px;
     border-radius: 50%;
@@ -221,6 +221,14 @@
     overflow: hidden;
     padding-right: 3rem;
     /* Space for NEW badge */
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.last-added-section:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
 .last-added-header {
@@ -235,16 +243,38 @@
     letter-spacing: 1px;
 }
 
+@keyframes pulse-badge {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 69, 0, 0.7);
+    }
+
+    70% {
+        transform: scale(1.05);
+        box-shadow: 0 0 0 6px rgba(255, 69, 0, 0);
+    }
+
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 69, 0, 0);
+    }
+}
+
 .new-badge {
     position: absolute;
     top: 0.6rem;
     right: 0.6rem;
-    background: var(--primary-color);
-    color: #000;
-    font-size: 0.6rem;
+    background: #ff4500;
+    /* Bright orange/red */
+    color: #fff;
+    font-size: 0.65rem;
     font-weight: 800;
-    padding: 0.1rem 0.4rem;
-    border-radius: 4px;
+    padding: 0.2rem 0.5rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 8px rgba(255, 69, 0, 0.4);
+    animation: pulse-badge 2s infinite;
+    letter-spacing: 0.5px;
+    z-index: 5;
 }
 
 .last-added-content {
@@ -264,6 +294,35 @@
 }
 
 /* Updates Modal (Reused) */
+/* Updates Modal (Reused) */
+.updates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.update-item {
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.update-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.update-item-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+
+.update-item-date {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.5);
+}
+
 .update-item-title {
     color: var(--primary-color);
     font-weight: 600;

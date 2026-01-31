@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useCoin } from '../context/CoinContext';
 import { getLatestUpdate, APP_UPDATES } from '../data/AppUpdates';
 import Modal from '../components/common/Modal';
-import { Euro, Crown, Globe2, Banknote, Bell } from 'lucide-react';
+import { Euro, Crown, Globe2, Banknote, Star } from 'lucide-react';
 import './Dashboard.css';
 
 const NavCard = ({ title, description, Icon, color, path }) => {
@@ -25,9 +25,13 @@ const NavCard = ({ title, description, Icon, color, path }) => {
 
 const Dashboard = () => {
     const navigate = useNavigate();
-    const { items, catalogSize, stats } = useCoin();
+    const { items, catalogSize, stats, favoriteCountry } = useCoin();
     const lastItem = items.length > 0 ? items[items.length - 1] : null;
     const [isUpdatesOpen, setIsUpdatesOpen] = React.useState(false);
+    const [isHistoryOpen, setIsHistoryOpen] = React.useState(false);
+
+    // Get last 5 items reversed
+    const recentItems = [...items].reverse().slice(0, 5);
 
     return (
         <div className="dashboard-menu">
@@ -42,18 +46,18 @@ const Dashboard = () => {
                     path="/euro"
                 />
                 <NavCard
-                    title="España"
-                    description="Reino y República"
-                    Icon={Crown}
-                    color="text-red"
-                    path="/spain"
-                />
-                <NavCard
                     title="Mundo"
                     description="Internacional"
                     Icon={Globe2}
                     color="text-green"
                     path="/world"
+                />
+                <NavCard
+                    title="Favorito"
+                    description={favoriteCountry.name}
+                    Icon={Star}
+                    color="text-red"
+                    path={favoriteCountry.path}
                 />
                 <NavCard
                     title="Billetes"
@@ -66,7 +70,10 @@ const Dashboard = () => {
 
             <div className="widgets-container">
                 {lastItem && (
-                    <div className="last-added-section glass-panel">
+                    <div
+                        className="last-added-section glass-panel"
+                        onClick={() => setIsHistoryOpen(true)}
+                    >
                         <div className="last-added-header">
                             <span className="last-added-label">Última Adquisición</span>
                             <span className="new-badge">NEW</span>
@@ -110,6 +117,7 @@ const Dashboard = () => {
                 </div>
             </div>
 
+            {/* Updates Modal */}
             <Modal
                 isOpen={isUpdatesOpen}
                 onClose={() => setIsUpdatesOpen(false)}
@@ -125,6 +133,28 @@ const Dashboard = () => {
                             <p className="update-item-desc">{update.description}</p>
                         </div>
                     ))}
+                </div>
+            </Modal>
+
+            {/* Last 5 Items Modal */}
+            <Modal
+                isOpen={isHistoryOpen}
+                onClose={() => setIsHistoryOpen(false)}
+                title="Últimas 5 Adquisiciones"
+            >
+                <div className="updates-list">
+                    {recentItems.map((item, index) => (
+                        <div key={index} className="update-item" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                            <div>
+                                <div className="update-item-title">{item.value} {item.currency}</div>
+                                <div className="update-item-desc">{item.country} ({item.year})</div>
+                            </div>
+                            <div className="update-item-date">
+                                {item.dateAdded ? new Date(item.dateAdded).toLocaleDateString() : 'N/A'}
+                            </div>
+                        </div>
+                    ))}
+                    {recentItems.length === 0 && <p style={{ color: '#aaa', textAlign: 'center' }}>No hay monedas recientes.</p>}
                 </div>
             </Modal>
         </div>

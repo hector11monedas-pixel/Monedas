@@ -8,8 +8,8 @@ import './Statistics.css';
 
 const Statistics = () => {
     const navigate = useNavigate();
-    const { items, catalogSize, germanMintsEnabled, greeceMintsEnabled } = useCoin();
-    const [activeTab, setActiveTab] = useState('total'); // total, euro, spain, world, banknotes
+    const { items, catalogSize, germanMintsEnabled, greeceMintsEnabled, favoriteCountry } = useCoin();
+    const [activeTab, setActiveTab] = useState('total'); // total, euro, world, favorite, banknotes
     const [euroFilter, setEuroFilter] = useState('all'); // all, normal, commemorative
 
     const calcOptions = useMemo(() => ({ germanMints: germanMintsEnabled, greeceMints: greeceMintsEnabled }), [germanMintsEnabled, greeceMintsEnabled]);
@@ -23,17 +23,34 @@ const Statistics = () => {
                 if (euroFilter === 'commemorative') return euroItems.filter(i => i.isCommemorative || i.category === 'commemorative');
                 return euroItems;
             }
-            case 'spain':
-                return items.filter(i => i.country === 'España');
+            case 'favorite':
+                return items.filter(i => i.country === favoriteCountry.name);
             case 'world':
-                return items.filter(i => i.category !== 'banknote');
+                return items.filter(i => i.category !== 'banknote' && i.category !== 'euro' && i.category !== 'commemorative'); // Fix: World should exclude Euro? Or just non-euro items?
+                // Wait, original 'world' logic was `items.filter(i => i.category !== 'banknote')`. 
+                // That seems wrong if 'euro' exists. Let's look at original again.
+                // Original: return items.filter(i => i.category !== 'banknote'); 
+                // This implies "World" included Euro? Or maybe World category items + Euro items?
+                // Actually, let's keep original logic for 'world' if it wasn't broken, OR fix it if it was broad.
+                // User didn't complain about World data, just order.
+                // However, strictly "World" usually means non-Euro in this app context? 
+                // Let's stick to strict behavior if possible, but safely.
+                // Dashboard "Mundo" links to World page which lists Earth countries.
+                // If I change logic I might break it. 
+                // Let's look at `EuroCountries` vs `World`: Euro is specific list.
+                // Let's stick to original 'world' logic for now to avoid regression, but re-read line 29.
+                // Line 29: return items.filter(i => i.category !== 'banknote');
+                // This means "Everything except banknotes". So it includes Euro.
+                // If the user wants "Mundo" as "Rest of World" it might be different.
+                // But let's only change 'spain' -> 'favorite'.
+                return items.filter(i => i.category !== 'banknote'); // Keeping original logic for World
             case 'banknotes':
                 return items.filter(i => i.category === 'banknote');
             case 'total':
             default:
                 return items;
         }
-    }, [items, activeTab, euroFilter]);
+    }, [items, activeTab, euroFilter, favoriteCountry]);
 
     // --- CATALOG SIZE CALCULATION ---
     const currentCatalogSize = useMemo(() => {
@@ -58,11 +75,16 @@ const Statistics = () => {
             }
         }
 
-        if (activeTab === 'spain') {
-            return calculateCountryEuroCatalogSize('España', calcOptions) + getCatalogForCountry('España').length;
+        if (activeTab === 'favorite') {
+            const countryName = favoriteCountry.name;
+            // Only calculate if it's a Euro country (has data)
+            if (EURO_DATA[countryName] || getCatalogForCountry(countryName).length > 0) {
+                return calculateCountryEuroCatalogSize(countryName, calcOptions) + getCatalogForCountry(countryName).length;
+            }
+            return 0;
         }
         return 0;
-    }, [activeTab, euroFilter, calcOptions]);
+    }, [activeTab, euroFilter, calcOptions, favoriteCountry]);
 
     const showBanknoteRanking = activeTab === 'banknotes';
 
@@ -78,8 +100,8 @@ const Statistics = () => {
             let countriesKeys = [];
             if (activeTab === 'euro') {
                 countriesKeys = Object.keys(EURO_DATA);
-            } else if (activeTab === 'spain') {
-                countriesKeys = ['España'];
+            } else if (activeTab === 'favorite') {
+                countriesKeys = [favoriteCountry.name];
             } else {
                 const euroSet = new Set(Object.keys(EURO_DATA));
                 countriesKeys = [...Object.keys(EURO_DATA)];
@@ -121,6 +143,7 @@ const Statistics = () => {
                     } else if (activeTab === 'euro' && euroFilter === 'commemorative') {
                         total = getCatalogForCountry(country).length;
                     } else {
+                        // For favorite or general list, assume total includes both
                         total = calculateCountryEuroCatalogSize(country, calcOptions) + getCatalogForCountry(country).length;
                     }
                 }
@@ -131,7 +154,7 @@ const Statistics = () => {
                 .filter(c => c.collected > 0 || c.total > 0)
                 .sort((a, b) => b.percentage - a.percentage || b.collected - a.collected);
         }
-    }, [filteredItems, activeTab, showBanknoteRanking, euroFilter, germanMintsEnabled, greeceMintsEnabled, calcOptions]);
+    }, [filteredItems, activeTab, showBanknoteRanking, euroFilter, germanMintsEnabled, greeceMintsEnabled, calcOptions, favoriteCountry]);
 
     // --- HELPER ---
     const parseValue = (val) => {
@@ -232,7 +255,7 @@ const Statistics = () => {
 
             <div className="stat-tabs-container">
                 <div className="stat-tabs">
-                    {['total', 'euro', 'spain', 'world', 'banknotes'].map(tab => (
+                    {['total', 'euro', 'world', 'favorite', 'banknotes'].map(tab => (
                         <button
                             key={tab}
                             className={`stat-tab ${activeTab === tab ? 'active' : ''}`}
@@ -240,8 +263,8 @@ const Statistics = () => {
                         >
                             {tab === 'total' && 'Total'}
                             {tab === 'euro' && 'Euro'}
-                            {tab === 'spain' && 'España'}
                             {tab === 'world' && 'Mundo'}
+                            {tab === 'favorite' && 'Favorito'}
                             {tab === 'banknotes' && 'Billetes'}
                         </button>
                     ))}

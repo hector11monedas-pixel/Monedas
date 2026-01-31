@@ -49,9 +49,9 @@ const EuroMatrix = ({ items, onCellClick, countryName, variant = 'sticky-mode', 
     // Default to 1999 if countryName is missing (should not happen in proper usage)
     const startYear = countryName ? getCountryStartYear(countryName) : 1999;
 
-    // Helper to find item in collection
-    const findItem = (year, value, requiredMint) => {
-        return items.find(item => {
+    // Helper to find items in collection
+    const findItems = (year, value, requiredMint) => {
+        return items.filter(item => {
             const matchYearVal = item.year === year && parseFloat(item.value) === value;
             if (!matchYearVal) return false;
 
@@ -123,7 +123,16 @@ const EuroMatrix = ({ items, onCellClick, countryName, variant = 'sticky-mode', 
                                             displayMintStr = effectiveMint;
                                         }
 
-                                        const collectedItem = findItem(rowYear, denom.value, effectiveMint);
+                                        const matchingItems = findItems(rowYear, denom.value, effectiveMint);
+                                        const collectedItem = matchingItems.length > 0 ? matchingItems[0] : null;
+
+                                        // Calculate total quantity (sum of all matching items' quantities)
+                                        const totalQuantity = matchingItems.reduce((sum, item) => sum + (parseInt(item.quantity) || 1), 0);
+
+                                        if (matchingItems.length > 0) {
+                                            console.log(`DEBUG: ${rowYear} ${denom.value} - Items: ${matchingItems.length}, Calculated Qty: ${totalQuantity}`, matchingItems);
+                                        }
+
 
                                         // Check availability logic
                                         let cellStatus = 'circulation';
@@ -193,6 +202,9 @@ const EuroMatrix = ({ items, onCellClick, countryName, variant = 'sticky-mode', 
                                                             <span style={{ fontSize: '0.7rem', fontWeight: 'bold' }}>{collectedItem.condition}</span>
                                                         ) : (
                                                             '✓'
+                                                        )}
+                                                        {totalQuantity > 1 && (
+                                                            <div className="quantity-badge">{totalQuantity}</div>
                                                         )}
                                                     </div>
                                                 ) : (

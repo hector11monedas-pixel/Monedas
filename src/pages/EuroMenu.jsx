@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom';
 import { useCoin } from '../context/CoinContext';
 import { calculateTotalEuroCatalogSize } from '../data/EuroData';
 import { calculateCommemorativeCatalogSize } from '../data/CommemorativeCatalog';
-import { Euro, Award, ArrowLeft } from 'lucide-react';
+import { Euro, Award, ArrowLeft, Map as MapIcon } from 'lucide-react';
 import './Dashboard.css'; // Shared styles
+
 import EuroMap from './EuroMap';
 
 const EuroMenu = () => {
@@ -16,33 +17,22 @@ const EuroMenu = () => {
     const totalCatalogCount = calculateTotalEuroCatalogSize() + calculateCommemorativeCatalogSize();
 
     return (
-        <div className="dashboard-menu" style={{ justifyContent: 'flex-start', paddingTop: '0.2rem', gap: '0' }}>
+        <div className="dashboard-menu">
             {/* Header: Back Button & Stats */}
             <div style={{
                 display: 'flex',
                 alignItems: 'center',
                 justifyContent: 'space-between',
                 width: '100%',
-                marginBottom: '0.2rem',
+                marginBottom: '0.5rem',
                 padding: '0 0.5rem',
                 zIndex: 10,
                 position: 'relative'
             }}>
                 <button
                     onClick={() => navigate('/')}
-                    style={{
-                        background: 'rgba(255,255,255,0.1)',
-                        border: 'none',
-                        borderRadius: '50%',
-                        width: '32px',
-                        height: '32px',
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        color: 'white',
-                        cursor: 'pointer',
-                        backdropFilter: 'blur(5px)'
-                    }}
+                    className="action-btn"
+                    style={{ width: '40px', height: '40px', padding: 0, borderRadius: '50%' }}
                 >
                     <ArrowLeft size={20} />
                 </button>
@@ -52,55 +42,65 @@ const EuroMenu = () => {
                     <span className="total-value">{collectedCount} <span className="total-divider">/</span> {totalCatalogCount}</span>
                 </div>
 
-                <div style={{ width: '32px' }}></div>
+                <div style={{ width: '40px' }}></div>
             </div>
 
-            {/* Navigation Grid - Compact */}
-            <div className="nav-grid" style={{ marginBottom: '0', gap: '0.5rem', zIndex: 10, position: 'relative' }}>
-                <div
-                    className="nav-card text-blue"
-                    onClick={() => navigate('/euro/normal')}
-                    style={{ padding: '0.8rem' }}
-                >
-                    <div className="card-bg-glow"></div>
-                    <div className="icon-wrapper" style={{ marginBottom: '0.4rem' }}>
-                        <Euro size={36} strokeWidth={1} />
-                    </div>
-                    <div className="nav-content">
-                        <h3 style={{ fontSize: '1rem' }}>Normales</h3>
-                        <p style={{ fontSize: '0.7rem' }}>Por Países</p>
-                    </div>
-                </div>
-
-                <div
-                    className="nav-card text-gold"
-                    onClick={() => navigate('/euro/commemorative')}
-                    style={{ padding: '0.8rem' }}
-                >
-                    <div className="card-bg-glow"></div>
-                    <div className="icon-wrapper" style={{ marginBottom: '0.4rem' }}>
-                        <Award size={36} strokeWidth={1} />
-                    </div>
-                    <div className="nav-content">
-                        <h3 style={{ fontSize: '1rem' }}>Conmemorativas</h3>
-                        <p style={{ fontSize: '0.7rem' }}>2 Euros</p>
-                    </div>
-                </div>
-            </div>
-
-            {/* Embedded Map Section - Flex Grow to fill space */}
+            {/* Main Content - Flex Column */}
             <div style={{
                 width: '100%',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+                gap: '0.5rem',
                 flex: 1,
-                borderRadius: '16px 16px 0 0', /* Only round top corners */
                 overflow: 'hidden',
-                border: '1px solid rgba(255,255,255,0.1)',
-                borderBottom: 'none', /* Connect to bottom edge */
-                position: 'relative',
-                marginTop: '-10px', /* Slight Negative Margin to pull map up to cards */
-                zIndex: 0
+                paddingBottom: '1rem'
             }}>
-                <EuroMap />
+                {/* 1. Map Container - Takes Flexible Space */}
+                <div style={{
+                    width: '100%',
+                    flex: 1,
+                    minHeight: '200px',
+                    borderRadius: '16px',
+                    overflow: 'hidden',
+                    border: '1px solid rgba(255,255,255,0.05)',
+                    position: 'relative',
+                    zIndex: 0,
+                    marginBottom: '0.5rem'
+                }}>
+                    <EuroMap />
+                </div>
+
+                {/* 2. Navigation Buttons - Fixed at Bottom */}
+                <div className="nav-grid" style={{ width: '100%', marginBottom: '0.2rem', flexShrink: 0 }}>
+                    <div
+                        className="nav-card text-blue"
+                        onClick={() => navigate('/euro/normal')}
+                    >
+                        <div className="card-bg-glow"></div>
+                        <div className="icon-wrapper">
+                            <Euro size={48} strokeWidth={1} />
+                        </div>
+                        <div className="nav-content">
+                            <h3>Normales</h3>
+                            <p>Por Países</p>
+                        </div>
+                    </div>
+
+                    <div
+                        className="nav-card text-gold"
+                        onClick={() => navigate('/euro/commemorative')}
+                    >
+                        <div className="card-bg-glow"></div>
+                        <div className="icon-wrapper">
+                            <Award size={48} strokeWidth={1} />
+                        </div>
+                        <div className="nav-content">
+                            <h3>Conmemorativas</h3>
+                            <p>2 Euros</p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     );

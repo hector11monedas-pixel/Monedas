@@ -143,6 +143,13 @@ const CommemorativeCountryView = () => {
                                     {/* Optional: Show Country Code or '2€' if needed, but in Country View we know the country */}
                                     <span className="coin-text-country">2 EURO</span>
                                 </div>
+                                {/* Quantity Badge */}
+                                {isOwned && (
+                                    (() => {
+                                        const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
+                                        return totalQuantity > 1 ? <div className="quantity-badge">{totalQuantity}</div> : null;
+                                    })()
+                                )}
                             </div>
 
                             <div className="coin-info">
