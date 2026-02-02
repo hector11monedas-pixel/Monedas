@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -61,
+    id: -62,
     date: '02/02/2026',
-    title: 'Versión 1.8.2 - Ajuste de Imágenes 2005 🌓',
-    description: 'Se muestran fotos reales donde ha sido posible encontrarlas. Donde no, se ha optado por la vista "sin foto" para mantener la fidelidad.'
+    title: 'Versión 1.8.3 - Reconstrucción Visual Completa 💎',
+    description: 'Ante la falta de imágenes reales uniformes, se han restaurado las recreaciones de alta fidelidad para toda la colección 2005. Ahora todas se verán perfectas.'
 });
