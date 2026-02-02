@@ -22,7 +22,21 @@ const hasJointIssue = (country, year) => {
 const COUNTRY_CATALOGS = {
     'Alemania': [
         // German Bundesländer Series I
-        { year: 2006, subject: 'Schleswig-Holstein (Holstentor)' },
+        {
+            year: 2006,
+            subject: 'Schleswig-Holstein (Holstentor)',
+            date: '03-02-2006',
+            mintage: 30000000,
+            description: 'La moneda muestra la Holstentor, puerta emblemática de la ciudad de Lübeck. Debajo de la puerta aparecen las palabras "SCHLESWIG-HOLSTEIN". Es la primera de la serie de los "Länder" (estados federados).',
+            designer: 'Heinz Hoyer',
+            edge: 'EINIGKEIT UND RECHT UND FREIHEIT',
+            estimatedPrice: '3.00€ - 4.50€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 30000000 },
+                { type: 'BU', title: 'Set Anual', quantity: 145000 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 70000 }
+            ]
+        },
         { year: 2007, subject: 'Mecklenburg-Vorpommern (Castillo de Schwerin)' },
         { year: 2008, subject: 'Hamburg (St. Michaelis)' },
         { year: 2009, subject: 'Saarland (Ludwigskirche)' },
@@ -117,7 +131,21 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Caja Proof', quantity: 3000 }
             ]
         },
-        { year: 2006, subject: 'Atomium' },
+        {
+            year: 2006,
+            subject: 'Atomium',
+            date: '10-04-2006',
+            mintage: 5000000,
+            description: 'La moneda muestra una imagen del Atomium. A la derecha aparecen las iniciales del grabador "LL". En la base del Atomium hay dos marcas de ceca.',
+            designer: 'Luc Luycx',
+            edge: '2 ** (x6)',
+            estimatedPrice: '5.00€ - 8.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 5000000 },
+                { type: 'BU', title: 'Coincard', quantity: 20000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 3000 } // Estimated
+            ]
+        },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
         { year: 2009, subject: '200 Aniv. Louis Braille' },
         { year: 2010, subject: 'Presidencia UE' },
@@ -284,7 +312,21 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Set Anual', quantity: 51606 } // Mintage logic checks out
             ]
         },
-        { year: 2006, subject: '100 Aniv. Sufragio Universal' },
+        {
+            year: 2006,
+            subject: '100 Aniv. Sufragio Universal',
+            date: '04-10-2006',
+            mintage: 2500000,
+            description: 'La moneda conmemora el centenario del sufragio universal y paritario en Finlandia. El diseño muestra dos rostros estilizados, uno masculino y otro femenino, separados por una fina línea curva.',
+            designer: 'Pertti Mäkinen',
+            edge: 'SUOMI FINLAND + tres cabezas de león',
+            estimatedPrice: '5.00€ - 8.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2467100 },
+                { type: 'BU', title: 'Set Anual', quantity: 23300 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 9600 }
+            ]
+        },
         { year: 2007, subject: '90 Aniv. Independencia' },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
         { year: 2009, subject: '200 Aniv. Autonomía Finesa' },
@@ -418,7 +460,19 @@ const COUNTRY_CATALOGS = {
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 18000000 }
             ]
         },
-        { year: 2006, subject: 'Juegos Olímpicos Turín' },
+        {
+            year: 2006,
+            subject: 'Juegos Olímpicos Turín',
+            date: '10-02-2006',
+            mintage: 40000000,
+            description: 'La moneda conmemora los XX Juegos Olímpicos de Invierno de Turín 2006. El diseño muestra a un esquiador en acción y la Mole Antonelliana (edificio símbolo de Turín).',
+            designer: 'Maria Carmela Colaneri (MCC)',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '3.00€ - 4.50€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 40000000 }
+            ]
+        },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
         { year: 2009, subject: 'Louis Braille' },
         { year: 2010, subject: 'Cavour' },
@@ -529,7 +583,22 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Caja Proof', quantity: 4000 }
             ]
         },
-        { year: 2006, subject: '25 Aniv. Gran Duque Guillermo' },
+        {
+            year: 2006,
+            subject: '25 Aniv. Gran Duque Guillermo',
+            date: '01-02-2006',
+            mintage: 1000000,
+            description: 'La moneda conmemora el 25º cumpleaños del Gran Duque Heredero Guillermo. Muestra su efigie superpuesta a la de su padre, el Gran Duque Enrique.',
+            designer: 'Patrice Bernabei',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '5.00€ - 9.00€',
+            variantDetails: 'Existen variantes según la ceca (S de Finlandia o Cornucopia de París).',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1000000 },
+                { type: 'BU', title: 'Coincard / Set', quantity: 45000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 2000 }
+            ]
+        },
         { year: 2007, subject: 'Palacio Gran Ducal' },
         { year: 2008, subject: 'Castillo de Berg' },
         { year: 2009, subject: 'Gran Duquesa Carlota' },
@@ -683,7 +752,19 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Coincard / Cartera', quantity: 130000 }
             ]
         },
-        { year: 2006, subject: '500 Aniv. Muerte Colón' },
+        {
+            year: 2006,
+            subject: '500 Aniv. Muerte Colón',
+            date: '17-10-2006',
+            mintage: 120000,
+            description: 'La moneda conmemora el 500º aniversario de la muerte de Cristóbal Colón. Muestra un retrato del navegante y las tres carabelas (Niña, Pinta, Santa María).',
+            designer: 'Luciana De Simoni (LDS)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '90€ - 130€',
+            formats: [
+                { type: 'BU', title: 'Coincard / Cartera', quantity: 120000 }
+            ]
+        },
         { year: 2007, subject: 'Giuseppe Garibaldi' },
         { year: 2008, subject: 'Año Diálogo Intercultural' },
         { year: 2009, subject: 'Creatividad e Innovación' },
@@ -747,7 +828,19 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Cartera Oficial', quantity: 100000 } // Often strictly limited to sets
             ]
         },
-        { year: 2006, subject: 'Guardia Suiza' },
+        {
+            year: 2006,
+            subject: '500 Aniv. Guardia Suiza',
+            date: '09-11-2006',
+            mintage: 100000,
+            description: 'La moneda conmemora el V Centenario de la Guardia Suiza Pontificia. Muestra a un guardia prestando juramento sobre la bandera de la Guardia. Inscripciones: "GUARDIA SVIZZERA PONTIFICIA" y "CITTÀ DEL VATICANO".',
+            designer: 'Orietta Rossi (O. ROSSI)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '180€ - 250€',
+            formats: [
+                { type: 'BU', title: 'Cartera Oficial', quantity: 100000 }
+            ]
+        },
         { year: 2007, subject: '80 Cumpleaños Benedicto XVI' },
         { year: 2008, subject: 'Año de San Pablo' },
         { year: 2009, subject: 'Año Internacional Astronomía' },

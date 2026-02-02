@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -64,
+    id: -65,
     date: '02/02/2026',
-    title: 'Versión 1.8.5 - Limpieza Total 2005 🧹',
-    description: 'Eliminadas todas las imágenes de 2005 por no cumplir con el estándar de realismo. Se restaura el diseño original por defecto para todo el año.'
+    title: 'Versión 1.9.0 - Datos 2006 📅',
+    description: 'Añadida la información técnica completa para las 7 monedas conmemorativas de 2006 (Alemania, Bélgica, Finlandia, Italia, Luxemburgo, San Marino, Vaticano). Sin imágenes por el momento.'
 });
