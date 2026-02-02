@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -32,
+    id: -33,
     date: '02/02/2026',
-    title: 'Versión 1.5.2 - Imágenes Reales (Prueba) 🖼️',
-    description: 'Añadidas imágenes reales "lazy loaded" para las conmemorativas de 2004.'
+    title: 'Versión 1.5.3 - Corrección Imágenes 🛠️',
+    description: 'Corregidos los enlaces de las imágenes de 2004 que no cargaban correctamente.'
 });
