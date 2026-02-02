@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -48,
+    id: -49,
     date: '02/02/2026',
-    title: 'Versión 1.6.9 - Variantes Lux 2004 🇱🇺',
-    description: 'Añadida información sobre las variantes "H a la izquierda/derecha" en Luxemburgo 2004.'
+    title: 'Versión 1.7.0 - Sección Variantes 🔀',
+    description: 'Mejorada la presentación de las variantes con su propia sección destacada.'
 });
