@@ -84,7 +84,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: '50 Aniv. Tratado de Estado de Austria',
-            image: '/img/coins/2005/austria.png',
+            image: '/img/coins/2005/austria.jpg?v=181',
             date: '11-05-2005',
             mintage: 7000000,
             description: 'El centro de la moneda muestra una reproducción de las firmas y sellos del Tratado de Estado de Austria, firmado en mayo de 1955. La inscripción "50 JAHRE STAATSVERTRAG" aparece sobre los sellos. El fondo tiene rayas verticales que representan los colores nacionales de Austria (rojo-blanco-rojo).',
@@ -104,7 +104,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'Unión Económica Bélgica-Luxemburgo',
-            image: '/img/coins/2005/belgium.png',
+            image: '/img/coins/2005/belgium.jpg?v=181',
             date: '20-05-2005',
             mintage: 6000000,
             description: 'La moneda muestra los perfiles superpuestos del Rey Alberto II de Bélgica y el Gran Duque Enrique de Luxemburgo mirando hacia la izquierda. Las iniciales del grabador "LL" aparecen a la derecha.',
@@ -197,7 +197,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'IV Centenario El Quijote',
-            image: '/img/coins/2005/spain.png',
+            image: '/img/coins/2005/spain.png?v=181',
             date: '30-06-2005',
             mintage: 8000000,
             description: 'La moneda conmemora el IV Centenario de la primera edición de "El Ingenioso Hidalgo Don Quijote de la Mancha". El diseño muestra a Don Quijote sosteniendo una lanza, con molinos de viento al fondo. La inscripción "ESPAÑA" aparece incusa en la superficie a la izquierda.',
@@ -272,7 +272,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: '60 Aniv. Naciones Unidas',
-            image: '/img/coins/2005/finland.png',
+            image: '/img/coins/2005/finland.png?v=181',
             date: '25-10-2005',
             mintage: 2000000,
             description: 'La moneda conmemora el 60º aniversario de las Naciones Unidas y el 50º aniversario de la adhesión de Finlandia. El diseño muestra una paloma de la paz formada por piezas de rompecabezas. Debajo de la paloma aparece la inscripción "FINLAND - UN".',
@@ -407,7 +407,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'Constitución Europea',
-            image: '/img/coins/2005/italy.png',
+            image: '/img/coins/2005/italy.jpg?v=181',
             date: '29-10-2005',
             mintage: 18000000,
             description: 'La moneda conmemora el 1er aniversario de la firma de la Constitución Europea. El diseño central representa a Europa y el toro, con Europa sosteniendo una pluma y el texto de la Constitución. La inscripción "COSTITUZIONE EUROPEA" rodea la parte inferior.',
@@ -515,7 +515,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: '100 Aniv. Muerte Gran Duque Adolfo',
-            image: '/img/coins/2005/luxembourg.png',
+            image: '/img/coins/2005/luxembourg.png?v=181',
             date: '15-02-2005',
             mintage: 2769000,
             description: 'La moneda muestra las efigies superpuestas del Gran Duque Enrique y el Gran Duque Adolfo mirando hacia la derecha. "GRANDS-DUCS DE LUXEMBOURG" aparece sobre las efigies. Debajo, "HENRI *1955" y "ADOLPHE †1905".',
@@ -672,7 +672,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'Año Mundial de la Física',
-            image: '/img/coins/2005/san_marino.png',
+            image: '/img/coins/2005/san_marino.png?v=181',
             date: '14-10-2005',
             mintage: 130000,
             description: 'La moneda conmemora el Año Mundial de la Física 2005. El diseño es una interpretación libre de la pintura alegórica "La física antigua" o "El estudio de los planetas" de Galileo Galilei. Muestra a Galileo en un escritorio con un globo terráqueo. En la parte inferior se lee "ANNO MONDIALE DELLA FISICA".',
@@ -736,7 +736,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'XX Jornada Mundial de la Juventud',
-            image: '/img/coins/2005/vatican.png',
+            image: '/img/coins/2005/vatican.png?v=181',
             date: '06-12-2005',
             mintage: 100000,
             description: 'La moneda conmemora la 20ª Jornada Mundial de la Juventud celebrada en Colonia en agosto de 2005. El diseño muestra la Catedral de Colonia con un cometa pasando por encima. La inscripción "XX GIORNATA MONDIALE DELLA GIOVENTÙ" rodea la parte superior.',
