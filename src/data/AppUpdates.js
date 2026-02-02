@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -42,
+    id: -43,
     date: '02/02/2026',
-    title: 'Versión 1.6.3 - Botón Info Movido ↖️',
-    description: 'Botón de información movido a la izquierda para evitar solapamientos.'
+    title: 'Versión 1.6.4 - UI Limpia ✨',
+    description: 'Eliminada etiqueta "Falta" y forzado el botón de información en todas las monedas.'
 });

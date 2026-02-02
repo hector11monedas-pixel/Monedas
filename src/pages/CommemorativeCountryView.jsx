@@ -138,34 +138,33 @@ const CommemorativeCountryView = () => {
                         >
                             {/* Info Button - Top Left */}
                             {/* Always show for debug, or valid check */}
-                            {(item.description || item.formats || item.date) && (
-                                <button
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        setSelectedDetailCoin(item);
-                                    }}
-                                    className="info-btn-overlay"
-                                    style={{
-                                        position: 'absolute',
-                                        top: '8px',
-                                        left: '8px',
-                                        background: 'rgba(0,0,0,0.6)',
-                                        color: '#ffd700',
-                                        border: '1px solid rgba(255,215,0,0.3)',
-                                        borderRadius: '50%',
-                                        width: '28px',
-                                        height: '28px',
-                                        display: 'flex',
-                                        alignItems: 'center',
-                                        justifyContent: 'center',
-                                        cursor: 'pointer',
-                                        zIndex: 50
-                                    }}
-                                    title="Ver Detalles"
-                                >
-                                    <Info size={16} />
-                                </button>
-                            )}
+                            {/* Info Button - Top Left - ALWAYS VISIBLE FOR DEBUG */}
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedDetailCoin(item);
+                                }}
+                                className="info-btn-overlay"
+                                style={{
+                                    position: 'absolute',
+                                    top: '8px',
+                                    left: '8px',
+                                    background: 'rgba(0,0,0,0.6)',
+                                    color: '#ffd700',
+                                    border: '1px solid rgba(255,215,0,0.3)',
+                                    borderRadius: '50%',
+                                    width: '28px',
+                                    height: '28px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    zIndex: 100
+                                }}
+                                title="Ver Detalles"
+                            >
+                                <Info size={16} />
+                            </button>
                             {/* CSS Realistic Coin */}
                             {/* IMAGE or CSS COIN */}
                             {item.image ? (
@@ -280,9 +279,7 @@ const CommemorativeCountryView = () => {
                             </div>
 
                             {/* Missing Badge (Only if NO mints owned) */}
-                            {!isOwned && (
-                                <div className="missing-badge">Falta</div>
-                            )}
+                            {/* Missing Badge REMOVED per user request */}
                         </div>
                     );
                 })}
