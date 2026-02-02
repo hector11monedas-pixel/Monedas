@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -36,
+    id: -37,
     date: '02/02/2026',
-    title: 'Versión 1.5.6 - Fotos Reales (Parcial) 📸',
-    description: 'Conseguidas fotos reales para Finlandia, Grecia, San Marino y Vaticano. Marcadores para el resto.'
+    title: 'Versión 1.5.7 - Misión Cumplida 🏆',
+    description: 'Todas las imágenes de 2004 (incluidas Italia y Luxemburgo) han sido recuperadas localmente con éxito.'
 });
