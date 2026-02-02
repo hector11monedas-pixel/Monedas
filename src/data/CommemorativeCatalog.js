@@ -81,12 +81,42 @@ const COUNTRY_CATALOGS = {
         { year: 2025, subject: 'Casa de la Vall' },
     ],
     'Austria': [
-        { year: 2005, subject: '50 Aniv. Tratado de Estado de Austria' },
+        {
+            year: 2005,
+            subject: '50 Aniv. Tratado de Estado de Austria',
+            image: '/img/coins/2005/austria.png',
+            date: '11-05-2005',
+            mintage: 7000000,
+            description: 'El centro de la moneda muestra una reproducción de las firmas y sellos del Tratado de Estado de Austria, firmado en mayo de 1955. La inscripción "50 JAHRE STAATSVERTRAG" aparece sobre los sellos. El fondo tiene rayas verticales que representan los colores nacionales de Austria (rojo-blanco-rojo).',
+            designer: 'Helmut Andexlinger',
+            edge: '2 EURO *** (x4)',
+            estimatedPrice: '15€ - 25€ (UNC)',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 6880000 },
+                { type: 'BU', title: 'Set Anual', quantity: 100000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 20000 }
+            ]
+        },
         { year: 2016, subject: '200 Aniv. Banco Nacional de Austria' },
         { year: 2018, subject: '100 Años República de Austria' },
     ],
     'Bélgica': [
-        { year: 2005, subject: 'Unión Económica Bélgica-Luxemburgo' },
+        {
+            year: 2005,
+            subject: 'Unión Económica Bélgica-Luxemburgo',
+            image: '/img/coins/2005/belgium.png',
+            date: '20-05-2005',
+            mintage: 6000000,
+            description: 'La moneda muestra los perfiles superpuestos del Rey Alberto II de Bélgica y el Gran Duque Enrique de Luxemburgo mirando hacia la izquierda. Las iniciales del grabador "LL" aparecen a la derecha.',
+            designer: 'Luc Luycx',
+            edge: '2 ** (x6)',
+            estimatedPrice: '6€ - 12€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 5977000 },
+                { type: 'BU', title: 'Coincard', quantity: 20000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 3000 }
+            ]
+        },
         { year: 2006, subject: 'Atomium' },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
         { year: 2009, subject: '200 Aniv. Louis Braille' },
@@ -164,7 +194,22 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026' },
     ],
     'España': [
-        { year: 2005, subject: 'IV Centenario El Quijote' },
+        {
+            year: 2005,
+            subject: 'IV Centenario El Quijote',
+            image: '/img/coins/2005/spain.png',
+            date: '30-06-2005',
+            mintage: 8000000,
+            description: 'La moneda conmemora el IV Centenario de la primera edición de "El Ingenioso Hidalgo Don Quijote de la Mancha". El diseño muestra a Don Quijote sosteniendo una lanza, con molinos de viento al fondo. La inscripción "ESPAÑA" aparece incusa en la superficie a la izquierda.',
+            designer: 'Begoña Castellanos (FNMT)',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '4.00€ - 7.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 7950000 },
+                { type: 'BU', title: 'Cartera', quantity: 40000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 10000 }
+            ]
+        },
         { year: 2010, subject: 'Centro Histórico de Córdoba' },
         { year: 2011, subject: 'Alhambra de Granada' },
         { year: 2012, subject: 'Catedral de Burgos' },
@@ -224,7 +269,21 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Set Proof', quantity: 5000 }
             ]
         },
-        { year: 2005, subject: '60 Aniv. Naciones Unidas' },
+        {
+            year: 2005,
+            subject: '60 Aniv. Naciones Unidas',
+            image: '/img/coins/2005/finland.png',
+            date: '25-10-2005',
+            mintage: 2000000,
+            description: 'La moneda conmemora el 60º aniversario de las Naciones Unidas y el 50º aniversario de la adhesión de Finlandia. El diseño muestra una paloma de la paz formada por piezas de rompecabezas. Debajo de la paloma aparece la inscripción "FINLAND - UN".',
+            designer: 'Tapio Kettunen',
+            edge: 'YK 1945 - 2005 FN + cabezas de león',
+            estimatedPrice: '6€ - 12€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1948394 },
+                { type: 'BU', title: 'Set Anual', quantity: 51606 } // Mintage logic checks out
+            ]
+        },
         { year: 2006, subject: '100 Aniv. Sufragio Universal' },
         { year: 2007, subject: '90 Aniv. Independencia' },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
@@ -345,7 +404,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 16000000 }
             ]
         },
-        { year: 2005, subject: 'Constitución Europea' },
+        {
+            year: 2005,
+            subject: 'Constitución Europea',
+            image: '/img/coins/2005/italy.png',
+            date: '29-10-2005',
+            mintage: 18000000,
+            description: 'La moneda conmemora el 1er aniversario de la firma de la Constitución Europea. El diseño central representa a Europa y el toro, con Europa sosteniendo una pluma y el texto de la Constitución. La inscripción "COSTITUZIONE EUROPEA" rodea la parte inferior.',
+            designer: 'Maria Carmela Colaneri (MCC)',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '3.50€ - 5.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 18000000 }
+            ]
+        },
         { year: 2006, subject: 'Juegos Olímpicos Turín' },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
         { year: 2009, subject: 'Louis Braille' },
@@ -440,7 +512,23 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Caja Proof', quantity: 1800 }
             ]
         },
-        { year: 2005, subject: '100 Aniv. Gran Duque Adolfo' },
+        {
+            year: 2005,
+            subject: '100 Aniv. Muerte Gran Duque Adolfo',
+            image: '/img/coins/2005/luxembourg.png',
+            date: '15-02-2005',
+            mintage: 2769000,
+            description: 'La moneda muestra las efigies superpuestas del Gran Duque Enrique y el Gran Duque Adolfo mirando hacia la derecha. "GRANDS-DUCS DE LUXEMBOURG" aparece sobre las efigies. Debajo, "HENRI *1955" y "ADOLPHE †1905".',
+            designer: 'Yvette Gastauer-Claire',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '5.00€ - 10.00€',
+            variantDetails: 'Existen variantes: letras "S" (Suomi) o logotipos de ceca en el año, aunque la principal distinción es la calidad de acuñación.', // Simplified based on findings
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2720000 },
+                { type: 'BU', title: 'Set / Coincard', quantity: 45000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 4000 }
+            ]
+        },
         { year: 2006, subject: '25 Aniv. Gran Duque Guillermo' },
         { year: 2007, subject: 'Palacio Gran Ducal' },
         { year: 2008, subject: 'Castillo de Berg' },
@@ -581,7 +669,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Coincard / Cartera', quantity: 110000 }
             ]
         },
-        { year: 2005, subject: 'Año Mundial Física' },
+        {
+            year: 2005,
+            subject: 'Año Mundial de la Física',
+            image: '/img/coins/2005/san_marino.png',
+            date: '14-10-2005',
+            mintage: 130000,
+            description: 'La moneda conmemora el Año Mundial de la Física 2005. El diseño es una interpretación libre de la pintura alegórica "La física antigua" o "El estudio de los planetas" de Galileo Galilei. Muestra a Galileo en un escritorio con un globo terráqueo. En la parte inferior se lee "ANNO MONDIALE DELLA FISICA".',
+            designer: 'Luciana De Simoni (LDS)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '110€ - 180€',
+            formats: [
+                { type: 'BU', title: 'Coincard / Cartera', quantity: 130000 }
+            ]
+        },
         { year: 2006, subject: '500 Aniv. Muerte Colón' },
         { year: 2007, subject: 'Giuseppe Garibaldi' },
         { year: 2008, subject: 'Año Diálogo Intercultural' },
@@ -632,7 +733,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Cartera Oficial', quantity: 85000 }
             ]
         },
-        { year: 2005, subject: 'Día Mundial Juventud' },
+        {
+            year: 2005,
+            subject: 'XX Jornada Mundial de la Juventud',
+            image: '/img/coins/2005/vatican.png',
+            date: '06-12-2005',
+            mintage: 100000,
+            description: 'La moneda conmemora la 20ª Jornada Mundial de la Juventud celebrada en Colonia en agosto de 2005. El diseño muestra la Catedral de Colonia con un cometa pasando por encima. La inscripción "XX GIORNATA MONDIALE DELLA GIOVENTÙ" rodea la parte superior.',
+            designer: 'Daniela Longo / E.L. Frapiccini',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '220€ - 300€',
+            formats: [
+                { type: 'BU', title: 'Cartera Oficial', quantity: 100000 } // Often strictly limited to sets
+            ]
+        },
         { year: 2006, subject: 'Guardia Suiza' },
         { year: 2007, subject: '80 Cumpleaños Benedicto XVI' },
         { year: 2008, subject: 'Año de San Pablo' },

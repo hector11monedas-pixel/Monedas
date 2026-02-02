@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -53,
+    id: -54,
     date: '02/02/2026',
-    title: 'Versión 1.7.4 - Fichas Pro 💎',
-    description: 'Añadidos campos de Diseñador, Canto y Precio Estimado a las monedas.'
+    title: 'Versión 1.7.5 - Año 2005 Completado 📅',
+    description: 'Añadidas todas las monedas conmemorativas de 2005 con sus fichas técnicas completas.'
 });
