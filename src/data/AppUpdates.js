@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -30,
-    date: '31/01/2026',
-    title: 'Versión 1.5.0 - Gestión de Cantidades 🪙',
-    description: 'Nuevo soporte para marcar cantidades (duplicadas), indicador dorado visual para monedas repetidas y sistema unificado para Conmemorativas.'
+    id: -31,
+    date: '02/02/2026',
+    title: 'Versión 1.5.1 - Despliegue Forzado 🚀',
+    description: 'Actualización técnica para asegurar la sincronización con el servidor.'
 });
