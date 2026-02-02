@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -37,
+    id: -38,
     date: '02/02/2026',
-    title: 'Versión 1.5.7 - Misión Cumplida 🏆',
-    description: 'Todas las imágenes de 2004 (incluidas Italia y Luxemburgo) han sido recuperadas localmente con éxito.'
+    title: 'Versión 1.5.8 - Optimización ⚡',
+    description: 'Imágenes optimizadas para reducir el peso de la aplicación (-85% de tamaño).'
 });
