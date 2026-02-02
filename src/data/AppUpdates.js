@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -46,
+    id: -47,
     date: '02/02/2026',
-    title: 'Versión 1.6.7 - Force Update 🔄',
-    description: 'Actualización forzada para asegurar despliegue en servidor.'
+    title: 'Versión 1.6.8 - Diseño Vertical 📱',
+    description: 'Mejorada la vista de detalles de monedas para móviles (todo en una columna).'
 });

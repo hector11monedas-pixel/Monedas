@@ -19,9 +19,9 @@ const CoinDetailModal = ({ isOpen, onClose, coin, country }) => {
                     {country} • {coin.year}
                 </div>
 
-                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1.5fr', gap: '2rem', textAlign: 'left' }}>
-                    {/* Left Column: Image */}
-                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', textAlign: 'left' }}>
+                    {/* Image Section */}
+                    <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', margin: '0 auto', maxWidth: '300px', width: '100%' }}>
                         <div style={{ width: '200px', height: '200px', marginBottom: '1rem' }}>
                             <CoinImage
                                 src={coin.image}
