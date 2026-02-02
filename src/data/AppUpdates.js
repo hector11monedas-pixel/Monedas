@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -43,
+    id: -44,
     date: '02/02/2026',
-    title: 'Versión 1.6.4 - UI Limpia ✨',
-    description: 'Eliminada etiqueta "Falta" y forzado el botón de información en todas las monedas.'
+    title: 'Versión 1.6.5 - Botón Integrado 📄',
+    description: 'Botón de información integrado en el texto de la moneda para asegurar su visibilidad.'
 });

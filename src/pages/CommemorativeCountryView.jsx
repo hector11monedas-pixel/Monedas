@@ -138,33 +138,7 @@ const CommemorativeCountryView = () => {
                         >
                             {/* Info Button - Top Left */}
                             {/* Always show for debug, or valid check */}
-                            {/* Info Button - Top Left - ALWAYS VISIBLE FOR DEBUG */}
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedDetailCoin(item);
-                                }}
-                                className="info-btn-overlay"
-                                style={{
-                                    position: 'absolute',
-                                    top: '8px',
-                                    left: '8px',
-                                    background: 'rgba(0,0,0,0.6)',
-                                    color: '#ffd700',
-                                    border: '1px solid rgba(255,215,0,0.3)',
-                                    borderRadius: '50%',
-                                    width: '28px',
-                                    height: '28px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    cursor: 'pointer',
-                                    zIndex: 100
-                                }}
-                                title="Ver Detalles"
-                            >
-                                <Info size={16} />
-                            </button>
+                            {/* Absolute Button Removed - Moving to Inline */}
                             {/* CSS Realistic Coin */}
                             {/* IMAGE or CSS COIN */}
                             {item.image ? (
@@ -227,7 +201,31 @@ const CommemorativeCountryView = () => {
                             <div className="coin-info">
                                 <div className="coin-header-row">
                                     <span className="coin-year">{data.year}</span>
-                                    {isOwned && !hasVariants && <span className="coin-value">{data.value}€</span>}
+
+                                    {/* Inline Info Button */}
+                                    <button
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            setSelectedDetailCoin(item);
+                                        }}
+                                        style={{
+                                            background: 'rgba(255, 215, 0, 0.1)',
+                                            border: '1px solid rgba(255, 215, 0, 0.3)',
+                                            color: '#ffd700',
+                                            borderRadius: '12px',
+                                            padding: '2px 8px',
+                                            fontSize: '0.7rem',
+                                            cursor: 'pointer',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '4px',
+                                            marginLeft: 'auto'
+                                        }}
+                                    >
+                                        <Info size={12} /> Info
+                                    </button>
+
+                                    {isOwned && !hasVariants && <span className="coin-value" style={{ marginLeft: '8px' }}>{data.value}€</span>}
                                 </div>
 
                                 <h4 className="coin-subject" style={{ opacity: isOwned ? 1 : 0.7 }}>
