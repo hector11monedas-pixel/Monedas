@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -45,
+    id: -46,
     date: '02/02/2026',
-    title: 'Versión 1.6.6 - Botón Info Universal 🌍',
-    description: 'Botón de información disponible también en la vista por Año (y arreglado en la vista normal).'
+    title: 'Versión 1.6.7 - Force Update 🔄',
+    description: 'Actualización forzada para asegurar despliegue en servidor.'
 });
