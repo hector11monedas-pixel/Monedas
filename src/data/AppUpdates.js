@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -50,
+    id: -51,
     date: '02/02/2026',
-    title: 'Versión 1.7.1 - Correcciones 🛠️',
-    description: 'Arreglado el texto de Variantes y la navegación "Atrás" en la vista por Años.'
+    title: 'Versión 1.7.2 - Datos 2004 Completos 📚',
+    description: 'Añadida toda la información detallada para las monedas conmemorativas del año 2004.'
 });
