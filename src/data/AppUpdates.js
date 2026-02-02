@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -34,
+    id: -35,
     date: '02/02/2026',
-    title: 'Versión 1.5.4 - Fix Imágenes 🔧',
-    description: 'Mejorada la carga de imágenes. Si fallan, se muestra la moneda estándar.'
+    title: 'Versión 1.5.5 - Imágenes Locales 📂',
+    description: 'Imágenes descargadas localmente para evitar errores de conexión. Se muestran marcadores de posición temporales.'
 });

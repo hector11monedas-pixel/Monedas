@@ -208,7 +208,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Estado Digital' },
     ],
     'Finlandia': [
-        { year: 2004, subject: 'Ampliación Unión Europea', image: 'https://upload.wikimedia.org/wikipedia/commons/5/53/Moeda_comemorativa_2_euros_2004,_Finlândia.png' },
+        { year: 2004, subject: 'Ampliación Unión Europea', image: '/img/coins/2004/finland.png' },
         { year: 2005, subject: '60 Aniv. Naciones Unidas' },
         { year: 2006, subject: '100 Aniv. Sufragio Universal' },
         { year: 2007, subject: '90 Aniv. Independencia' },
@@ -280,7 +280,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Grecia': [
-        { year: 2004, subject: 'Juegos Olímpicos Atenas', image: 'https://upload.wikimedia.org/wikipedia/commons/2/2f/Moeda_Comemorativa_2_euros_2004,_Grécia.jpg' },
+        { year: 2004, subject: 'Juegos Olímpicos Atenas', image: '/img/coins/2004/greece.jpg' },
         { year: 2010, subject: 'Batalla de Maratón' },
         { year: 2011, subject: 'Juegos Olímpicos Especiales' },
         { year: 2013, subject: 'Unión de Creta con Grecia' },
@@ -316,7 +316,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026' },
     ],
     'Italia': [
-        { year: 2004, subject: 'Programa Mundial Alimentos', image: 'https://upload.wikimedia.org/wikipedia/it/3/30/2_€_commemorativo_Italia_2004.png' },
+        { year: 2004, subject: 'Programa Mundial Alimentos', image: '/img/coins/2004/italy.png' },
         { year: 2005, subject: 'Constitución Europea' },
         { year: 2006, subject: 'Juegos Olímpicos Turín' },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
@@ -394,7 +394,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Luxemburgo': [
-        { year: 2004, subject: 'Monograma Gran Duque', image: 'https://upload.wikimedia.org/wikipedia/commons/e/ea/2_€_commemorativo_Lussemburgo_2004.png' },
+        { year: 2004, subject: 'Monograma Gran Duque', image: '/img/coins/2004/luxembourg.png' },
         { year: 2005, subject: '100 Aniv. Gran Duque Adolfo' },
         { year: 2006, subject: '25 Aniv. Gran Duque Guillermo' },
         { year: 2007, subject: 'Palacio Gran Ducal' },
@@ -522,7 +522,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'San Marino': [
-        { year: 2004, subject: 'Bartolomeo Borghesi', image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/Moeda_comemorativa_2_euros_2004,_San_Marino.png' },
+        { year: 2004, subject: 'Bartolomeo Borghesi', image: '/img/coins/2004/san_marino.png' },
         { year: 2005, subject: 'Año Mundial Física' },
         { year: 2006, subject: '500 Aniv. Muerte Colón' },
         { year: 2007, subject: 'Giuseppe Garibaldi' },
@@ -560,7 +560,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Vaticano': [
-        { year: 2004, subject: '75 Aniv. Estado Vaticano', image: 'https://upload.wikimedia.org/wikipedia/commons/0/09/Moeda_comemorativa_2_euros_2004,_Vaticano.png' },
+        { year: 2004, subject: '75 Aniv. Estado Vaticano', image: '/img/coins/2004/vatican.png' },
         { year: 2005, subject: 'Día Mundial Juventud' },
         { year: 2006, subject: 'Guardia Suiza' },
         { year: 2007, subject: '80 Cumpleaños Benedicto XVI' },
