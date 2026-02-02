@@ -126,8 +126,14 @@ export const APP_UPDATES = [
         description: 'Ajuste en años 2000/2001 para 1c y 10c (Circulación vs Sets).'
     },
     {
+        id: -2,
+        date: '02/02/2026',
+        title: 'Versión 1.9.1 - Imágenes 2006 Resturadas 📸',
+        description: 'Se han añadido las imágenes para las monedas conmemorativas de 2006 (Alemania, Bélgica, Finlandia, Italia, Luxemburgo, San Marino, Vaticano) tras una búsqueda exhaustiva.'
+    },
+    {
         id: -1,
-        date: '28/01/2026',
+        date: '02/02/2026',
         title: 'Actualización Bélgica 🇧🇪',
         description: 'Definición de moneda circulante (Verde) vs Sets (Amarillo) según listas confirmadas.'
     },
