@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -62,
+    id: -63,
     date: '02/02/2026',
-    title: 'Versión 1.8.3 - Reconstrucción Visual Completa 💎',
-    description: 'Ante la falta de imágenes reales uniformes, se han restaurado las recreaciones de alta fidelidad para toda la colección 2005. Ahora todas se verán perfectas.'
+    title: 'Versión 1.8.4 - Purismo Visual (Real o Nada) 🧐',
+    description: 'Eliminadas las recreaciones digitales. Ahora solo se muestran las fotos 100% reales disponibles (Austria, Bélgica, España, Italia). Las demás volverán a tener el diseño clásico sin foto hasta que consigamos las originales.'
 });
