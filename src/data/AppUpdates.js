@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -40,
+    id: -41,
     date: '02/02/2026',
-    title: 'Versión 1.6.1 - Corrección UI 🛠️',
-    description: 'Arreglado el botón de Información que no aparecía y mejorada la estabilidad.'
+    title: 'Versión 1.6.2 - Corrección Build 🔧',
+    description: 'Solucionado error de compilación por duplicados.'
 });
