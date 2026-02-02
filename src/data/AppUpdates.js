@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -49,
+    id: -50,
     date: '02/02/2026',
-    title: 'Versión 1.7.0 - Sección Variantes 🔀',
-    description: 'Mejorada la presentación de las variantes con su propia sección destacada.'
+    title: 'Versión 1.7.1 - Correcciones 🛠️',
+    description: 'Arreglado el texto de Variantes y la navegación "Atrás" en la vista por Años.'
 });

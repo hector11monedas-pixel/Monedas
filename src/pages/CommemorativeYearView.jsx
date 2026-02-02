@@ -100,7 +100,7 @@ const CommemorativeYearView = () => {
             <div className="page-header">
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
                     <button
-                        onClick={() => navigate('/euro/commemorative')}
+                        onClick={() => navigate('/euro/commemorative?tab=year')}
                         className="back-btn-simple"
                         style={{ background: 'transparent', border: 'none', color: 'white', cursor: 'pointer' }}
                     >

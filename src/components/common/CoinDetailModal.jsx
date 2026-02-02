@@ -62,6 +62,18 @@ const CoinDetailModal = ({ isOpen, onClose, coin, country }) => {
                             </div>
                         )}
 
+                        {/* Variant Section */}
+                        {coin.variantDetails && (
+                            <div>
+                                <h3 style={{ fontSize: '1.1rem', color: '#ffd700', marginBottom: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+                                    Variantes
+                                </h3>
+                                <div style={{ marginBottom: '2rem', lineHeight: '1.6', color: '#e0e0e0', whiteSpace: 'pre-line' }}>
+                                    {coin.variantDetails}
+                                </div>
+                            </div>
+                        )}
+
                         {coin.formats && coin.formats.length > 0 && (
                             <div>
                                 <h3 style={{ fontSize: '1.1rem', color: '#ffd700', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>

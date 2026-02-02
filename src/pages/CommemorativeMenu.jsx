@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 import { useCoin } from '../context/CoinContext';
 import { COMMEMORATIVE_YEARS, COMMEMORATIVE_COUNTRIES } from '../data/CommemorativeData';
 import { COMMEMORATIVE_CATALOG, calculateCommemorativeCatalogSize, getCatalogForCountry } from '../data/CommemorativeCatalog';
@@ -53,7 +53,15 @@ const CommemorativeMenu = () => {
     // Calculate Total Catalog Size
     const totalCatalogCount = calculateCommemorativeCatalogSize();
 
-    const [viewMode, setViewMode] = useState('country'); // 'country' or 'year'
+    const [searchParams, setSearchParams] = useSearchParams();
+    const initialTab = searchParams.get('tab') || 'country';
+    const [viewMode, setViewMode] = useState(initialTab);
+
+    // Update URL when tab changes
+    const handleTabChange = (mode) => {
+        setViewMode(mode);
+        setSearchParams({ tab: mode });
+    };
 
     // Generate years list 2026 -> 2004
     const yearsList = [];
@@ -80,14 +88,14 @@ const CommemorativeMenu = () => {
                 <div className="stat-tabs" style={{ marginBottom: 0 }}>
                     <button
                         className={`stat-tab ${viewMode === 'country' ? 'active' : ''}`}
-                        onClick={() => setViewMode('country')}
+                        onClick={() => handleTabChange('country')}
                         style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}
                     >
                         Por País
                     </button>
                     <button
                         className={`stat-tab ${viewMode === 'year' ? 'active' : ''}`}
-                        onClick={() => setViewMode('year')}
+                        onClick={() => handleTabChange('year')}
                         style={{ padding: '0.5rem 1rem', fontSize: '0.9rem' }}
                     >
                         Por Año
