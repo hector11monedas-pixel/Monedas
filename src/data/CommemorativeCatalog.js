@@ -208,7 +208,19 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Estado Digital' },
     ],
     'Finlandia': [
-        { year: 2004, subject: 'Ampliación Unión Europea', image: '/img/coins/2004/finland.png' },
+        {
+            year: 2004,
+            subject: 'Ampliación Unión Europea',
+            image: '/img/coins/2004/finland.png',
+            date: '01-07-2004',
+            mintage: 1000000,
+            description: 'La moneda conmemora la quinta ampliación de la Unión Europea en 2004, que sumó diez nuevos estados miembros. El diseño estilizado representa un pilar del cual brotan diez brotes hacia arriba. Las letras "EU" aparecen cerca del pilar, junto con el año "2004" en la parte superior, rodeado por las doce estrellas de la UE.',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 931400 },
+                { type: 'BU', title: 'Set Anual', quantity: 54000 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 5000 }
+            ]
+        },
         { year: 2005, subject: '60 Aniv. Naciones Unidas' },
         { year: 2006, subject: '100 Aniv. Sufragio Universal' },
         { year: 2007, subject: '90 Aniv. Independencia' },
@@ -316,7 +328,17 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026' },
     ],
     'Italia': [
-        { year: 2004, subject: 'Programa Mundial Alimentos', image: '/img/coins/2004/italy.png' },
+        {
+            year: 2004,
+            subject: 'Programa Mundial de Alimentos',
+            image: '/img/coins/2004/italy.png',
+            date: '13-12-2004',
+            mintage: 16000000,
+            description: 'La moneda celebra el 50º aniversario del Programa Mundial de Alimentos (WFP). El diseño central muestra un globo terráqueo inclinado hacia la derecha con la inscripción "WORLD FOOD PROGRAMME". Detrás del globo emergen una espiga de trigo, una de maíz y una de arroz, representando las fuentes de alimento básicas del mundo. A la derecha figuran las iniciales "RI" (Repubblica Italiana) y las iniciales de la grabadora Uliana Pernazza "UP".',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 16000000 }
+            ]
+        },
         { year: 2005, subject: 'Constitución Europea' },
         { year: 2006, subject: 'Juegos Olímpicos Turín' },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
@@ -400,8 +422,7 @@ const COUNTRY_CATALOGS = {
             image: '/img/coins/2004/luxembourg.png',
             date: '23-06-2004',
             mintage: 2481800,
-            // Description removed per user request
-            description: '',
+            description: 'La moneda muestra la efigie del Gran Duque Enrique mirando a la derecha, superpuesta sobre su monograma (una letra "H" especial con corona). El monograma está formado por múltiples letras "H" minúsculas impresas con una técnica especial.',
             variantDetails: 'Existen dos variantes principales según la presentación:\n- **H a la izquierda:** Se encuentra en los rollos (calidad UNC).\n- **H a la derecha:** Se encuentra en las Coincards (calidad BU) y en los estuches Proof.',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2400000 },
@@ -537,7 +558,17 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'San Marino': [
-        { year: 2004, subject: 'Bartolomeo Borghesi', image: '/img/coins/2004/san_marino.png' },
+        {
+            year: 2004,
+            subject: 'Bartolomeo Borghesi',
+            image: '/img/coins/2004/san_marino.png',
+            date: '16-12-2004',
+            mintage: 110000,
+            description: 'La moneda conmemora al historiador y numismático Bartolomeo Borghesi. El motivo central es un busto de Borghesi, flanqueado a la izquierda por su nombre y a la derecha por el nombre del estado "SAN MARINO". Es una de las monedas más buscadas por los coleccionistas debido a su baja tirada.',
+            formats: [
+                { type: 'BU', title: 'Coincard / Cartera', quantity: 110000 }
+            ]
+        },
         { year: 2005, subject: 'Año Mundial Física' },
         { year: 2006, subject: '500 Aniv. Muerte Colón' },
         { year: 2007, subject: 'Giuseppe Garibaldi' },
@@ -575,7 +606,17 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Vaticano': [
-        { year: 2004, subject: '75 Aniv. Estado Vaticano', image: '/img/coins/2004/vatican.png' },
+        {
+            year: 2004,
+            subject: '75 Aniv. Ciudad del Vaticano',
+            image: '/img/coins/2004/vatican.png',
+            date: '16-12-2004',
+            mintage: 85000,
+            description: 'La moneda celebra el 75º Aniversario de la Fundación del Estado de la Ciudad del Vaticano (1929-2004). El diseño muestra un plano esquemático de las murallas de la Ciudad del Vaticano con la Basílica de San Pedro en primer plano. Las inscripciones incluyen "75o ANNO DELLO STATO" y los años "1929-2004".',
+            formats: [
+                { type: 'BU', title: 'Cartera Oficial', quantity: 85000 }
+            ]
+        },
         { year: 2005, subject: 'Día Mundial Juventud' },
         { year: 2006, subject: 'Guardia Suiza' },
         { year: 2007, subject: '80 Cumpleaños Benedicto XVI' },

@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -51,
+    id: -52,
     date: '02/02/2026',
-    title: 'Versión 1.7.2 - Datos 2004 Completos 📚',
-    description: 'Añadida toda la información detallada para las monedas conmemorativas del año 2004.'
+    title: 'Versión 1.7.3 - Datos 2004 (Intento 2) 🔄',
+    description: 'Restaurada descripción de Luxemburgo y re-aplicada la carga de datos del año 2004.'
 });
