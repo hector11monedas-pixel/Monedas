@@ -136,7 +136,8 @@ const CommemorativeCountryView = () => {
                             style={{ position: 'relative', cursor: hasVariants ? 'default' : 'pointer' }}
                             onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
                         >
-                            {/* Info Button - Top Right */}
+                            {/* Info Button - Top Left */}
+                            {/* Always show for debug, or valid check */}
                             {(item.description || item.formats || item.date) && (
                                 <button
                                     onClick={(e) => {
@@ -147,7 +148,7 @@ const CommemorativeCountryView = () => {
                                     style={{
                                         position: 'absolute',
                                         top: '8px',
-                                        right: '8px',
+                                        left: '8px',
                                         background: 'rgba(0,0,0,0.6)',
                                         color: '#ffd700',
                                         border: '1px solid rgba(255,215,0,0.3)',
@@ -158,7 +159,7 @@ const CommemorativeCountryView = () => {
                                         alignItems: 'center',
                                         justifyContent: 'center',
                                         cursor: 'pointer',
-                                        zIndex: 20
+                                        zIndex: 50
                                     }}
                                     title="Ver Detalles"
                                 >
