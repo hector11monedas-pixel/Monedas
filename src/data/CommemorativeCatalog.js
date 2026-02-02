@@ -272,7 +272,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: '60 Aniv. Naciones Unidas',
-            image: '/img/coins/2005/finland.png?v=181',
+            // image: '/img/coins/2005/finland.png?v=181',
             date: '25-10-2005',
             mintage: 2000000,
             description: 'La moneda conmemora el 60º aniversario de las Naciones Unidas y el 50º aniversario de la adhesión de Finlandia. El diseño muestra una paloma de la paz formada por piezas de rompecabezas. Debajo de la paloma aparece la inscripción "FINLAND - UN".',
@@ -515,7 +515,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: '100 Aniv. Muerte Gran Duque Adolfo',
-            image: '/img/coins/2005/luxembourg.png?v=181',
+            // image: '/img/coins/2005/luxembourg.png?v=181',
             date: '15-02-2005',
             mintage: 2769000,
             description: 'La moneda muestra las efigies superpuestas del Gran Duque Enrique y el Gran Duque Adolfo mirando hacia la derecha. "GRANDS-DUCS DE LUXEMBOURG" aparece sobre las efigies. Debajo, "HENRI *1955" y "ADOLPHE †1905".',
@@ -672,7 +672,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'Año Mundial de la Física',
-            image: '/img/coins/2005/san_marino.png?v=181',
+            // image: '/img/coins/2005/san_marino.png?v=181',
             date: '14-10-2005',
             mintage: 130000,
             description: 'La moneda conmemora el Año Mundial de la Física 2005. El diseño es una interpretación libre de la pintura alegórica "La física antigua" o "El estudio de los planetas" de Galileo Galilei. Muestra a Galileo en un escritorio con un globo terráqueo. En la parte inferior se lee "ANNO MONDIALE DELLA FISICA".',
@@ -736,7 +736,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'XX Jornada Mundial de la Juventud',
-            image: '/img/coins/2005/vatican.png?v=181',
+            // image: '/img/coins/2005/vatican.png?v=181',
             date: '06-12-2005',
             mintage: 100000,
             description: 'La moneda conmemora la 20ª Jornada Mundial de la Juventud celebrada en Colonia en agosto de 2005. El diseño muestra la Catedral de Colonia con un cometa pasando por encima. La inscripción "XX GIORNATA MONDIALE DELLA GIOVENTÙ" rodea la parte superior.',

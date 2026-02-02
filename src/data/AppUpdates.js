@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -60,
+    id: -61,
     date: '02/02/2026',
-    title: 'Versión 1.8.1 - Corrección Final Imágenes 🔧',
-    description: 'Ajuste definitivo de los formatos de imagen (JPG/PNG) para las 8 monedas de 2005.'
+    title: 'Versión 1.8.2 - Ajuste de Imágenes 2005 🌓',
+    description: 'Se muestran fotos reales donde ha sido posible encontrarlas. Donde no, se ha optado por la vista "sin foto" para mantener la fidelidad.'
 });
