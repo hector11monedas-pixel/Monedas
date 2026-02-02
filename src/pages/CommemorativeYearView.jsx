@@ -3,6 +3,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Check, Plus } from 'lucide-react';
 import { useCoin } from '../context/CoinContext';
 import { COMMEMORATIVE_CATALOG } from '../data/CommemorativeCatalog';
+import CoinImage from '../components/common/CoinImage';
 import Modal from '../components/common/Modal';
 import ItemForm from '../components/common/ItemForm';
 import './PageLayout.css';
@@ -146,45 +147,25 @@ const CommemorativeYearView = () => {
                                 <span style={{ fontSize: '0.7rem', color: '#fff' }}>{item.country.substring(0, 3).toUpperCase()}</span>
                             </div>
 
-                            {/* CSS Realistic Coin OR Real Image */}
-                            {item.image ? (
-                                <div className="real-coin-wrapper" style={{
-                                    width: '80px', // Slightly smaller in year grid usually
+                            {/* Coin Image with Fallback */}
+                            <CoinImage
+                                src={item.image}
+                                alt={data.subject}
+                                isOwned={isOwned}
+                                style={{
+                                    width: '80px',
                                     height: '80px',
-                                    margin: '0 auto 10px',
-                                    position: 'relative',
-                                    borderRadius: '50%',
-                                    boxShadow: isOwned ? 'inset 0 0 20px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.3)' : 'none'
-                                }}>
-                                    <img
-                                        src={item.image}
-                                        alt={data.subject}
-                                        loading="lazy"
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            borderRadius: '50%',
-                                            filter: isOwned ? 'none' : 'grayscale(100%) opacity(0.5)',
-                                            transition: 'all 0.3s ease'
-                                        }}
-                                    />
-                                    <div style={{
-                                        position: 'absolute',
-                                        top: 0, left: 0, right: 0, bottom: 0,
-                                        borderRadius: '50%',
-                                        border: '3px solid rgba(255,215,0,0.3)',
-                                        pointerEvents: 'none'
-                                    }} />
-                                </div>
-                            ) : (
-                                <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
-                                    <div className="css-coin-content">
-                                        <span className="coin-text-year">{data.year}</span>
-                                        <span className="coin-text-country">{item.country.substring(0, 3)}</span>
+                                    margin: '0 auto 10px'
+                                }}
+                                fallback={
+                                    <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
+                                        <div className="css-coin-content">
+                                            <span className="coin-text-year">{data.year}</span>
+                                            <span className="coin-text-country">{item.country.substring(0, 3)}</span>
+                                        </div>
                                     </div>
-                                </div>
-                            )}
+                                }
+                            />
 
                             <div className="coin-info">
                                 <div className="coin-header-row">
