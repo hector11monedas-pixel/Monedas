@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -35,
+    id: -36,
     date: '02/02/2026',
-    title: 'Versión 1.5.5 - Imágenes Locales 📂',
-    description: 'Imágenes descargadas localmente para evitar errores de conexión. Se muestran marcadores de posición temporales.'
+    title: 'Versión 1.5.6 - Fotos Reales (Parcial) 📸',
+    description: 'Conseguidas fotos reales para Finlandia, Grecia, San Marino y Vaticano. Marcadores para el resto.'
 });

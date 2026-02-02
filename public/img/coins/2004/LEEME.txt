@@ -1,0 +1,18 @@
+CÓMO AÑADIR IMÁGENES REALES
+==========================
+
+Has descargado "Placeholders" (imágenes de prueba) porque las descargas automáticas fallaban.
+Para ver las monedas reales, sigue estos pasos:
+
+1. Busca en Google Imágenes: "2 euro commemorative 2004 Finland", etc.
+2. Descarga la imagen que te guste.
+3. Guárdala en esta carpeta (`public/img/coins/2004/`) con estos nombres EXACTOS:
+
+   - finland.png
+   - greece.jpg
+   - italy.png
+   - luxembourg.png
+   - san_marino.png
+   - vatican.png
+
+4. ¡Listo! Recarga la página y verás las fotos reales.
