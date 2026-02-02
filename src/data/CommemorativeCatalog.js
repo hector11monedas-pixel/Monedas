@@ -522,7 +522,7 @@ const COUNTRY_CATALOGS = {
             designer: 'Yvette Gastauer-Claire',
             edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
             estimatedPrice: '5.00€ - 10.00€',
-            variantDetails: 'Existen variantes por ceca y presentación:\n- **Ceca Vantaa (Finlandia):** Letra **S**. (Rollos UNC).\n- **Ceca Pessac (Francia):** Letra **F**. (Sets BU/Proof 2005).\n- **Ceca Pessac (Cornucopia):** Símbolos Cornucopia y Cuerno. (Estuche recopilatorio de 2008).',
+            variantDetails: 'Existen dos variantes principales según la ceca:\n- **Ceca Vantaa (Finlandia):** Letra **S**. (Rollos UNC).\n- **Ceca Pessac (Francia):** Símbolos **Cornucopia y Cuerno**. (Presente en sets, como el recopilatorio de 2008).',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2720000 },
                 { type: 'BU', title: 'Set / Coincard', quantity: 45000 },

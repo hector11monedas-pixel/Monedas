@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -56,
+    id: -57,
     date: '02/02/2026',
-    title: 'Versión 1.7.7 - Corrección Lux 2005 🔍',
-    description: 'Añadida variante específica de la "Cornucopia" (Set 2008) a Luxemburgo 2005.'
+    title: 'Versión 1.7.8 - Variantes Lux 2005 (Final) ✅',
+    description: 'Unificadas las variantes de Luxemburgo 2005 en dos: Vantaa (S) y Pessac (Cornucopia/Cuerno).'
 });
