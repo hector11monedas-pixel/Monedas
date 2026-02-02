@@ -169,8 +169,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -66,
+    id: -67,
     date: '02/02/2026',
-    title: 'Versión 1.9.3 - Imágenes 2006 ✨',
-    description: 'Actualización de calidad: nuevas imágenes oficiales (ECB) para TODAS las monedas de 2006 (Alemania, Bélgica, Finlandia, Italia, Luxemburgo, San Marino, Vaticano).'
+    title: 'Versión 1.9.4 - Corrección Luxemburgo 🇱🇺',
+    description: 'Ajuste en la descripción de variantes para Luxemburgo 2006.'
 });

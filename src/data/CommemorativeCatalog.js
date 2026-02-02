@@ -597,7 +597,7 @@ const COUNTRY_CATALOGS = {
             designer: 'Patrice Bernabei',
             edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
             estimatedPrice: '5.00€ - 9.00€',
-            variantDetails: 'Existen dos variantes principales según la ceca:\n- **Ceca Vantaa (Finlandia):** Letra **S**. (Rollos UNC).\n- **Ceca Pessac (Francia):** Símbolos **Cornucopia y Cuerno**. (Presente en sets).',
+            variantDetails: 'Existen dos variantes principales según la ceca:\n- **Ceca Vantaa (Finlandia):** Letra **S**. (Rollos UNC).\n- **Ceca Pessac (Francia):** Símbolos **Cornucopia y Cuerno**. (Presente en sets, como el recopilatorio de 2008).',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1000000 },
                 { type: 'BU', title: 'Coincard / Set', quantity: 45000 },
