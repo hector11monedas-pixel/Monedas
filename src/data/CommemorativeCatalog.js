@@ -208,7 +208,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Estado Digital' },
     ],
     'Finlandia': [
-        { year: 2004, subject: 'Ampliación Unión Europea' },
+        { year: 2004, subject: 'Ampliación Unión Europea', image: 'https://upload.wikimedia.org/wikipedia/commons/5/53/2_euro_Finland_2004_Commemorative.png' },
         { year: 2005, subject: '60 Aniv. Naciones Unidas' },
         { year: 2006, subject: '100 Aniv. Sufragio Universal' },
         { year: 2007, subject: '90 Aniv. Independencia' },
@@ -280,7 +280,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Grecia': [
-        { year: 2004, subject: 'Juegos Olímpicos Atenas' },
+        { year: 2004, subject: 'Juegos Olímpicos Atenas', image: 'https://upload.wikimedia.org/wikipedia/commons/1/1d/2_euro_Greece_2004_Commemorative.png' },
         { year: 2010, subject: 'Batalla de Maratón' },
         { year: 2011, subject: 'Juegos Olímpicos Especiales' },
         { year: 2013, subject: 'Unión de Creta con Grecia' },
@@ -316,7 +316,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026' },
     ],
     'Italia': [
-        { year: 2004, subject: 'Programa Mundial Alimentos' },
+        { year: 2004, subject: 'Programa Mundial Alimentos', image: 'https://upload.wikimedia.org/wikipedia/commons/e/e0/2_euro_dedicated_to_50th_anniversary_of_WFP.png' },
         { year: 2005, subject: 'Constitución Europea' },
         { year: 2006, subject: 'Juegos Olímpicos Turín' },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
@@ -394,7 +394,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Luxemburgo': [
-        { year: 2004, subject: 'Monograma Gran Duque' },
+        { year: 2004, subject: 'Monograma Gran Duque', image: 'https://upload.wikimedia.org/wikipedia/commons/b/b5/2_euro_Luxembourg_2004_Commemorative.jpg' },
         { year: 2005, subject: '100 Aniv. Gran Duque Adolfo' },
         { year: 2006, subject: '25 Aniv. Gran Duque Guillermo' },
         { year: 2007, subject: 'Palacio Gran Ducal' },
@@ -522,7 +522,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'San Marino': [
-        { year: 2004, subject: 'Bartolomeo Borghesi' },
+        { year: 2004, subject: 'Bartolomeo Borghesi', image: 'https://upload.wikimedia.org/wikipedia/commons/c/c5/2_euro_San_Marino_2004_Commemorative.png' },
         { year: 2005, subject: 'Año Mundial Física' },
         { year: 2006, subject: '500 Aniv. Muerte Colón' },
         { year: 2007, subject: 'Giuseppe Garibaldi' },
@@ -560,7 +560,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Vaticano': [
-        { year: 2004, subject: '75 Aniv. Estado Vaticano' },
+        { year: 2004, subject: '75 Aniv. Estado Vaticano', image: 'https://upload.wikimedia.org/wikipedia/commons/e/ec/2_euro_Vatican_2004_Commemorative.png' },
         { year: 2005, subject: 'Día Mundial Juventud' },
         { year: 2006, subject: 'Guardia Suiza' },
         { year: 2007, subject: '80 Cumpleaños Benedicto XVI' },

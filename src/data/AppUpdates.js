@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -31,
+    id: -32,
     date: '02/02/2026',
-    title: 'Versión 1.5.1 - Despliegue Forzado 🚀',
-    description: 'Actualización técnica para asegurar la sincronización con el servidor.'
+    title: 'Versión 1.5.2 - Imágenes Reales (Prueba) 🖼️',
+    description: 'Añadidas imágenes reales "lazy loaded" para las conmemorativas de 2004.'
 });

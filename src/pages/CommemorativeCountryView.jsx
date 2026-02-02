@@ -137,20 +137,63 @@ const CommemorativeCountryView = () => {
                             onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
                         >
                             {/* CSS Realistic Coin */}
-                            <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
-                                <div className="css-coin-content">
-                                    <span className="coin-text-year">{data.year}</span>
-                                    {/* Optional: Show Country Code or '2€' if needed, but in Country View we know the country */}
-                                    <span className="coin-text-country">2 EURO</span>
+                            {/* IMAGE or CSS COIN */}
+                            {item.image ? (
+                                <div className="real-coin-wrapper" style={{
+                                    width: '100px',
+                                    height: '100px',
+                                    margin: '0 auto 1rem',
+                                    position: 'relative',
+                                    borderRadius: '50%',
+                                    boxShadow: isOwned ? 'inset 0 0 20px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.3)' : 'none'
+                                }}>
+                                    <img
+                                        src={item.image}
+                                        alt={data.subject}
+                                        loading="lazy"
+                                        style={{
+                                            width: '100%',
+                                            height: '100%',
+                                            objectFit: 'cover',
+                                            borderRadius: '50%',
+                                            filter: isOwned ? 'none' : 'grayscale(100%) opacity(0.5)',
+                                            transition: 'all 0.3s ease'
+                                        }}
+                                    />
+                                    {/* Overlay ring for realism */}
+                                    <div style={{
+                                        position: 'absolute',
+                                        top: 0,
+                                        left: 0,
+                                        right: 0,
+                                        bottom: 0,
+                                        borderRadius: '50%',
+                                        border: '4px solid rgba(255,215,0,0.3)', // Subtle gold ring
+                                        pointerEvents: 'none'
+                                    }} />
+                                    {/* Quantity Badge on Real Image */}
+                                    {isOwned && (
+                                        (() => {
+                                            const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
+                                            return totalQuantity > 1 ? <div className="quantity-badge" style={{ zIndex: 10 }}>{totalQuantity}</div> : null;
+                                        })()
+                                    )}
                                 </div>
-                                {/* Quantity Badge */}
-                                {isOwned && (
-                                    (() => {
-                                        const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
-                                        return totalQuantity > 1 ? <div className="quantity-badge">{totalQuantity}</div> : null;
-                                    })()
-                                )}
-                            </div>
+                            ) : (
+                                <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
+                                    <div className="css-coin-content">
+                                        <span className="coin-text-year">{data.year}</span>
+                                        <span className="coin-text-country">2 EURO</span>
+                                    </div>
+                                    {/* Quantity Badge on CSS Coin */}
+                                    {isOwned && (
+                                        (() => {
+                                            const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
+                                            return totalQuantity > 1 ? <div className="quantity-badge">{totalQuantity}</div> : null;
+                                        })()
+                                    )}
+                                </div>
+                            )}
 
                             <div className="coin-info">
                                 <div className="coin-header-row">
