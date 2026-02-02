@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -57,
+    id: -58,
     date: '02/02/2026',
-    title: 'Versión 1.7.8 - Variantes Lux 2005 (Final) ✅',
-    description: 'Unificadas las variantes de Luxemburgo 2005 en dos: Vantaa (S) y Pessac (Cornucopia/Cuerno).'
+    title: 'Versión 1.7.9 - Imágenes 2005 📸',
+    description: 'Añadidas las imágenes reales de alta resolución para todas las monedas de 2005.'
 });
