@@ -128,8 +128,8 @@ export const APP_UPDATES = [
     {
         id: -2,
         date: '02/02/2026',
-        title: 'Versión 1.9.1 - Imágenes 2006 Resturadas 📸',
-        description: 'Se han añadido las imágenes para las monedas conmemorativas de 2006 (Alemania, Bélgica, Finlandia, Italia, Luxemburgo, San Marino, Vaticano) tras una búsqueda exhaustiva.'
+        title: 'Versión 1.9.2 - Imágenes 2005 y 2006 (ECB) 📸',
+        description: 'Actualización completa de imágenes para monedas conmemorativas de 2005 (ECB Oficial) y mejora en la visibilidad de 2006.'
     },
     {
         id: -1,
