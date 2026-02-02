@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -63,
+    id: -64,
     date: '02/02/2026',
-    title: 'Versión 1.8.4 - Purismo Visual (Real o Nada) 🧐',
-    description: 'Eliminadas las recreaciones digitales. Ahora solo se muestran las fotos 100% reales disponibles (Austria, Bélgica, España, Italia). Las demás volverán a tener el diseño clásico sin foto hasta que consigamos las originales.'
+    title: 'Versión 1.8.5 - Limpieza Total 2005 🧹',
+    description: 'Eliminadas todas las imágenes de 2005 por no cumplir con el estándar de realismo. Se restaura el diseño original por defecto para todo el año.'
 });

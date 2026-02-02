@@ -84,7 +84,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: '50 Aniv. Tratado de Estado de Austria',
-            image: '/img/coins/2005/austria.jpg?v=184',
+            // image: '/img/coins/2005/austria.jpg?v=184',
             date: '11-05-2005',
             mintage: 7000000,
             description: 'El centro de la moneda muestra una reproducción de las firmas y sellos del Tratado de Estado de Austria, firmado en mayo de 1955. La inscripción "50 JAHRE STAATSVERTRAG" aparece sobre los sellos. El fondo tiene rayas verticales que representan los colores nacionales de Austria (rojo-blanco-rojo).',
@@ -104,7 +104,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'Unión Económica Bélgica-Luxemburgo',
-            image: '/img/coins/2005/belgium.jpg?v=184',
+            // image: '/img/coins/2005/belgium.jpg?v=184',
             date: '20-05-2005',
             mintage: 6000000,
             description: 'La moneda muestra los perfiles superpuestos del Rey Alberto II de Bélgica y el Gran Duque Enrique de Luxemburgo mirando hacia la izquierda. Las iniciales del grabador "LL" aparecen a la derecha.',
@@ -197,7 +197,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'IV Centenario El Quijote',
-            image: '/img/coins/2005/spain.jpg?v=184',
+            // image: '/img/coins/2005/spain.jpg?v=184',
             date: '30-06-2005',
             mintage: 8000000,
             description: 'La moneda conmemora el IV Centenario de la primera edición de "El Ingenioso Hidalgo Don Quijote de la Mancha". El diseño muestra a Don Quijote sosteniendo una lanza, con molinos de viento al fondo. La inscripción "ESPAÑA" aparece incusa en la superficie a la izquierda.',
@@ -407,7 +407,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2005,
             subject: 'Constitución Europea',
-            image: '/img/coins/2005/italy.jpg?v=184',
+            // image: '/img/coins/2005/italy.jpg?v=184',
             date: '29-10-2005',
             mintage: 18000000,
             description: 'La moneda conmemora el 1er aniversario de la firma de la Constitución Europea. El diseño central representa a Europa y el toro, con Europa sosteniendo una pluma y el texto de la Constitución. La inscripción "COSTITUZIONE EUROPEA" rodea la parte inferior.',
