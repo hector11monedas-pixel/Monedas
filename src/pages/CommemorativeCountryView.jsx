@@ -4,7 +4,9 @@ import { ArrowLeft, Plus, Check } from 'lucide-react';
 import { useCoin } from '../context/CoinContext';
 import { getCatalogForCountry } from '../data/CommemorativeCatalog';
 import Modal from '../components/common/Modal';
+import CoinDetailModal from '../components/common/CoinDetailModal';
 import ItemForm from '../components/common/ItemForm';
+import { ArrowLeft, Plus, Check, Info } from 'lucide-react';
 import './PageLayout.css';
 import './CommemorativeMenu.css';
 
@@ -16,6 +18,7 @@ const CommemorativeCountryView = () => {
     const { items } = useCoin();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCatalogItem, setSelectedCatalogItem] = useState(null);
+    const [selectedDetailCoin, setSelectedDetailCoin] = useState(null);
 
     // 1. Get Catalog for this country
     const catalogList = getCatalogForCountry(countryName);
@@ -136,6 +139,35 @@ const CommemorativeCountryView = () => {
                             style={{ position: 'relative', cursor: hasVariants ? 'default' : 'pointer' }}
                             onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
                         >
+                            {/* Info Button - Top Right */}
+                            {(item.description || item.formats || item.date) && (
+                                <button
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        setSelectedDetailCoin(item);
+                                    }}
+                                    className="info-btn-overlay"
+                                    style={{
+                                        position: 'absolute',
+                                        top: '8px',
+                                        right: '8px',
+                                        background: 'rgba(0,0,0,0.6)',
+                                        color: '#ffd700',
+                                        border: '1px solid rgba(255,215,0,0.3)',
+                                        borderRadius: '50%',
+                                        width: '28px',
+                                        height: '28px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        cursor: 'pointer',
+                                        zIndex: 20
+                                    }}
+                                    title="Ver Detalles"
+                                >
+                                    <Info size={16} />
+                                </button>
+                            )}
                             {/* CSS Realistic Coin */}
                             {/* IMAGE or CSS COIN */}
                             {item.image ? (

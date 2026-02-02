@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -39,
+    id: -40,
     date: '02/02/2026',
-    title: 'Versión 1.6.0 - Información Detallada ℹ️',
-    description: 'Añadido sistema de información detallada (Tiradas, Fechas, Formatos). ¡Prueba con Luxemburgo 2004!'
+    title: 'Versión 1.6.1 - Corrección UI 🛠️',
+    description: 'Arreglado el botón de Información que no aparecía y mejorada la estabilidad.'
 });
