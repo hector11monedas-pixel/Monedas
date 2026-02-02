@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -44,
+    id: -45,
     date: '02/02/2026',
-    title: 'Versión 1.6.5 - Botón Integrado 📄',
-    description: 'Botón de información integrado en el texto de la moneda para asegurar su visibilidad.'
+    title: 'Versión 1.6.6 - Botón Info Universal 🌍',
+    description: 'Botón de información disponible también en la vista por Año (y arreglado en la vista normal).'
 });

@@ -1,10 +1,11 @@
 import React, { useState, useMemo } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { ArrowLeft, Check, Plus } from 'lucide-react';
+import { ArrowLeft, Check, Plus, Info } from 'lucide-react';
 import { useCoin } from '../context/CoinContext';
 import { COMMEMORATIVE_CATALOG } from '../data/CommemorativeCatalog';
 import CoinImage from '../components/common/CoinImage';
 import Modal from '../components/common/Modal';
+import CoinDetailModal from '../components/common/CoinDetailModal';
 import ItemForm from '../components/common/ItemForm';
 import './PageLayout.css';
 import './CommemorativeMenu.css';
@@ -15,6 +16,7 @@ const CommemorativeYearView = () => {
     const { items } = useCoin();
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [selectedCatalogItem, setSelectedCatalogItem] = useState(null);
+    const [selectedDetailCoin, setSelectedDetailCoin] = useState(null);
 
     const yearInt = parseInt(year);
 
@@ -126,6 +128,33 @@ const CommemorativeYearView = () => {
                             style={{ position: 'relative', cursor: hasVariants ? 'default' : 'pointer' }}
                             onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
                         >
+                            {/* Info Button - Top Left */}
+                            <button
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    setSelectedDetailCoin(item);
+                                }}
+                                className="info-btn-overlay"
+                                style={{
+                                    position: 'absolute',
+                                    top: '8px',
+                                    left: '8px',
+                                    background: 'rgba(0,0,0,0.6)',
+                                    color: '#ffd700',
+                                    border: '1px solid rgba(255,215,0,0.3)',
+                                    borderRadius: '50%',
+                                    width: '28px',
+                                    height: '28px',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    cursor: 'pointer',
+                                    zIndex: 100
+                                }}
+                                title="Ver Detalles"
+                            >
+                                <Info size={16} />
+                            </button>
                             {/* Country Badge */}
                             <div style={{
                                 position: 'absolute',
@@ -221,13 +250,19 @@ const CommemorativeYearView = () => {
                                 )}
                             </div>
 
-                            {!isOwned && (
-                                <div className="missing-badge">Falta</div>
-                            )}
+                            {/* Missing Badge Removed */}
                         </div>
                     );
                 })}
             </div>
+
+            {/* Detail Modal */}
+            <CoinDetailModal
+                isOpen={!!selectedDetailCoin}
+                onClose={() => setSelectedDetailCoin(null)}
+                coin={selectedDetailCoin}
+                country={selectedDetailCoin?.country}
+            />
 
             <Modal
                 isOpen={isModalOpen}
