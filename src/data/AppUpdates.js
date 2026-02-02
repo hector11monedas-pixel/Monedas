@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -58,
+    id: -59,
     date: '02/02/2026',
-    title: 'Versión 1.7.9 - Imágenes 2005 📸',
-    description: 'Añadidas las imágenes reales de alta resolución para todas las monedas de 2005.'
+    title: 'Versión 1.8.0 - Fotos 2005 HD (Final) 🌟',
+    description: 'Solucionado el problema con las imágenes de 2005. Generadas versiones de alta calidad en formato PNG.'
 });
