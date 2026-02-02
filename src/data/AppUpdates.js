@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -47,
+    id: -48,
     date: '02/02/2026',
-    title: 'Versión 1.6.8 - Diseño Vertical 📱',
-    description: 'Mejorada la vista de detalles de monedas para móviles (todo en una columna).'
+    title: 'Versión 1.6.9 - Variantes Lux 2004 🇱🇺',
+    description: 'Añadida información sobre las variantes "H a la izquierda/derecha" en Luxemburgo 2004.'
 });

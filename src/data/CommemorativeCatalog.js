@@ -400,7 +400,7 @@ const COUNTRY_CATALOGS = {
             image: '/img/coins/2004/luxembourg.png',
             date: '23-06-2004',
             mintage: 2481800,
-            description: 'La moneda muestra la efigie del Gran Duque Enrique mirando a la derecha, superpuesta sobre su monograma (una letra "H" especial con corona). El monograma está formado por múltiples letras "H" minúsculas impresas con una técnica especial.',
+            description: 'La moneda muestra la efigie del Gran Duque Enrique mirando a la derecha, superpuesta sobre su monograma (una letra "H" especial con corona). El monograma está formado por múltiples letras "H" minúsculas impresas con una técnica especial.\n\n**Variantes:**\nExisten dos variantes principales según la presentación:\n- **H a la izquierda:** Se encuentra en los rollos (calidad UNC).\n- **H a la derecha:** Se encuentra en las Coincards (calidad BU) y en los estuches Proof.',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2400000 },
                 { type: 'BU', title: 'Set Anual', quantity: 50000 },
