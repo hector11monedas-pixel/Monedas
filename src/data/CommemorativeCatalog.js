@@ -522,7 +522,7 @@ const COUNTRY_CATALOGS = {
             designer: 'Yvette Gastauer-Claire',
             edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
             estimatedPrice: '5.00€ - 10.00€',
-            variantDetails: 'Existen variantes: letras "S" (Suomi) o logotipos de ceca en el año, aunque la principal distinción es la calidad de acuñación.', // Simplified based on findings
+            variantDetails: 'Existen dos variantes principales según la ceca:\n- **Ceca Vantaa (Finlandia):** Letra **S**. Se encuentra en los rollos (calidad UNC).\n- **Ceca Pessac (Francia):** Letra **F**. Se encuentra en los sets BU y Proof.',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2720000 },
                 { type: 'BU', title: 'Set / Coincard', quantity: 45000 },

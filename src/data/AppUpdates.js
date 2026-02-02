@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -54,
+    id: -55,
     date: '02/02/2026',
-    title: 'Versión 1.7.5 - Año 2005 Completado 📅',
-    description: 'Añadidas todas las monedas conmemorativas de 2005 con sus fichas técnicas completas.'
+    title: 'Versión 1.7.6 - Variantes Lux 2005 🇱🇺',
+    description: 'Añadida información detallada de las variantes de ceca (S y F) para Luxemburgo 2005.'
 });
