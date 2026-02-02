@@ -25,7 +25,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2006,
             subject: 'Schleswig-Holstein (Holstentor)',
-            image: '/img/coins/2006/germany.jpg',
+            image: '/img/coins/2006/germany.jpg?v=202',
             date: '03-02-2006',
             mintage: 30000000,
             description: 'La moneda muestra la Holstentor, puerta emblemática de la ciudad de Lübeck. Debajo de la puerta aparecen las palabras "SCHLESWIG-HOLSTEIN". Es la primera de la serie de los "Länder" (estados federados).',
@@ -135,7 +135,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2006,
             subject: 'Atomium',
-            image: '/img/coins/2006/belgium.jpg',
+            image: '/img/coins/2006/belgium.jpg?v=202',
             date: '10-04-2006',
             mintage: 5000000,
             description: 'La moneda muestra una imagen del Atomium. A la derecha aparecen las iniciales del grabador "LL". En la base del Atomium hay dos marcas de ceca.',
@@ -317,7 +317,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2006,
             subject: '100 Aniv. Sufragio Universal',
-            image: '/img/coins/2006/finland.jpg',
+            image: '/img/coins/2006/finland.jpg?v=202',
             date: '04-10-2006',
             mintage: 2500000,
             description: 'La moneda conmemora el centenario del sufragio universal y paritario en Finlandia. El diseño muestra dos rostros estilizados, uno masculino y otro femenino, separados por una fina línea curva.',
@@ -466,7 +466,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2006,
             subject: 'Juegos Olímpicos Turín',
-            image: '/img/coins/2006/italy.jpg',
+            image: '/img/coins/2006/italy.jpg?v=202',
             date: '10-02-2006',
             mintage: 40000000,
             description: 'La moneda conmemora los XX Juegos Olímpicos de Invierno de Turín 2006. El diseño muestra a un esquiador en acción y la Mole Antonelliana (edificio símbolo de Turín).',
@@ -590,7 +590,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2006,
             subject: '25 Aniv. Gran Duque Guillermo',
-            image: '/img/coins/2006/luxembourg.jpg',
+            image: '/img/coins/2006/luxembourg.jpg?v=202',
             date: '01-02-2006',
             mintage: 1000000,
             description: 'La moneda conmemora el 25º cumpleaños del Gran Duque Heredero Guillermo. Muestra su efigie superpuesta a la de su padre, el Gran Duque Enrique.',
@@ -760,7 +760,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2006,
             subject: '500 Aniv. Muerte Colón',
-            image: '/img/coins/2006/san_marino.jpg',
+            image: '/img/coins/2006/san_marino.jpg?v=202',
             date: '17-10-2006',
             mintage: 120000,
             description: 'La moneda conmemora el 500º aniversario de la muerte de Cristóbal Colón. Muestra un retrato del navegante y las tres carabelas (Niña, Pinta, Santa María).',
@@ -837,7 +837,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2006,
             subject: '500 Aniv. Guardia Suiza',
-            image: '/img/coins/2006/vatican.jpg',
+            image: '/img/coins/2006/vatican.jpg?v=202',
             date: '09-11-2006',
             mintage: 100000,
             description: 'La moneda conmemora el V Centenario de la Guardia Suiza Pontificia. Muestra a un guardia prestando juramento sobre la bandera de la Guardia. Inscripciones: "GUARDIA SVIZZERA PONTIFICIA" y "CITTÀ DEL VATICANO".',

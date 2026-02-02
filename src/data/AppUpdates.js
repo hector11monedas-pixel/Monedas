@@ -169,8 +169,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -65,
+    id: -66,
     date: '02/02/2026',
-    title: 'Versión 1.9.0 - Datos 2006 📅',
-    description: 'Añadida la información técnica completa para las 7 monedas conmemorativas de 2006 (Alemania, Bélgica, Finlandia, Italia, Luxemburgo, San Marino, Vaticano). Sin imágenes por el momento.'
+    title: 'Versión 1.9.3 - Imágenes 2006 ✨',
+    description: 'Actualización de calidad: nuevas imágenes oficiales (ECB) para TODAS las monedas de 2006 (Alemania, Bélgica, Finlandia, Italia, Luxemburgo, San Marino, Vaticano).'
 });
