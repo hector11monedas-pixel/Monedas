@@ -215,6 +215,9 @@ const COUNTRY_CATALOGS = {
             date: '01-07-2004',
             mintage: 1000000,
             description: 'La moneda conmemora la quinta ampliación de la Unión Europea en 2004, que sumó diez nuevos estados miembros. El diseño estilizado representa un pilar del cual brotan diez brotes hacia arriba. Las letras "EU" aparecen cerca del pilar, junto con el año "2004" en la parte superior, rodeado por las doce estrellas de la UE.',
+            designer: 'Pertti Mäkinen',
+            edge: 'SUOMI FINLAND + tres cabezas de león',
+            estimatedPrice: '40€ - 65€',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 931400 },
                 { type: 'BU', title: 'Set Anual', quantity: 54000 },
@@ -335,6 +338,9 @@ const COUNTRY_CATALOGS = {
             date: '13-12-2004',
             mintage: 16000000,
             description: 'La moneda celebra el 50º aniversario del Programa Mundial de Alimentos (WFP). El diseño central muestra un globo terráqueo inclinado hacia la derecha con la inscripción "WORLD FOOD PROGRAMME". Detrás del globo emergen una espiga de trigo, una de maíz y una de arroz, representando las fuentes de alimento básicas del mundo. A la derecha figuran las iniciales "RI" (Repubblica Italiana) y las iniciales de la grabadora Uliana Pernazza "UP".',
+            designer: 'Uliana Pernazza (UP)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '3.50€ - 5.00€',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 16000000 }
             ]
@@ -423,6 +429,9 @@ const COUNTRY_CATALOGS = {
             date: '23-06-2004',
             mintage: 2481800,
             description: 'La moneda muestra la efigie del Gran Duque Enrique mirando a la derecha, superpuesta sobre su monograma (una letra "H" especial con corona). El monograma está formado por múltiples letras "H" minúsculas impresas con una técnica especial.',
+            designer: 'Yvette Gastauer-Claire',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '4.00€ - 8.00€ (UNC)',
             variantDetails: 'Existen dos variantes principales según la presentación:\n- **H a la izquierda:** Se encuentra en los rollos (calidad UNC).\n- **H a la derecha:** Se encuentra en las Coincards (calidad BU) y en los estuches Proof.',
             formats: [
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2400000 },
@@ -565,6 +574,9 @@ const COUNTRY_CATALOGS = {
             date: '16-12-2004',
             mintage: 110000,
             description: 'La moneda conmemora al historiador y numismático Bartolomeo Borghesi. El motivo central es un busto de Borghesi, flanqueado a la izquierda por su nombre y a la derecha por el nombre del estado "SAN MARINO". Es una de las monedas más buscadas por los coleccionistas debido a su baja tirada.',
+            designer: 'Ettore Lorenzo Frapiccini (E.L.F.)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '60€ - 85€',
             formats: [
                 { type: 'BU', title: 'Coincard / Cartera', quantity: 110000 }
             ]
@@ -613,6 +625,9 @@ const COUNTRY_CATALOGS = {
             date: '16-12-2004',
             mintage: 85000,
             description: 'La moneda celebra el 75º Aniversario de la Fundación del Estado de la Ciudad del Vaticano (1929-2004). El diseño muestra un plano esquemático de las murallas de la Ciudad del Vaticano con la Basílica de San Pedro en primer plano. Las inscripciones incluyen "75o ANNO DELLO STATO" y los años "1929-2004".',
+            designer: 'Guido Veroi / L.D.S. INC.',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '120€ - 160€',
             formats: [
                 { type: 'BU', title: 'Cartera Oficial', quantity: 85000 }
             ]

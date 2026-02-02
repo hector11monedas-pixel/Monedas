@@ -74,6 +74,30 @@ const CoinDetailModal = ({ isOpen, onClose, coin, country }) => {
                             </div>
                         )}
 
+                        {/* Technical Specs & Price */}
+                        {(coin.designer || coin.edge || coin.estimatedPrice) && (
+                            <div style={{ marginBottom: '1.5rem', background: 'rgba(255,255,255,0.03)', padding: '1rem', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.05)' }}>
+                                {coin.estimatedPrice && (
+                                    <div style={{ display: 'flex', justifyContent: 'space-between', marginBottom: '0.5rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>
+                                        <span style={{ color: '#aaa' }}>Valor Estimado:</span>
+                                        <span style={{ color: '#4caf50', fontWeight: 'bold' }}>{coin.estimatedPrice}</span>
+                                    </div>
+                                )}
+                                {coin.designer && (
+                                    <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '0.5rem', marginBottom: '0.5rem', fontSize: '0.9rem' }}>
+                                        <span style={{ color: '#aaa' }}>Diseñador:</span>
+                                        <span style={{ color: '#fff' }}>{coin.designer}</span>
+                                    </div>
+                                )}
+                                {coin.edge && (
+                                    <div style={{ display: 'grid', gridTemplateColumns: '100px 1fr', gap: '0.5rem', fontSize: '0.9rem' }}>
+                                        <span style={{ color: '#aaa' }}>Canto:</span>
+                                        <span style={{ color: '#fff', fontFamily: 'monospace' }}>{coin.edge}</span>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+
                         {coin.formats && coin.formats.length > 0 && (
                             <div>
                                 <h3 style={{ fontSize: '1.1rem', color: '#ffd700', marginBottom: '1rem', borderBottom: '1px solid rgba(255,255,255,0.1)', paddingBottom: '0.5rem' }}>

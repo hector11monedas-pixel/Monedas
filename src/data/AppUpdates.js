@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -52,
+    id: -53,
     date: '02/02/2026',
-    title: 'Versión 1.7.3 - Datos 2004 (Intento 2) 🔄',
-    description: 'Restaurada descripción de Luxemburgo y re-aplicada la carga de datos del año 2004.'
+    title: 'Versión 1.7.4 - Fichas Pro 💎',
+    description: 'Añadidos campos de Diseñador, Canto y Precio Estimado a las monedas.'
 });
