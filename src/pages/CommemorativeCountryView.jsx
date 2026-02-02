@@ -268,6 +268,14 @@ const CommemorativeCountryView = () => {
                 )}
             </div>
 
+            {/* Detail Modal */}
+            <CoinDetailModal
+                isOpen={!!selectedDetailCoin}
+                onClose={() => setSelectedDetailCoin(null)}
+                coin={selectedDetailCoin}
+                country={countryName}
+            />
+
             <Modal
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}

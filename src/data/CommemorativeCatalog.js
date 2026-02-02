@@ -394,7 +394,20 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Luxemburgo': [
-        { year: 2004, subject: 'Monograma Gran Duque', image: '/img/coins/2004/luxembourg.png' },
+        {
+            year: 2004,
+            subject: 'Monograma Gran Duque Enrique',
+            image: '/img/coins/2004/luxembourg.png',
+            date: '23-06-2004',
+            mintage: 2481800,
+            description: 'La moneda muestra la efigie del Gran Duque Enrique mirando a la derecha, superpuesta sobre su monograma (una letra "H" especial con corona). El monograma está formado por múltiples letras "H" minúsculas impresas con una técnica especial.',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2400000 },
+                { type: 'BU', title: 'Set Anual', quantity: 50000 },
+                { type: 'BU', title: 'Coincard', quantity: 10000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 1800 }
+            ]
+        },
         { year: 2005, subject: '100 Aniv. Gran Duque Adolfo' },
         { year: 2006, subject: '25 Aniv. Gran Duque Guillermo' },
         { year: 2007, subject: 'Palacio Gran Ducal' },

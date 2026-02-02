@@ -163,8 +163,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -38,
+    id: -39,
     date: '02/02/2026',
-    title: 'Versión 1.5.8 - Optimización ⚡',
-    description: 'Imágenes optimizadas para reducir el peso de la aplicación (-85% de tamaño).'
+    title: 'Versión 1.6.0 - Información Detallada ℹ️',
+    description: 'Añadido sistema de información detallada (Tiradas, Fechas, Formatos). ¡Prueba con Luxemburgo 2004!'
 });
