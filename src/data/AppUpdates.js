@@ -169,8 +169,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -68,
+    id: -69,
     date: '03/02/2026',
-    title: 'Versión 1.9.5 - Imágenes 2007 (Tratado de Roma) 🏛️',
-    description: 'Añadidas imágenes para monedas 2007 (Tratado de Roma). Se mantiene la imagen genérica para aquellas sin foto oficial disponible (Mónaco, San Marino y algunas del Tratado).'
+    title: 'Versión 1.9.6 - Datos 2007 Completos 📝',
+    description: 'Añadida toda la información técnica (descripciones, tiradas, diseñadores) para las monedas de 2007, incluyendo el detalle de la emisión conjunta del Tratado de Roma.'
 });

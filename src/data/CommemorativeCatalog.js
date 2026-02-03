@@ -4,7 +4,14 @@
 export const GERMAN_MINTS = ['A', 'D', 'F', 'G', 'J'];
 
 const JOINT_ISSUES = [
-    { year: 2007, subject: '50 Aniv. Tratado de Roma', participants: ['Alemania', 'Austria', 'Bélgica', 'Eslovenia', 'España', 'Finlandia', 'Francia', 'Grecia', 'Irlanda', 'Italia', 'Luxemburgo', 'Países Bajos', 'Portugal'] },
+    {
+        year: 2007,
+        subject: '50 Aniv. Tratado de Roma',
+        participants: ['Alemania', 'Austria', 'Bélgica', 'Eslovenia', 'España', 'Finlandia', 'Francia', 'Grecia', 'Irlanda', 'Italia', 'Luxemburgo', 'Países Bajos', 'Portugal'],
+        description: 'La moneda conmemora el 50º aniversario del Tratado de Roma. El diseño muestra el documento del Tratado firmado por los seis estados fundadores sobre un fondo que evoca el pavimento de la Plaza del Campidoglio en Roma (diseñado por Miguel Ángel), donde se firmó el tratado el 25 de marzo de 1957. La inscripción varía según el país.',
+        designer: 'Helmut Andexlinger',
+        estimatedPrice: 'Variable según país'
+    },
     { year: 2009, subject: '10 Aniv. Unión Económica y Monetaria (UEM)', participants: ['Alemania', 'Austria', 'Bélgica', 'Chipre', 'Eslovaquia', 'Eslovenia', 'España', 'Finlandia', 'Francia', 'Grecia', 'Irlanda', 'Italia', 'Luxemburgo', 'Malta', 'Países Bajos', 'Portugal'] },
     { year: 2012, subject: '10 Aniv. Billetes y Monedas Euro', participants: ['Alemania', 'Austria', 'Bélgica', 'Chipre', 'Eslovaquia', 'Eslovenia', 'España', 'Estonia', 'Finlandia', 'Francia', 'Grecia', 'Irlanda', 'Italia', 'Luxemburgo', 'Malta', 'Países Bajos', 'Portugal'] },
     { year: 2015, subject: '30 Aniv. Bandera Europea', participants: ['Alemania', 'Austria', 'Bélgica', 'Chipre', 'Eslovaquia', 'Eslovenia', 'España', 'Estonia', 'Finlandia', 'Francia', 'Grecia', 'Irlanda', 'Italia', 'Letonia', 'Lituania', 'Luxemburgo', 'Malta', 'Países Bajos', 'Portugal'] },
@@ -334,7 +341,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Set Proof', quantity: 9600 }
             ]
         },
-        { year: 2007, subject: '90 Aniv. Independencia', image: '/img/coins/2007/finland.jpg?v=203' },
+        {
+            year: 2007,
+            subject: '90 Aniv. Independencia',
+            image: '/img/coins/2007/finland.jpg?v=203',
+            date: '01-12-2007',
+            mintage: 2000000,
+            description: 'La moneda conmemora el 90º aniversario de la independencia de Finlandia. Muestra una barca de nueve remos con remeros, simbolizando la colaboración. El año de emisión (2007) y el año de independencia (1917) aparecen encima y debajo de la imagen.',
+            designer: 'Reijo Paavilainen',
+            edge: 'SUOMI FINLAND + tres cabezas de león',
+            estimatedPrice: '4.50€ - 7.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2000000 }
+            ]
+        },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
         { year: 2009, subject: '200 Aniv. Autonomía Finesa' },
         { year: 2010, subject: 'Decreto de la Moneda 1860' },
@@ -608,7 +628,23 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Caja Proof', quantity: 2000 }
             ]
         },
-        { year: 2007, subject: 'Palacio Gran Ducal', image: '/img/coins/2007/luxembourg.jpg?v=203' },
+        {
+            year: 2007,
+            subject: 'Palacio Gran Ducal',
+            image: '/img/coins/2007/luxembourg.jpg?v=203',
+            date: '02-02-2007',
+            mintage: 1100000,
+            description: 'La moneda muestra la efigie del Gran Duque Enrique superpuesta a la imagen del Palacio Gran Ducal. El texto "LËTZEBUERG" aparece en la base.',
+            designer: 'Alain Hoffmann',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '4.00€ - 7.00€',
+            variantDetails: 'Existen dos variantes principales según la ceca:\n- **Ceca Vantaa (Finlandia):** Letra **S**. (Rollos UNC).\n- **Ceca Pessac (Francia):** Símbolos **Cornucopia y Cuerno**. (Sets BU/Proof).',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1000000 },
+                { type: 'BU', title: 'Coincard / Set', quantity: 15000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 5000 } // Estimated
+            ]
+        },
         { year: 2008, subject: 'Castillo de Berg' },
         { year: 2009, subject: 'Gran Duquesa Carlota' },
         { year: 2010, subject: 'Escudo de Armas' },
@@ -674,7 +710,19 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Mónaco': [
-        { year: 2007, subject: '25 Aniv. Muerte Grace Kelly' },
+        {
+            year: 2007,
+            subject: '25 Aniv. Muerte Grace Kelly',
+            date: '01-07-2007',
+            mintage: 20001,
+            description: 'La moneda conmemora el 25º aniversario de la muerte de la Princesa Grace Kelly. Muestra su efigie de perfil mirando a la izquierda. Es la moneda de 2 euros más valiosa y buscada.',
+            designer: 'Roger Bernard Baron',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '3000€ - 4500€',
+            formats: [
+                { type: 'BU', title: 'Estuche Oficial', quantity: 20001 }
+            ]
+        },
         { year: 2011, subject: 'Boda Príncipe Alberto II' },
         { year: 2012, subject: '500 Aniv. Soberanía' },
         { year: 2013, subject: '20 Aniv. Ingreso ONU' },
@@ -699,7 +747,22 @@ const COUNTRY_CATALOGS = {
         // { year: 2025, subject: '750 Aniv. Amsterdam' }, // Removed 2025 as requested
     ],
     'Portugal': [
-        { year: 2007, subject: 'Presidencia UE', image: '/img/coins/2007/portugal.jpg?v=203' },
+        {
+            year: 2007,
+            subject: 'Presidencia UE',
+            image: '/img/coins/2007/portugal.jpg?v=203',
+            date: '01-07-2007',
+            mintage: 2000000,
+            description: 'La moneda conmemora la Presidencia portuguesa del Consejo de la Unión Europea. El diseño muestra un alcornoque (Quercus suber) con el Escudo de Portugal bajo las ramas. La inscripción "PRESIDÊNCIA DO CONSELHO DA UE" aparece en arco.',
+            designer: 'Irene Vilar',
+            edge: 'Cinco escudos y siete castillos',
+            estimatedPrice: '3.50€ - 5.50€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1975000 },
+                { type: 'BU', title: 'Set Anual', quantity: 15000 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 10000 }
+            ]
+        },
         { year: 2008, subject: '60 Aniv. Derechos Humanos' },
         { year: 2009, subject: 'Juegos de la Lusofonía' },
         { year: 2010, subject: 'República Portuguesa' },
@@ -775,7 +838,19 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Coincard / Cartera', quantity: 120000 }
             ]
         },
-        { year: 2007, subject: 'Giuseppe Garibaldi' },
+        {
+            year: 2007,
+            subject: 'Giuseppe Garibaldi',
+            date: '09-10-2007',
+            mintage: 130000,
+            description: 'La moneda conmemora el bicentenario del nacimiento de Giuseppe Garibaldi. Muestra un retrato grabado del revolucionario italiano. Inscripciones "SAN MARINO" y "2007".',
+            designer: 'Ettore Lorenzo Frapiccini (E.L.F.)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '45€ - 65€',
+            formats: [
+                { type: 'BU', title: 'Coincard / Cartera', quantity: 130000 }
+            ]
+        },
         { year: 2008, subject: 'Año Diálogo Intercultural' },
         { year: 2009, subject: 'Creatividad e Innovación' },
         { year: 2010, subject: 'Sandro Botticelli' },
@@ -852,7 +927,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Cartera Oficial', quantity: 100000 }
             ]
         },
-        { year: 2007, subject: '80 Cumpleaños Benedicto XVI', image: '/img/coins/2007/vatican.jpg?v=203' },
+        {
+            year: 2007,
+            subject: '80 Cumpleaños Benedicto XVI',
+            image: '/img/coins/2007/vatican.jpg?v=203',
+            date: '23-10-2007',
+            mintage: 100000,
+            description: 'La moneda conmemora el 80º cumpleaños de Su Santidad el Papa Benedicto XVI. Muestra su perfil mirando hacia la izquierda. Leyenda: "BENEDICTI XVI P.M. AETATIS ANNO LXXX CITTA\' DEL VATICANO".',
+            designer: 'Daniela Longo',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '140€ - 190€',
+            formats: [
+                { type: 'BU', title: 'Cartera Oficial', quantity: 100000 }
+            ]
+        },
         { year: 2008, subject: 'Año de San Pablo' },
         { year: 2009, subject: 'Año Internacional Astronomía' },
         { year: 2010, subject: 'Año Sacerdotal' },
