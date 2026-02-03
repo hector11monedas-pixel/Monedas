@@ -115,145 +115,194 @@ const CommemorativeYearView = () => {
                 </div>
             </div>
 
-            <div className="commemorative-grid">
-                {finalList.map((item, index) => {
-                    const hasVariants = item.variants && item.variants.length > 0;
-                    const isOwned = hasVariants ? (item.ownedMints && item.ownedMints.length > 0) : item.isOwned;
-                    const data = item.userItem || item;
+            <div style={{ padding: '0 1rem', paddingBottom: '2rem' }}>
+                {Object.entries(
+                    finalList.reduce((acc, item) => {
+                        let groupKey = 'Emisiones Nacionales'; // Default bucket
 
-                    return (
-                        <div
-                            key={`${item.country}-${index}`}
-                            className={`commemorative-card glass-panel ${!isOwned ? 'missing-item' : ''}`}
-                            style={{ position: 'relative', cursor: hasVariants ? 'default' : 'pointer' }}
-                            onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
-                        >
-                            {/* Info Button - Top Left */}
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedDetailCoin(item);
-                                }}
-                                className="info-btn-overlay"
-                                style={{
-                                    position: 'absolute',
-                                    top: '8px',
-                                    left: '8px',
-                                    background: 'rgba(0,0,0,0.6)',
-                                    color: '#ffd700',
-                                    border: '1px solid rgba(255,215,0,0.3)',
-                                    borderRadius: '50%',
-                                    width: '28px',
-                                    height: '28px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    cursor: 'pointer',
-                                    zIndex: 100
-                                }}
-                                title="Ver Detalles"
-                            >
-                                <Info size={16} />
-                            </button>
-                            {/* Country Badge */}
-                            <div style={{
-                                position: 'absolute',
-                                top: '8px',
-                                right: '8px',
-                                display: 'flex',
-                                alignItems: 'center',
-                                gap: '4px',
-                                background: 'rgba(0,0,0,0.6)',
-                                padding: '2px 6px',
-                                borderRadius: '8px',
-                                zIndex: 2
-                            }}>
-                                <img
-                                    src={`https://flagcdn.com/w20/${getCountryCode(item.country)}.png`}
-                                    alt={item.country}
-                                    style={{ width: '16px', height: '12px', objectFit: 'cover' }}
-                                />
-                                <span style={{ fontSize: '0.7rem', color: '#fff' }}>{item.country.substring(0, 3).toUpperCase()}</span>
-                            </div>
+                        // 2007 Separation
+                        if (item.year === 2007) {
+                            if (item.isJoint) groupKey = 'Tratado de Roma (Emisión Conjunta)';
+                            else groupKey = 'Emisiones Nacionales'; // Grace Kelly, Germany Schwerin, etc.
+                        }
+                        // 2009 Separation
+                        else if (item.year === 2009 && item.isJoint) groupKey = 'UEM (Emisión Conjunta)';
+                        // 2012 Separation
+                        else if (item.year === 2012 && item.isJoint) groupKey = '10 Años Euro (Emisión Conjunta)';
+                        // 2015 Separation
+                        else if (item.year === 2015 && item.isJoint) groupKey = 'Bandera Europea (Emisión Conjunta)';
+                        // 2022 Separation
+                        else if (item.year === 2022 && item.isJoint) groupKey = 'Erasmus (Emisión Conjunta)';
 
-                            {/* Coin Image with Fallback */}
-                            <CoinImage
-                                src={item.image}
-                                alt={data.subject}
-                                isOwned={isOwned}
-                                style={{
-                                    width: '80px',
-                                    height: '80px',
-                                    margin: '0 auto 10px'
-                                }}
-                                fallback={
-                                    <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
-                                        <div className="css-coin-content">
-                                            <span className="coin-text-year">{data.year}</span>
-                                            <span className="coin-text-country">{item.country.substring(0, 3)}</span>
+                        // If NOT specific joint year, stay in National? 
+                        // Actually, if it's a Joint year, the non-joint ARE National. 
+                        // So the default 'Emisiones Nacionales' works fine.
+
+                        if (!acc[groupKey]) acc[groupKey] = [];
+                        acc[groupKey].push(item);
+                        return acc;
+                    }, {})
+                ).sort((a, b) => {
+                    // Force "Emisiones Nacionales" to be first? Or Joint first?
+                    // User probably wants Separation. Typically National sets first, then Joint series?
+                    // Or Joint series is the "Special" one.
+                    // Let's put National First.
+                    if (a[0] === 'Emisiones Nacionales') return -1;
+                    if (b[0] === 'Emisiones Nacionales') return 1;
+                    return a[0].localeCompare(b[0]);
+                }).map(([groupTitle, items]) => (
+                    <div key={groupTitle} style={{ marginBottom: '2rem' }}>
+                        {/* Only show header if we have distinction (e.g. more than 1 group or specifically 2007/etc) */}
+                        <h3 className="text-secondary" style={{
+                            fontSize: '1.1rem',
+                            marginBottom: '1rem',
+                            borderBottom: '1px solid rgba(255,255,255,0.1)',
+                            paddingBottom: '0.5rem'
+                        }}>
+                            {groupTitle}
+                        </h3>
+
+                        <div className="commemorative-grid">
+                            {items.map((item, index) => {
+                                const hasVariants = item.variants && item.variants.length > 0;
+                                const isOwned = hasVariants ? (item.ownedMints && item.ownedMints.length > 0) : item.isOwned;
+                                const data = item.userItem || item;
+
+                                return (
+                                    <div
+                                        key={`${item.country}-${item.subject}-${index}`}
+                                        className={`commemorative-card glass-panel ${!isOwned ? 'missing-item' : ''}`}
+                                        style={{ position: 'relative', cursor: hasVariants ? 'default' : 'pointer' }}
+                                        onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
+                                    >
+                                        {/* Info Button */}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setSelectedDetailCoin(item);
+                                            }}
+                                            className="info-btn-overlay"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '8px',
+                                                left: '8px',
+                                                background: 'rgba(0,0,0,0.6)',
+                                                color: '#ffd700',
+                                                border: '1px solid rgba(255,215,0,0.3)',
+                                                borderRadius: '50%',
+                                                width: '28px',
+                                                height: '28px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                cursor: 'pointer',
+                                                zIndex: 100
+                                            }}
+                                            title="Ver Detalles"
+                                        >
+                                            <Info size={16} />
+                                        </button>
+
+                                        {/* Country Badge */}
+                                        <div style={{
+                                            position: 'absolute',
+                                            top: '8px',
+                                            right: '8px',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            gap: '4px',
+                                            background: 'rgba(0,0,0,0.6)',
+                                            padding: '2px 6px',
+                                            borderRadius: '8px',
+                                            zIndex: 2
+                                        }}>
+                                            <img
+                                                src={`https://flagcdn.com/w20/${getCountryCode(item.country)}.png`}
+                                                alt={item.country}
+                                                style={{ width: '16px', height: '12px', objectFit: 'cover' }}
+                                            />
+                                            <span style={{ fontSize: '0.7rem', color: '#fff' }}>{item.country.substring(0, 3).toUpperCase()}</span>
+                                        </div>
+
+                                        {/* Coin Image */}
+                                        <CoinImage
+                                            src={item.image}
+                                            alt={data.subject}
+                                            isOwned={isOwned}
+                                            style={{
+                                                width: '80px',
+                                                height: '80px',
+                                                margin: '0 auto 10px'
+                                            }}
+                                            fallback={
+                                                <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
+                                                    <div className="css-coin-content">
+                                                        <span className="coin-text-year">{data.year}</span>
+                                                        <span className="coin-text-country">{item.country.substring(0, 3)}</span>
+                                                    </div>
+                                                </div>
+                                            }
+                                        />
+
+                                        <div className="coin-info">
+                                            <div className="coin-header-row">
+                                                <span className="coin-year">{data.year}</span>
+                                                {isOwned && !hasVariants && <span className="coin-value">{data.value}€</span>}
+                                            </div>
+
+                                            <h4 className="coin-subject" style={{ opacity: isOwned ? 1 : 0.7 }}>
+                                                {data.subject || item.subject}
+                                            </h4>
+
+                                            {item.variants && item.variants.length > 0 ? (
+                                                <div className="german-mint-bar" style={{ display: 'flex', gap: '4px', justifyContent: 'center', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                                                    {item.variants.map(variant => {
+                                                        const hasVariant = item.ownedMints?.includes(variant);
+                                                        return (
+                                                            <button
+                                                                key={variant}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleCardClick(item, hasVariant, variant);
+                                                                }}
+                                                                className={`mint-badge ${hasVariant ? 'owned' : 'missing'}`}
+                                                                style={{
+                                                                    minWidth: '24px',
+                                                                    height: '24px',
+                                                                    padding: '0 4px',
+                                                                    borderRadius: '12px',
+                                                                    border: hasVariant ? '1px solid #ffd700' : '1px solid rgba(255,255,255,0.2)',
+                                                                    background: hasVariant ? 'rgba(255, 215, 0, 0.2)' : 'transparent',
+                                                                    color: hasVariant ? '#ffd700' : 'rgba(255,255,255,0.4)',
+                                                                    display: 'flex',
+                                                                    alignItems: 'center',
+                                                                    justifyContent: 'center',
+                                                                    fontSize: '0.7rem',
+                                                                    cursor: 'pointer',
+                                                                    fontWeight: 'bold',
+                                                                    transition: 'all 0.2s ease'
+                                                                }}
+                                                                title={`Variante ${variant}`}
+                                                            >
+                                                                {variant}
+                                                            </button>
+                                                        );
+                                                    })}
+                                                </div>
+                                            ) : (
+                                                <div className="coin-meta">
+                                                    {isOwned ? (
+                                                        <span className={`coin-grade grade-${data.condition}`}>{data.condition}</span>
+                                                    ) : null}
+                                                </div>
+                                            )}
                                         </div>
                                     </div>
-                                }
-                            />
-
-                            <div className="coin-info">
-                                <div className="coin-header-row">
-                                    <span className="coin-year">{data.year}</span>
-                                    {isOwned && !hasVariants && <span className="coin-value">{data.value}€</span>}
-                                </div>
-
-                                <h4 className="coin-subject" style={{ opacity: isOwned ? 1 : 0.7 }}>
-                                    {data.subject || item.subject}
-                                </h4>
-
-                                {item.variants && item.variants.length > 0 ? (
-                                    <div className="german-mint-bar" style={{ display: 'flex', gap: '4px', justifyContent: 'center', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-                                        {item.variants.map(variant => {
-                                            const hasVariant = item.ownedMints?.includes(variant);
-                                            return (
-                                                <button
-                                                    key={variant}
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        handleCardClick(item, hasVariant, variant);
-                                                    }}
-                                                    className={`mint-badge ${hasVariant ? 'owned' : 'missing'}`}
-                                                    style={{
-                                                        minWidth: '24px',
-                                                        height: '24px',
-                                                        padding: '0 4px',
-                                                        borderRadius: '12px',
-                                                        border: hasVariant ? '1px solid #ffd700' : '1px solid rgba(255,255,255,0.2)',
-                                                        background: hasVariant ? 'rgba(255, 215, 0, 0.2)' : 'transparent',
-                                                        color: hasVariant ? '#ffd700' : 'rgba(255,255,255,0.4)',
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
-                                                        fontSize: '0.7rem',
-                                                        cursor: 'pointer',
-                                                        fontWeight: 'bold',
-                                                        transition: 'all 0.2s ease'
-                                                    }}
-                                                    title={`Variante ${variant}`}
-                                                >
-                                                    {variant}
-                                                </button>
-                                            );
-                                        })}
-                                    </div>
-                                ) : (
-                                    <div className="coin-meta">
-                                        {isOwned ? (
-                                            <span className={`coin-grade grade-${data.condition}`}>{data.condition}</span>
-                                        ) : null}
-                                    </div>
-                                )}
-                            </div>
-
-                            {/* Missing Badge Removed */}
+                                );
+                            })}
                         </div>
-                    );
-                })}
+                    </div>
+                ))}
             </div>
 
             {/* Detail Modal */}
