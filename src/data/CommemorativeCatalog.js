@@ -50,7 +50,22 @@ const COUNTRY_CATALOGS = {
             subject: 'Mecklenburg-Vorpommern (Castillo de Schwerin)',
             image: '/img/coins/2007/germany.jpg?v=203'
         },
-        { year: 2008, subject: 'Hamburg (St. Michaelis)' },
+        {
+            year: 2008,
+            subject: 'Hamburg (St. Michaelis)',
+            image: null, // Image download failed
+            date: '01-02-2008',
+            mintage: 30000000,
+            description: 'La moneda muestra la iglesia barroca de St. Michaelis, conocida popularmente como "Michel". Es un símbolo de la ciudad y del estado federal de Hamburgo. Debajo de la imagen aparece la inscripción "HAMBURG". En la parte superior derecha se encuentra la marca de ceca.',
+            designer: 'Erich Ott',
+            edge: 'EINIGKEIT UND RECHT UND FREIHEIT',
+            estimatedPrice: '3.00€ - 4.50€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 30000000 },
+                { type: 'BU', title: 'Set Anual', quantity: 140000 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 70000 }
+            ]
+        },
         { year: 2009, subject: 'Saarland (Ludwigskirche)' },
         { year: 2010, subject: 'Bremen (Ayuntamiento y Roland)' },
         { year: 2011, subject: 'Nordrhein-Westfalen (Catedral de Colonia)' },
@@ -159,7 +174,22 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Caja Proof', quantity: 3000 } // Estimated
             ]
         },
-        { year: 2008, subject: '60 Aniv. Derechos Humanos' },
+        {
+            year: 2008,
+            subject: '60 Aniv. Derechos Humanos',
+            image: '/img/coins/2008/belgium.jpg',
+            date: '01-05-2008',
+            mintage: 5000000,
+            description: 'La moneda muestra líneas curvas alrededor de un rectángulo marcado con la cifra 60. El año "2008" está inscrito sobre el rectángulo y las palabras "UNIVERSAL DECLARATION OF HUMAN RIGHTS" debajo. El nombre del país aparece en sus tres idiomas oficiales: "BELGIE – BELGIQUE – BELGIEN".',
+            designer: 'Luc Luycx',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '4.00€ - 7.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 4988000 },
+                { type: 'BU', title: 'Coincard', quantity: 12000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 0 } // Included in sets logic usually
+            ]
+        },
         { year: 2009, subject: '200 Aniv. Louis Braille' },
         { year: 2010, subject: 'Presidencia UE' },
         { year: 2011, subject: '100 Aniv. Día de la Mujer' },
@@ -216,7 +246,22 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026' },
     ],
     'Eslovenia': [
-        { year: 2008, subject: '500 Aniv. Primož Trubar' },
+        {
+            year: 2008,
+            subject: '500 Aniv. Primož Trubar',
+            image: null, // Image download failed
+            date: '26-05-2008',
+            mintage: 1000000,
+            description: 'La moneda muestra la efigie de Primož Trubar de perfil. Las inscripciones "PRIMOŽ TRUBAR" y "1508 • 1586" aparecen a la izquierda, y "SLOVENIJA 2008" abajo a la derecha.',
+            designer: 'Miljenko Licul / Maja Licul / Janez Boljka',
+            edge: 'SLOVENIJA + punto',
+            estimatedPrice: '3.50€ - 6.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 955000 },
+                { type: 'BU', title: 'Set Anual', quantity: 40000 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 5000 }
+            ]
+        },
         { year: 2010, subject: '200 Aniv. Jardín Botánico Liubliana' },
         { year: 2011, subject: '100 Aniv. Franc Rozman' },
         { year: 2013, subject: '800 Aniv. Cueva de Postojna' },
@@ -355,7 +400,22 @@ const COUNTRY_CATALOGS = {
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 2000000 }
             ]
         },
-        { year: 2008, subject: '60 Aniv. Derechos Humanos' },
+        {
+            year: 2008,
+            subject: '60 Aniv. Derechos Humanos',
+            image: null, // Image download failed
+            date: '24-10-2008',
+            mintage: 1500000,
+            description: 'La moneda muestra una figura humana dentro de un corazón y, debajo, la inscripción "HUMAN RIGHTS". Las siglas "FI" de Finlandia, la "K" del escultor y la marca de ceca aparecen en la parte inferior.',
+            designer: 'Tapio Kettunen',
+            edge: 'SUOMI FINLAND + tres cabezas de león',
+            estimatedPrice: '5.00€ - 8.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1474500 },
+                { type: 'BU', title: 'Set Anual', quantity: 20000 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 5500 }
+            ]
+        },
         { year: 2009, subject: '200 Aniv. Autonomía Finesa' },
         { year: 2010, subject: 'Decreto de la Moneda 1860' },
         { year: 2011, subject: '200 Aniv. Banco de Finlandia' },
@@ -389,7 +449,22 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: '2ª Emisión 2026' },
     ],
     'Francia': [
-        { year: 2008, subject: 'Presidencia UE' },
+        {
+            year: 2008,
+            subject: 'Presidencia UE',
+            image: '/img/coins/2008/france.jpg',
+            date: '01-07-2008',
+            mintage: 20000000,
+            description: 'La moneda conmemora la Presidencia francesa del Consejo de la Unión Europea. Muestra la inscripción "2008 PRÉSIDENCE FRANÇAISE UNION EUROPÉENNE RF".',
+            designer: 'Philippe Starck',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '3.00€ - 4.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 20000000 },
+                { type: 'BU', title: 'Set Anual', quantity: 40000 },
+                { type: 'PROOF', title: 'Caja Proof', quantity: 10000 }
+            ]
+        },
         { year: 2010, subject: 'Llamamiento 1940 (De Gaulle)' },
         { year: 2011, subject: 'Fiesta de la Música' },
         { year: 2012, subject: 'Abbé Pierre' },
@@ -501,7 +576,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'UNC', title: 'Rollo / Bolsa', quantity: 40000000 }
             ]
         },
-        { year: 2008, subject: '60 Aniv. Derechos Humanos' },
+        {
+            year: 2008,
+            subject: '60 Aniv. Derechos Humanos',
+            image: null, // Image download failed
+            date: '10-12-2008',
+            mintage: 5000000,
+            description: 'La moneda muestra a un hombre y una mujer con una rama de olivo, una espiga de maíz, una rueda dentada y alambre de púas, símbolos del derecho a la paz, la alimentación, el trabajo y la libertad. El monograma "RI" y el año "2008" están entre las figuras. Abajo, "DIRITTI UMANI" y el número "60" formado por eslabones de cadena.',
+            designer: 'Maria Carmela Colaneri (MCC)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '3.50€ - 5.00€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 5000000 }
+            ]
+        },
         { year: 2009, subject: 'Louis Braille' },
         { year: 2010, subject: 'Cavour' },
         { year: 2011, subject: '150 Aniv. Unificación Italia' },
@@ -645,7 +733,22 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Caja Proof', quantity: 5000 } // Estimated
             ]
         },
-        { year: 2008, subject: 'Castillo de Berg' },
+        {
+            year: 2008,
+            subject: 'Castillo de Berg',
+            image: null, // Image download failed
+            date: '01-02-2008',
+            mintage: 1000000,
+            description: 'La moneda muestra al Gran Duque Enrique y el "Château de Berg", su residencia oficial. El año "2008" aparece arriba y "LËTZEBUERG" abajo.',
+            designer: 'Alain Hoffmann',
+            edge: '2 ** 2 ** 2 ** 2 ** 2 ** 2 **',
+            estimatedPrice: '4.50€ - 7.50€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1000000 },
+                { type: 'BU', title: 'Set / Coincard', quantity: 25000 }, // Estimated
+                { type: 'PROOF', title: 'Caja Proof', quantity: 6000 } // Estimated
+            ]
+        },
         { year: 2009, subject: 'Gran Duquesa Carlota' },
         { year: 2010, subject: 'Escudo de Armas' },
         { year: 2011, subject: 'Juan de Luxemburgo' },
@@ -764,7 +867,22 @@ const COUNTRY_CATALOGS = {
                 { type: 'PROOF', title: 'Set Proof', quantity: 10000 }
             ]
         },
-        { year: 2008, subject: '60 Aniv. Derechos Humanos' },
+        {
+            year: 2008,
+            subject: '60 Aniv. Derechos Humanos',
+            image: '/img/coins/2008/portugal.jpg',
+            date: '15-09-2008',
+            mintage: 1000000, // Reduced to 1M vs ECB sometimes says differs, standard resource says 1,025,000 incl sets
+            description: 'La moneda muestra el escudo de Portugal arriba y un diseño geométrico abajo, con la leyenda "60 ANOS DA DECLARAÇÃO UNIVERSAL DOS DIREITOS HUMANOS".',
+            designer: 'João Duarte',
+            edge: 'Cinco escudos y siete castillos',
+            estimatedPrice: '4.00€ - 6.50€',
+            formats: [
+                { type: 'UNC', title: 'Rollo / Bolsa', quantity: 1000000 },
+                { type: 'BU', title: 'Set Anual', quantity: 15000 },
+                { type: 'PROOF', title: 'Set Proof', quantity: 10000 }
+            ]
+        },
         { year: 2009, subject: 'Juegos de la Lusofonía' },
         { year: 2010, subject: 'República Portuguesa' },
         { year: 2011, subject: 'Fernão Mendes Pinto' },
@@ -852,7 +970,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Coincard / Cartera', quantity: 130000 }
             ]
         },
-        { year: 2008, subject: 'Año Diálogo Intercultural' },
+        {
+            year: 2008,
+            subject: 'Año Diálogo Intercultural',
+            image: null, // Image download failed
+            date: '20-05-2008',
+            mintage: 130000,
+            description: 'La moneda muestra cinco siluetas humanas que simbolizan las culturas de las cinco regiones de Europa y textos sagrados. Inscripción: "ANNO EUROPEO DEL DIALOGO INTERCULTURALE".',
+            designer: 'Ettore Lorenzo Frapiccini (E.L.F.)',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '45€ - 65€',
+            formats: [
+                { type: 'BU', title: 'Coincard / Cartera', quantity: 130000 }
+            ]
+        },
         { year: 2009, subject: 'Creatividad e Innovación' },
         { year: 2010, subject: 'Sandro Botticelli' },
         { year: 2011, subject: 'Giorgio Vasari' },
@@ -942,7 +1073,20 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Cartera Oficial', quantity: 100000 }
             ]
         },
-        { year: 2008, subject: 'Año de San Pablo' },
+        {
+            year: 2008,
+            subject: 'Año de San Pablo',
+            image: null, // Image download failed
+            date: '15-10-2008',
+            mintage: 100000, // Usually 100k or close mainly sets
+            description: 'La moneda conmemora el Año de San Pablo. Representa la conversión de San Pablo en el camino a Damasco, cayendo de su caballo deslumbrado por la luz.',
+            designer: 'Guido Veroi / Luciana De Simoni',
+            edge: '2 * 2 * 2 * 2 * 2 * 2 *',
+            estimatedPrice: '130€ - 170€',
+            formats: [
+                { type: 'BU', title: 'Cartera Oficial', quantity: 100000 }
+            ]
+        },
         { year: 2009, subject: 'Año Internacional Astronomía' },
         { year: 2010, subject: 'Año Sacerdotal' },
         { year: 2011, subject: 'Jornada Mundial Juventud Madrid' },

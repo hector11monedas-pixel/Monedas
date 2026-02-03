@@ -1,5 +1,47 @@
 export const APP_UPDATES = [
     {
+        id: -71,
+        date: '03/02/2026',
+        title: 'Versión 1.9.8 - Catálogo 2008 (Derechos Humanos) 🏛️',
+        description: 'Añadidos datos completos y fotos disponibles para las monedas de 2008. Incluye el tema "Derechos Humanos" (Bélgica, Finlandia, Italia, Portugal) y otras emisiones nacionales.'
+    },
+    {
+        id: -70,
+        date: '03/02/2026',
+        title: 'Versión 1.9.7 - Imágenes Extra 2007 📸',
+        description: 'Conseguida la imagen de Mónaco 2007 (Grace Kelly) y Alemania 2007 (Tratado de Roma). El resto de imágenes faltantes se han catalogado para futura adquisición.'
+    },
+    {
+        id: -69,
+        date: '03/02/2026',
+        title: 'Versión 1.9.6 - Datos 2007 Completos 📝',
+        description: 'Se han completado los metadatos (descripción, tirada, grabador) de todas las monedas conmemorativas de 2007. También se han separado visualmente las emisiones conjuntas (Tratado de Roma) y corregido el centrado de los modales en móviles.'
+    },
+    {
+        id: -68,
+        date: '03/02/2026',
+        title: 'Versión 1.9.5 - Correcciones 2006 ✅',
+        description: 'Corregidos los textos de variantes de Luxemburgo 2006.'
+    },
+    {
+        id: -25, // Renumbered to avoid conflict
+        date: '02/02/2026',
+        title: 'Versión 1.9.2 - Imágenes 2005 y 2006 (ECB) 📸',
+        description: 'Actualización completa de imágenes para monedas conmemorativas de 2005 (ECB Oficial) y mejora en la visibilidad de 2006.'
+    },
+    {
+        id: -26, // Renumbered
+        date: '02/02/2026',
+        title: 'Actualización Bélgica 🇧🇪',
+        description: 'Definición de moneda circulante (Verde) vs Sets (Amarillo) según listas confirmadas.'
+    },
+    {
+        id: -24,
+        date: "30/01/2026",
+        title: "Versión 1.3.2 - Mundo y Mejoras 🌏",
+        description: "Nuevos países en Mundo (EEUU, UK, Japón, México), mejoras visuales y corrección de botones de Ajustes."
+    },
+    {
         id: -19,
         date: '30/01/2026',
         title: 'Versión 1.1.1 - Widget Mejorado ✨',
@@ -18,30 +60,6 @@ export const APP_UPDATES = [
         description: 'El mapa ahora tiene su propia sección dedicada. Accede desde el botón "Mapa" en el menú Euro.'
     },
     {
-        id: -15,
-        date: '29/01/2026',
-        title: 'Mapa Euro Ajustado 🌍',
-        description: 'Hemos calibrado la proyección del mapa para que se visualice más arriba y perfectamente integrado con los iconos.'
-    },
-    {
-        id: -14,
-        date: '29/01/2026',
-        title: 'Mapa de Calor (Vectorial) 🔥',
-        description: 'Nuevo mapa interactivo: ahora los países se colorean completamente según tu progeso. ¡Haz clic para explorar!'
-    },
-    {
-        id: -13,
-        date: '29/01/2026',
-        title: 'Mejora Visual Conmemorativas 🎨',
-        description: 'Nuevas monedas realistas (bimetálicas) generadas por CSS con indicador de Año y País.'
-    },
-    {
-        id: -24,
-        date: "30/01/2026",
-        title: "Versión 1.3.2 - Mundo y Mejoras 🌏",
-        description: "Nuevos países en Mundo (EEUU, UK, Japón, México), mejoras visuales y corrección de botones de Ajustes."
-    },
-    {
         id: -22,
         date: "30/01/2025",
         title: "Versión 1.3.1 - Estadísticas Favorito 📊",
@@ -58,6 +76,24 @@ export const APP_UPDATES = [
         date: '29/01/2026',
         title: 'Filtro por Años 📅',
         description: 'Nueva vista para consultar y añadir Commemorativas organizadas por Año (2004-2026).'
+    },
+    {
+        id: -15,
+        date: '29/01/2026',
+        title: 'Mapa Euro Ajustado 🌍',
+        description: 'Hemos calibrado la proyección del mapa para que se visualice más arriba y perfectamente integrado con los iconos.'
+    },
+    {
+        id: -14,
+        date: '29/01/2026',
+        title: 'Mapa de Calor (Vectorial) 🔥',
+        description: 'Nuevo mapa interactivo: ahora los países se colorean completamente según tu progeso. ¡Haz clic para explorar!'
+    },
+    {
+        id: -13,
+        date: '29/01/2026',
+        title: 'Mejora Visual Conmemorativas 🎨',
+        description: 'Nuevas monedas realistas (bimetálicas) generadas por CSS con indicador de Año y País.'
     },
     {
         id: -11,
@@ -126,18 +162,6 @@ export const APP_UPDATES = [
         description: 'Ajuste en años 2000/2001 para 1c y 10c (Circulación vs Sets).'
     },
     {
-        id: -2,
-        date: '02/02/2026',
-        title: 'Versión 1.9.2 - Imágenes 2005 y 2006 (ECB) 📸',
-        description: 'Actualización completa de imágenes para monedas conmemorativas de 2005 (ECB Oficial) y mejora en la visibilidad de 2006.'
-    },
-    {
-        id: -1,
-        date: '02/02/2026',
-        title: 'Actualización Bélgica 🇧🇪',
-        description: 'Definición de moneda circulante (Verde) vs Sets (Amarillo) según listas confirmadas.'
-    },
-    {
         id: 0,
         date: '28/01/2026',
         title: 'Actualización Austria 🇦🇹',
@@ -166,11 +190,3 @@ export const APP_UPDATES = [
 export const getLatestUpdate = () => {
     return APP_UPDATES[0]; // Assuming top is newest
 };
-
-// Add new update at the top of the array
-APP_UPDATES.unshift({
-    id: -70,
-    date: '03/02/2026',
-    title: 'Versión 1.9.7 - Imágenes Extra 2007 📸',
-    description: 'Conseguida la imagen de Mónaco 2007 (Grace Kelly) y Alemania 2007 (Tratado de Roma). El resto de imágenes faltantes se han catalogado para futura adquisición.'
-});
