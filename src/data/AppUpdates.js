@@ -169,8 +169,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -67,
-    date: '02/02/2026',
-    title: 'Versión 1.9.4 - Corrección Luxemburgo 🇱🇺',
-    description: 'Ajuste en la descripción de variantes para Luxemburgo 2006.'
+    id: -68,
+    date: '03/02/2026',
+    title: 'Versión 1.9.5 - Imágenes 2007 (Tratado de Roma) 🏛️',
+    description: 'Añadidas imágenes para todas las monedas de 2007, incluyendo la emisión conjunta del Tratado de Roma. (Nota: Algunas imágenes pueden ser provisionales).'
 });
