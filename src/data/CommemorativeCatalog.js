@@ -674,7 +674,7 @@ const COUNTRY_CATALOGS = {
         { year: 2026, subject: 'Emisión 2026 (2)' },
     ],
     'Mónaco': [
-        { year: 2007, subject: '25 Aniv. Muerte Grace Kelly', image: '/img/coins/2007/monaco.jpg?v=203' },
+        { year: 2007, subject: '25 Aniv. Muerte Grace Kelly' },
         { year: 2011, subject: 'Boda Príncipe Alberto II' },
         { year: 2012, subject: '500 Aniv. Soberanía' },
         { year: 2013, subject: '20 Aniv. Ingreso ONU' },
@@ -775,7 +775,7 @@ const COUNTRY_CATALOGS = {
                 { type: 'BU', title: 'Coincard / Cartera', quantity: 120000 }
             ]
         },
-        { year: 2007, subject: 'Giuseppe Garibaldi', image: '/img/coins/2007/san_marino.jpg?v=203' },
+        { year: 2007, subject: 'Giuseppe Garibaldi' },
         { year: 2008, subject: 'Año Diálogo Intercultural' },
         { year: 2009, subject: 'Creatividad e Innovación' },
         { year: 2010, subject: 'Sandro Botticelli' },
@@ -908,11 +908,9 @@ export const getCatalogForCountry = (countryName) => {
             let image = null;
             if (joint.year === 2007) {
                 const map2007 = {
-                    'Alemania': 'treaty_germany.jpg', 'Austria': 'treaty_austria.jpg', 'Bélgica': 'treaty_belgium.jpg',
-                    'Eslovenia': 'treaty_slovenia.jpg', 'España': 'treaty_spain.jpg', 'Finlandia': 'treaty_finland.jpg',
-                    'Francia': 'treaty_france.jpg', 'Grecia': 'treaty_greece.jpg', 'Irlanda': 'treaty_ireland.jpg',
-                    'Italia': 'treaty_italy.jpg', 'Luxemburgo': 'treaty_luxembourg.jpg', 'Países Bajos': 'treaty_netherlands.jpg',
-                    'Portugal': 'treaty_portugal.jpg'
+                    'Austria': 'treaty_austria.jpg', 'Bélgica': 'treaty_belgium.jpg',
+                    'España': 'treaty_spain.jpg', 'Francia': 'treaty_france.jpg', 'Irlanda': 'treaty_ireland.jpg',
+                    'Italia': 'treaty_italy.jpg', 'Países Bajos': 'treaty_netherlands.jpg'
                 };
                 if (map2007[countryName]) {
                     image = `/img/coins/2007/${map2007[countryName]}?v=203`;

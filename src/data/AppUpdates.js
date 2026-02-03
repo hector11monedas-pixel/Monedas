@@ -172,5 +172,5 @@ APP_UPDATES.unshift({
     id: -68,
     date: '03/02/2026',
     title: 'Versión 1.9.5 - Imágenes 2007 (Tratado de Roma) 🏛️',
-    description: 'Añadidas imágenes para todas las monedas de 2007, incluyendo la emisión conjunta del Tratado de Roma. (Nota: Algunas imágenes pueden ser provisionales).'
+    description: 'Añadidas imágenes para monedas 2007 (Tratado de Roma). Se mantiene la imagen genérica para aquellas sin foto oficial disponible (Mónaco, San Marino y algunas del Tratado).'
 });
