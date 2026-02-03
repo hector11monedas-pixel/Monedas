@@ -55,8 +55,37 @@ const CommemorativeCountryView = () => {
         )
     );
 
-    const finalDisplayList = [...mergedList, ...extraItems.map(i => ({ ...i, isOwned: true, userItem: i, isExtra: true }))]
+    const fullList = [...mergedList, ...extraItems.map(i => ({ ...i, isOwned: true, userItem: i, isExtra: true }))]
         .sort((a, b) => b.year - a.year);
+
+    // Grouping Logic
+    const groupedList = fullList.reduce((acc, item) => {
+        let groupKey = item.year.toString();
+        // Special separation for 2007 Treaty of Rome
+        if (item.year === 2007 && item.isJoint) {
+            groupKey = '2007 - Tratado de Roma (Emisión Conjunta)';
+        }
+        else if (item.year === 2009 && item.isJoint) groupKey = '2009 - UEM (Emisión Conjunta)';
+        else if (item.year === 2012 && item.isJoint) groupKey = '2012 - 10 Años Euro (Emisión Conjunta)';
+        else if (item.year === 2015 && item.isJoint) groupKey = '2015 - Bandera Europea (Emisión Conjunta)';
+        else if (item.year === 2022 && item.isJoint) groupKey = '2022 - Erasmus (Emisión Conjunta)';
+
+        if (!acc[groupKey]) acc[groupKey] = [];
+        acc[groupKey].push(item);
+        return acc;
+    }, {});
+
+    // Sort Groups (Newest first, keeping Joint issues adjacent to their year but typically handled via key sorting)
+    // We want 2007 Standard, then 2007 TOR, or vice versa? Usually Standard first or mixed?
+    // Let's rely on reverse string sort of keys or custom sort.
+    const sortedGroupKeys = Object.keys(groupedList).sort((a, b) => {
+        const yearA = parseInt(a.substring(0, 4));
+        const yearB = parseInt(b.substring(0, 4));
+        if (yearA !== yearB) return yearB - yearA;
+        // Same year: Standard (shorter string) should probably come AFTER or BEFORE?
+        // Let's put Standard (just "2007") ABOVE Joint ("2007 - ...")
+        return a.length - b.length;
+    });
 
     const handleCardClick = (item, isOwned, specificMint = null) => {
         // If specificMint is provided (Germany), we look for THAT specific item
@@ -123,201 +152,212 @@ const CommemorativeCountryView = () => {
                 </div>
             </div>
 
-            <div className="commemorative-grid">
-                {finalDisplayList.map((item, index) => {
-                    const hasVariants = item.variants && item.variants.length > 0;
-                    const isOwned = hasVariants ? (item.ownedMints && item.ownedMints.length > 0) : item.isOwned;
-                    const data = item.userItem || item;
+            <div className="commemorative-grid-container" style={{ display: 'flex', flexDirection: 'column', gap: '2rem', padding: '1rem' }}>
+                {sortedGroupKeys.map(groupKey => (
+                    <div key={groupKey} className="year-group">
+                        <h3 style={{
+                            textAlign: 'left',
+                            borderBottom: '1px solid rgba(255,255,255,0.1)',
+                            paddingBottom: '0.5rem',
+                            marginBottom: '1rem',
+                            color: 'var(--primary-color)',
+                            fontSize: '1.2rem'
+                        }}>
+                            {groupKey}
+                        </h3>
+                        <div className="commemorative-grid">
+                            {groupedList[groupKey].map((item, index) => {
+                                const hasVariants = item.variants && item.variants.length > 0;
+                                const isOwned = hasVariants ? (item.ownedMints && item.ownedMints.length > 0) : item.isOwned;
+                                const data = item.userItem || item;
 
-                    return (
-                        <div
-                            key={index}
-                            className={`commemorative-card glass-panel ${!isOwned ? 'missing-item' : ''}`}
-                            style={{ position: 'relative', cursor: hasVariants ? 'default' : 'pointer' }}
-                            onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
-                        >
-                            {/* Info Button - Top Left */}
-                            {/* Always show for debug, or valid check */}
-                            {/* Info Button - Top Left */}
-                            <button
-                                onClick={(e) => {
-                                    e.stopPropagation();
-                                    setSelectedDetailCoin(item);
-                                }}
-                                className="info-btn-overlay"
-                                style={{
-                                    position: 'absolute',
-                                    top: '8px',
-                                    left: '8px',
-                                    background: 'rgba(0,0,0,0.6)',
-                                    color: '#ffd700',
-                                    border: '1px solid rgba(255,215,0,0.3)',
-                                    borderRadius: '50%',
-                                    width: '28px',
-                                    height: '28px',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    cursor: 'pointer',
-                                    zIndex: 100
-                                }}
-                                title="Ver Detalles"
-                            >
-                                <Info size={16} />
-                            </button>
-                            {/* CSS Realistic Coin */}
-                            {/* IMAGE or CSS COIN */}
-                            {item.image ? (
-                                <div className="real-coin-wrapper" style={{
-                                    width: '100px',
-                                    height: '100px',
-                                    margin: '0 auto 1rem',
-                                    position: 'relative',
-                                    borderRadius: '50%',
-                                    boxShadow: isOwned ? 'inset 0 0 20px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.3)' : 'none'
-                                }}>
-                                    <img
-                                        src={item.image}
-                                        alt={data.subject}
-                                        loading="lazy"
-                                        style={{
-                                            width: '100%',
-                                            height: '100%',
-                                            objectFit: 'cover',
-                                            borderRadius: '50%',
-                                            filter: isOwned ? 'none' : 'grayscale(100%) opacity(0.5)',
-                                            transition: 'all 0.3s ease'
-                                        }}
-                                    />
-                                    {/* Overlay ring for realism */}
-                                    <div style={{
-                                        position: 'absolute',
-                                        top: 0,
-                                        left: 0,
-                                        right: 0,
-                                        bottom: 0,
-                                        borderRadius: '50%',
-                                        border: '4px solid rgba(255,215,0,0.3)', // Subtle gold ring
-                                        pointerEvents: 'none'
-                                    }} />
-                                    {/* Quantity Badge on Real Image */}
-                                    {isOwned && (
-                                        (() => {
-                                            const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
-                                            return totalQuantity > 1 ? <div className="quantity-badge" style={{ zIndex: 10 }}>{totalQuantity}</div> : null;
-                                        })()
-                                    )}
-                                </div>
-                            ) : (
-                                <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
-                                    <div className="css-coin-content">
-                                        <span className="coin-text-year">{data.year}</span>
-                                        <span className="coin-text-country">2 EURO</span>
-                                    </div>
-                                    {/* Quantity Badge on CSS Coin */}
-                                    {isOwned && (
-                                        (() => {
-                                            const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
-                                            return totalQuantity > 1 ? <div className="quantity-badge">{totalQuantity}</div> : null;
-                                        })()
-                                    )}
-                                </div>
-                            )}
-
-                            <div className="coin-info">
-                                <div className="coin-header-row">
-                                    <span className="coin-year">{data.year}</span>
-
-                                    {/* Inline Info Button */}
-                                    <button
-                                        onClick={(e) => {
-                                            e.stopPropagation();
-                                            setSelectedDetailCoin(item);
-                                        }}
-                                        style={{
-                                            background: 'rgba(255, 215, 0, 0.1)',
-                                            border: '1px solid rgba(255, 215, 0, 0.3)',
-                                            color: '#ffd700',
-                                            borderRadius: '12px',
-                                            padding: '2px 8px',
-                                            fontSize: '0.7rem',
-                                            cursor: 'pointer',
-                                            display: 'flex',
-                                            alignItems: 'center',
-                                            gap: '4px',
-                                            marginLeft: 'auto'
-                                        }}
+                                return (
+                                    <div
+                                        key={index}
+                                        className={`commemorative-card glass-panel ${!isOwned ? 'missing-item' : ''}`}
+                                        style={{ position: 'relative', cursor: hasVariants ? 'default' : 'pointer' }}
+                                        onClick={hasVariants ? undefined : () => handleCardClick(item, isOwned)}
                                     >
-                                        <Info size={12} /> Info
-                                    </button>
+                                        {/* Info Button - Top Left */}
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                setSelectedDetailCoin(item);
+                                            }}
+                                            className="info-btn-overlay"
+                                            style={{
+                                                position: 'absolute',
+                                                top: '8px',
+                                                left: '8px',
+                                                background: 'rgba(0,0,0,0.6)',
+                                                color: '#ffd700',
+                                                border: '1px solid rgba(255,215,0,0.3)',
+                                                borderRadius: '50%',
+                                                width: '28px',
+                                                height: '28px',
+                                                display: 'flex',
+                                                alignItems: 'center',
+                                                justifyContent: 'center',
+                                                cursor: 'pointer',
+                                                zIndex: 10
+                                            }}
+                                            title="Ver Detalles"
+                                        >
+                                            <Info size={16} />
+                                        </button>
 
-                                    {isOwned && !hasVariants && <span className="coin-value" style={{ marginLeft: '8px' }}>{data.value}€</span>}
-                                </div>
+                                        {/* IMAGE or CSS COIN */}
+                                        {item.image ? (
+                                            <div className="real-coin-wrapper" style={{
+                                                width: '100px',
+                                                height: '100px',
+                                                margin: '0 auto 1rem',
+                                                position: 'relative',
+                                                borderRadius: '50%',
+                                                boxShadow: isOwned ? 'inset 0 0 20px rgba(0,0,0,0.2), 0 5px 15px rgba(0,0,0,0.3)' : 'none'
+                                            }}>
+                                                <img
+                                                    src={item.image}
+                                                    alt={data.subject}
+                                                    loading="lazy"
+                                                    style={{
+                                                        width: '100%',
+                                                        height: '100%',
+                                                        objectFit: 'cover',
+                                                        borderRadius: '50%',
+                                                        filter: isOwned ? 'none' : 'grayscale(100%) opacity(0.5)',
+                                                        transition: 'all 0.3s ease'
+                                                    }}
+                                                />
+                                                {/* Overlay ring for realism */}
+                                                <div style={{
+                                                    position: 'absolute',
+                                                    top: 0,
+                                                    left: 0,
+                                                    right: 0,
+                                                    bottom: 0,
+                                                    borderRadius: '50%',
+                                                    border: '4px solid rgba(255,215,0,0.3)', // Subtle gold ring
+                                                    pointerEvents: 'none'
+                                                }} />
+                                                {/* Quantity Badge on Real Image */}
+                                                {isOwned && (
+                                                    (() => {
+                                                        const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
+                                                        return totalQuantity > 1 ? <div className="quantity-badge" style={{ zIndex: 10 }}>{totalQuantity}</div> : null;
+                                                    })()
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <div className={`css-coin ${!isOwned ? 'missing' : 'owned'}`}>
+                                                <div className="css-coin-content">
+                                                    <span className="coin-text-year">{data.year}</span>
+                                                    <span className="coin-text-country">2 EURO</span>
+                                                </div>
+                                                {/* Quantity Badge on CSS Coin */}
+                                                {isOwned && (
+                                                    (() => {
+                                                        const totalQuantity = (item.userItems || (item.userItem ? [item.userItem] : [])).reduce((acc, i) => acc + (parseInt(i.quantity) || 1), 0);
+                                                        return totalQuantity > 1 ? <div className="quantity-badge">{totalQuantity}</div> : null;
+                                                    })()
+                                                )}
+                                            </div>
+                                        )}
 
-                                <h4 className="coin-subject" style={{ opacity: isOwned ? 1 : 0.7 }}>
-                                    {data.subject || item.subject}
-                                </h4>
+                                        <div className="coin-info">
+                                            <div className="coin-header-row">
+                                                <span className="coin-year">{data.year}</span>
 
-                                {item.variants && item.variants.length > 0 ? (
-                                    <div className="german-mint-bar" style={{ display: 'flex', gap: '4px', justifyContent: 'center', marginTop: '0.5rem', flexWrap: 'wrap' }}>
-                                        {item.variants.map(variant => {
-                                            const hasVariant = item.ownedMints?.includes(variant);
-                                            return (
+                                                {/* Inline Info Button */}
                                                 <button
-                                                    key={variant}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
-                                                        handleCardClick(item, hasVariant, variant);
+                                                        setSelectedDetailCoin(item);
                                                     }}
-                                                    className={`mint-badge ${hasVariant ? 'owned' : 'missing'}`}
                                                     style={{
-                                                        minWidth: '24px',
-                                                        height: '24px',
-                                                        padding: '0 4px',
+                                                        background: 'rgba(255, 215, 0, 0.1)',
+                                                        border: '1px solid rgba(255, 215, 0, 0.3)',
+                                                        color: '#ffd700',
                                                         borderRadius: '12px',
-                                                        border: hasVariant ? '1px solid #ffd700' : '1px solid rgba(255,255,255,0.2)',
-                                                        background: hasVariant ? 'rgba(255, 215, 0, 0.2)' : 'transparent',
-                                                        color: hasVariant ? '#ffd700' : 'rgba(255,255,255,0.4)',
-                                                        display: 'flex',
-                                                        alignItems: 'center',
-                                                        justifyContent: 'center',
+                                                        padding: '2px 8px',
                                                         fontSize: '0.7rem',
                                                         cursor: 'pointer',
-                                                        fontWeight: 'bold',
-                                                        transition: 'all 0.2s ease'
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        gap: '4px',
+                                                        marginLeft: 'auto'
                                                     }}
-                                                    title={`Variante ${variant}`}
                                                 >
-                                                    {variant}
+                                                    <Info size={12} /> Info
                                                 </button>
-                                            );
-                                        })}
-                                    </div>
-                                ) : (
-                                    <div className="coin-meta">
-                                        {isOwned ? (
-                                            <span className={`coin-grade grade-${data.condition}`}>{data.condition}</span>
-                                        ) : null}
-                                    </div>
-                                )}
-                            </div>
 
-                            {/* Missing Badge (Only if NO mints owned) */}
-                            {/* Missing Badge REMOVED per user request */}
+                                                {isOwned && !hasVariants && <span className="coin-value" style={{ marginLeft: '8px' }}>{data.value}€</span>}
+                                            </div>
+
+                                            <h4 className="coin-subject" style={{ opacity: isOwned ? 1 : 0.7 }}>
+                                                {data.subject || item.subject}
+                                            </h4>
+
+                                            {item.variants && item.variants.length > 0 ? (
+                                                <div className="german-mint-bar" style={{ display: 'flex', gap: '4px', justifyContent: 'center', marginTop: '0.5rem', flexWrap: 'wrap' }}>
+                                                    {item.variants.map(variant => {
+                                                        const hasVariant = item.ownedMints?.includes(variant);
+                                                        return (
+                                                            <button
+                                                                key={variant}
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleCardClick(item, hasVariant, variant);
+                                                                }}
+                                                                className={`mint-badge ${hasVariant ? 'owned' : 'missing'}`}
+                                                                style={{
+                                                                    minWidth: '24px',
+                                                                    height: '24px',
+                                                                    padding: '0 4px',
+                                                                    borderRadius: '12px',
+                                                                    border: hasVariant ? '1px solid #ffd700' : '1px solid rgba(255,255,255,0.2)',
+                                                                    background: hasVariant ? 'rgba(255, 215, 0, 0.2)' : 'transparent',
+                                                                    color: hasVariant ? '#ffd700' : 'rgba(255,255,255,0.4)',
+                                                                    display: 'flex',
+                                                                    alignItems: 'center',
+                                                                    justifyContent: 'center',
+                                                                    fontSize: '0.7rem',
+                                                                    cursor: 'pointer',
+                                                                    fontWeight: 'bold',
+                                                                    transition: 'all 0.2s ease'
+                                                                }}
+                                                                title={`Variante ${variant}`}
+                                                            >
+                                                                {variant}
+                                                            </button>
+                                                        );
+                                                    })}
+                                                </div>
+                                            ) : (
+                                                <div className="coin-meta">
+                                                    {isOwned ? (
+                                                        <span className={`coin-grade grade-${data.condition}`}>{data.condition}</span>
+                                                    ) : null}
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                );
+                            })}
                         </div>
-                    );
-                })}
-
-                {finalDisplayList.length === 0 && (
-                    <div style={{ gridColumn: '1/-1', textAlign: 'center', opacity: 0.6, padding: '2rem' }}>
-                        No hay datos de catálogo para este país aún, pero puedes añadir monedas manualmente.
-                        <br /><br />
-                        <button className="add-section-btn" onClick={() => handleCardClick({}, false)}>
-                            <Plus size={18} /> Añadir Manualmente
-                        </button>
                     </div>
-                )}
+                ))}
             </div>
+
+            {sortedGroupKeys.length === 0 && (
+                <div style={{ textAlign: 'center', opacity: 0.6, padding: '2rem' }}>
+                    No hay datos de catálogo para este país aún, pero puedes añadir monedas manualmente.
+                    <br /><br />
+                    <button className="add-section-btn" onClick={() => handleCardClick({}, false)}>
+                        <Plus size={18} /> Añadir Manualmente
+                    </button>
+                </div>
+            )}
 
             {/* Detail Modal */}
             <CoinDetailModal
@@ -350,7 +390,7 @@ const CommemorativeCountryView = () => {
                     compactMode={!!selectedCatalogItem}
                 />
             </Modal>
-        </div>
+        </div >
     );
 };
 

@@ -17,27 +17,27 @@
 }
 
 .modal-content {
-    width: auto;
-    /* Allow shrinking */
-    min-width: 300px;
-    /* Minimum readable width */
-    max-width: 500px;
-    /* Desktop max width */
+    /* Absolute Centering */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
     width: min(90vw, 500px);
-    /* Responsive width: 90% of viewport OR 500px, whichever is smaller */
-    max-height: 90vh;
+    max-height: 85vh;
+    /* Slightly less than 90vh to avoid browser bars */
     overflow-y: auto;
-    position: relative;
+
+    background: rgba(30, 30, 30, 0.95);
+    /* Ensure solid background */
     padding: 1.5rem;
-    /* Slightly reduced padding */
-    animation: slideUp 0.3s ease-out;
     border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
-    /* Stronger shadow for floating effect */
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
     border-radius: 16px;
-    /* More rounded */
-    margin: auto;
-    /* Extra safety for centering */
+    z-index: 10000;
+    /* Above overlay */
+
+    animation: modalPop 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .modal-header {
@@ -81,14 +81,14 @@
     }
 }
 
-@keyframes slideUp {
+@keyframes modalPop {
     from {
-        transform: translateY(20px);
         opacity: 0;
+        transform: translate(-50%, -40%) scale(0.95);
     }
 
     to {
-        transform: translateY(0);
         opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
     }
 }

@@ -1005,11 +1005,18 @@ export const getCatalogForCountry = (countryName) => {
                 }
             }
 
+            // Finland 2007 Joint Issue Variant
+            let variantDetails = null;
+            if (joint.year === 2007 && countryName === 'Finlandia') {
+                variantDetails = 'Existen dos variantes de canto: A (Texto legible con cara arriba) y B (Texto invertido).';
+            }
+
             return {
                 ...joint,
                 country: countryName,
                 isJoint: true,
-                image: image || joint.image
+                image: image || joint.image,
+                variantDetails: variantDetails || joint.variantDetails
             };
         });
 
