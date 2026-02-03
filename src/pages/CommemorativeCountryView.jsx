@@ -62,8 +62,12 @@ const CommemorativeCountryView = () => {
     const groupedList = fullList.reduce((acc, item) => {
         let groupKey = item.year.toString();
         // Special separation for 2007 Treaty of Rome
-        if (item.year === 2007 && item.isJoint) {
-            groupKey = '2007 - Tratado de Roma (Emisión Conjunta)';
+        if (item.year === 2007) {
+            if (item.isJoint) {
+                groupKey = '2007 - Tratado de Roma (Emisión Conjunta)';
+            } else {
+                groupKey = '2007 - Emisión Nacional';
+            }
         }
         else if (item.year === 2009 && item.isJoint) groupKey = '2009 - UEM (Emisión Conjunta)';
         else if (item.year === 2012 && item.isJoint) groupKey = '2012 - 10 Años Euro (Emisión Conjunta)';
