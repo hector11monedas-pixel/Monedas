@@ -818,7 +818,7 @@ const COUNTRY_CATALOGS = {
                                 {
                                     year: 2007,
                                     subject: '25 Aniv. Muerte Grace Kelly',
-                                    image: '/img/coins/2007/monaco.jpg?v=204',
+                                    image: null,
                                     date: '01-07-2007',
                                     mintage: 20001,
                                     description: 'La moneda conmemora el 25º aniversario de la muerte de la Princesa Grace Kelly. Muestra su efigie de perfil mirando a la izquierda. Es la moneda de 2 euros más valiosa y buscada.',
@@ -1142,32 +1142,31 @@ export const getCatalogForCountry = (countryName) => {
         .map(joint => {
             let image = null;
             if (joint.year === 2007) {
-                if (joint.year === 2007) {
-                    const map2007 = {
-                        'Alemania': null, // INVALID: 'treaty_germany.jpg',
-                        'Austria': 'treaty_austria.jpg', 'Bélgica': 'treaty_belgium.jpg',
-                        'España': 'treaty_spain.jpg', 'Francia': 'treaty_france.jpg', 'Irlanda': 'treaty_ireland.jpg',
-                        'Italia': 'treaty_italy.jpg', 'Países Bajos': 'treaty_netherlands.jpg'
-                    };
-                    if (map2007[countryName]) {
-                        image = `/img/coins/2007/${map2007[countryName]}?v=203`;
-                    }
-                }
-
-                // Finland 2007 Joint Issue Variant
-                let variantDetails = null;
-                if (joint.year === 2007 && countryName === 'Finlandia') {
-                    variantDetails = 'Existen dos variantes de canto: A (Texto legible con cara arriba) y B (Texto invertido).';
-                }
-
-                return {
-                    ...joint,
-                    country: countryName,
-                    isJoint: true,
-                    image: image || joint.image,
-                    variantDetails: variantDetails || joint.variantDetails
+                const map2007 = {
+                    'Alemania': null,
+                    'Austria': 'treaty_austria.jpg', 'Bélgica': 'treaty_belgium.jpg',
+                    'España': 'treaty_spain.jpg', 'Francia': 'treaty_france.jpg', 'Irlanda': 'treaty_ireland.jpg',
+                    'Italia': 'treaty_italy.jpg', 'Países Bajos': 'treaty_netherlands.jpg'
                 };
-            });
+                if (map2007[countryName]) {
+                    image = `/img/coins/2007/${map2007[countryName]}?v=203`;
+                }
+            }
+
+            // Finland 2007 Joint Issue Variant
+            let variantDetails = null;
+            if (joint.year === 2007 && countryName === 'Finlandia') {
+                variantDetails = 'Existen dos variantes de canto: A (Texto legible con cara arriba) y B (Texto invertido).';
+            }
+
+            return {
+                ...joint,
+                country: countryName,
+                isJoint: true,
+                image: image || joint.image,
+                variantDetails: variantDetails || joint.variantDetails
+            };
+        });
 
     // 3. Merge and Sort
     const fullList = [...specificIssues, ...countryJointIssues].sort((a, b) => b.year - a.year);
