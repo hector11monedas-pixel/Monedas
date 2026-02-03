@@ -169,8 +169,8 @@ export const getLatestUpdate = () => {
 
 // Add new update at the top of the array
 APP_UPDATES.unshift({
-    id: -69,
+    id: -70,
     date: '03/02/2026',
-    title: 'Versión 1.9.6 - Datos 2007 Completos 📝',
-    description: 'Añadida toda la información técnica (descripciones, tiradas, diseñadores) para las monedas de 2007, incluyendo el detalle de la emisión conjunta del Tratado de Roma.'
+    title: 'Versión 1.9.7 - Imágenes Extra 2007 📸',
+    description: 'Conseguida la imagen de Mónaco 2007 (Grace Kelly) y Alemania 2007 (Tratado de Roma). El resto de imágenes faltantes se han catalogado para futura adquisición.'
 });

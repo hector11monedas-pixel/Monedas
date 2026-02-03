@@ -713,6 +713,7 @@ const COUNTRY_CATALOGS = {
         {
             year: 2007,
             subject: '25 Aniv. Muerte Grace Kelly',
+            image: '/img/coins/2007/monaco.jpg?v=204',
             date: '01-07-2007',
             mintage: 20001,
             description: 'La moneda conmemora el 25º aniversario de la muerte de la Princesa Grace Kelly. Muestra su efigie de perfil mirando a la izquierda. Es la moneda de 2 euros más valiosa y buscada.',
@@ -996,6 +997,7 @@ export const getCatalogForCountry = (countryName) => {
             let image = null;
             if (joint.year === 2007) {
                 const map2007 = {
+                    'Alemania': 'treaty_germany.jpg',
                     'Austria': 'treaty_austria.jpg', 'Bélgica': 'treaty_belgium.jpg',
                     'España': 'treaty_spain.jpg', 'Francia': 'treaty_france.jpg', 'Irlanda': 'treaty_ireland.jpg',
                     'Italia': 'treaty_italy.jpg', 'Países Bajos': 'treaty_netherlands.jpg'
