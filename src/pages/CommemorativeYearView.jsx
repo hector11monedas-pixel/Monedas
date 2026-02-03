@@ -107,7 +107,7 @@ const CommemorativeYearView = () => {
                         <ArrowLeft size={24} />
                     </button>
                     <div>
-                        <h2 style={{ margin: 0 }}>Año {year}</h2>
+                        <h2 style={{ margin: 0 }}>Año {year} <span style={{ fontSize: '0.6em', opacity: 0.5 }}>(v2.1)</span></h2>
                         <span className="text-secondary" style={{ fontSize: '0.9rem' }}>
                             {finalList.length} Emisiones Totales
                         </span>
