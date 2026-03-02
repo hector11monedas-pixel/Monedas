@@ -65,13 +65,35 @@ const CommemorativeYearView = () => {
             targetItem = item.userItems.find(i => i.mint === specificMint);
         }
 
+        let finalEstimatedValue = '';
+        if (item.estimatedPrice) {
+            const cleanStr = item.estimatedPrice.toString().replace(/[€$£]/g, '').trim();
+            if (cleanStr.includes('-')) {
+                const parts = cleanStr.split('-').map(p => parseFloat(p.replace(',', '.')));
+                if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                    finalEstimatedValue = ((parts[0] + parts[1]) / 2).toString();
+                }
+            } else {
+                const num = parseFloat(cleanStr.replace(',', '.'));
+                if (!isNaN(num)) finalEstimatedValue = num.toString();
+            }
+        }
+
+        if (specificMint && specificMint.includes('(') && specificMint.includes('€')) {
+            const hintMatch = specificMint.match(/\((\d+([.,]\d+)?)\s*€\)/);
+            if (hintMatch && hintMatch[1]) {
+                finalEstimatedValue = parseFloat(hintMatch[1].replace(',', '.')).toString();
+            }
+        }
+
         if (targetItem && (isOwned || (specificMint && targetItem))) {
             // EDIT
             setSelectedCatalogItem({
                 ...targetItem,
                 isOwned: true,
                 sectionCountry: item.country,
-                userItemId: targetItem.id // Explicitly store Firestore ID
+                userItemId: targetItem.id, // Explicitly store Firestore ID
+                initialEstimatedValue: finalEstimatedValue
             });
         } else {
             // ADD
@@ -79,7 +101,8 @@ const CommemorativeYearView = () => {
                 ...item,
                 mint: specificMint || '',
                 sectionCountry: item.country,
-                userItemId: null // Ensure it is null for new items
+                userItemId: null, // Ensure it is null for new items
+                initialEstimatedValue: finalEstimatedValue
             });
         }
         setIsModalOpen(true);
@@ -446,6 +469,7 @@ const CommemorativeYearView = () => {
                 title={selectedCatalogItem ? null : "Añadir Conmemorativa"}
             >
                 <ItemForm
+                    key={`${selectedCatalogItem?.id || 'new-item'}-${selectedCatalogItem?.mint || 'base'}-${selectedCatalogItem?.year || 'year'}`}
                     onClose={() => setIsModalOpen(false)}
                     initialCategory="euro"
                     initialType="coin"
@@ -454,11 +478,13 @@ const CommemorativeYearView = () => {
                     initialCountry={selectedCatalogItem?.sectionCountry || ''}
                     initialYear={selectedCatalogItem?.year || year}
                     initialSubject={selectedCatalogItem?.subject || ''}
+                    initialVariants={selectedCatalogItem?.variants || []}
                     editId={selectedCatalogItem?.userItemId || null}
                     initialCondition={selectedCatalogItem?.condition || 'UNC'}
                     initialQuantity={selectedCatalogItem?.quantity || 1}
                     initialDescription={selectedCatalogItem?.description || ''}
                     initialMint={selectedCatalogItem?.mint || ''}
+                    initialEstimatedValue={selectedCatalogItem?.initialEstimatedValue || ''}
                     compactMode={!!selectedCatalogItem}
                 />
             </Modal>

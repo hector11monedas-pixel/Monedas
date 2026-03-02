@@ -4,6 +4,7 @@ import { ArrowLeft, Plus, Check, Info, LayoutGrid, Table as TableIcon } from 'lu
 import { useCoin } from '../hooks/useCoin';
 import { getCatalogForCountry } from '../data/CommemorativeCatalog';
 import { SPAIN_COLLECTOR_COINS } from '../data/SpainCollectorCoins';
+import { stripPriceHint } from '../utils/priceUtils';
 import Modal from '../components/common/Modal';
 import CoinDetailModal from '../components/common/CoinDetailModal';
 import ItemForm from '../components/common/ItemForm';
@@ -96,6 +97,7 @@ const CommemorativeCountryView = () => {
     const handleCardClick = (item, isOwned, specificMint = null) => {
         let isSilver = false;
         let userItemId = null;
+        let targetItem = null;
 
         // Check for Collector Coins (Silver)
         if (activeTab === 'collector' && countryName.toLowerCase() === 'españa') {
@@ -103,6 +105,7 @@ const CommemorativeCountryView = () => {
             // For collector coins, item.userItem IS the user item if it exists
             if (item.userItem) {
                 userItemId = item.userItem.id;
+                targetItem = item.userItem;
             }
         }
         else if (specificMint) {
@@ -110,11 +113,35 @@ const CommemorativeCountryView = () => {
             const variantMatch = (item.userItems || []).find(i => i.mint === specificMint);
             if (variantMatch) {
                 userItemId = variantMatch.id;
+                targetItem = variantMatch;
             }
         }
         else if (item.userItem) {
             // If no specific mint requested, default to the first match
             userItemId = item.userItem.id;
+            targetItem = item.userItem;
+        }
+
+        let initialEstimatedValue = '';
+        if (item.estimatedPrice) {
+            const cleanStr = item.estimatedPrice.toString().replace(/[€$£]/g, '').trim();
+            if (cleanStr.includes('-')) {
+                const parts = cleanStr.split('-').map(p => parseFloat(p.replace(',', '.')));
+                if (parts.length === 2 && !isNaN(parts[0]) && !isNaN(parts[1])) {
+                    initialEstimatedValue = ((parts[0] + parts[1]) / 2).toString();
+                }
+            } else {
+                const num = parseFloat(cleanStr.replace(',', '.'));
+                if (!isNaN(num)) initialEstimatedValue = num.toString();
+            }
+        }
+
+        // If specificMint has a price hint, extract it
+        if (specificMint && specificMint.includes('(') && specificMint.includes('€')) {
+            const hintMatch = specificMint.match(/\((\d+([.,]\d+)?)\s*€\)/);
+            if (hintMatch && hintMatch[1]) {
+                initialEstimatedValue = parseFloat(hintMatch[1].replace(',', '.')).toString();
+            }
         }
 
         setSelectedCatalogItem({
@@ -122,8 +149,21 @@ const CommemorativeCountryView = () => {
             mint: specificMint || '',
             faceValue: isSilver ? item.value : 2,
             isSilver: isSilver,
-            userItemId: userItemId // STORE CORRECT ID OR NULL
+            userItemId: userItemId, // STORE CORRECT ID OR NULL
+            initialEstimatedValue: initialEstimatedValue
         });
+
+        if (targetItem && (isOwned || (specificMint && targetItem))) {
+            // EDIT OVERRIDE
+            setSelectedCatalogItem({
+                ...targetItem,
+                isOwned: true,
+                sectionCountry: item.country,
+                userItemId: targetItem.id, // Explicitly store Firestore ID
+                initialEstimatedValue: initialEstimatedValue
+            });
+        }
+
         setIsModalOpen(true);
     };
 
@@ -535,9 +575,9 @@ const CommemorativeCountryView = () => {
                                                                             fontWeight: 'bold',
                                                                             transition: 'all 0.2s ease'
                                                                         }}
-                                                                        title={`Variante ${variant}`}
+                                                                        title={`Variante ${stripPriceHint(variant)} `}
                                                                     >
-                                                                        {variant}
+                                                                        {stripPriceHint(variant)}
                                                                     </button>
                                                                 );
                                                             })}
@@ -581,11 +621,11 @@ const CommemorativeCountryView = () => {
                                             const isVariantOwned = !!userItem;
 
                                             return (
-                                                <tr key={`${index}-${variant}`} className={isVariantOwned ? 'collected' : ''}>
+                                                <tr key={`${index} -${variant} `} className={isVariantOwned ? 'collected' : ''}>
                                                     <td className="year-cell">{item.year}</td>
                                                     <td style={{ textAlign: 'left', padding: '1rem' }}>
                                                         <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-                                                            <span style={{ fontWeight: 'bold', color: 'var(--primary-color)' }}>{variant}</span>
+                                                            <span style={{ fontWeight: 'bold', color: 'var(--primary-color)' }}>{stripPriceHint(variant)}</span>
                                                             <span>{item.subject}</span>
                                                         </div>
                                                     </td>
@@ -667,7 +707,7 @@ const CommemorativeCountryView = () => {
                 title={selectedCatalogItem ? null : "Añadir Conmemorativa"}
             >
                 <ItemForm
-                    key={selectedCatalogItem?.id || 'new-item'} // FORCE REMOUNT on item change
+                    key={`${selectedCatalogItem?.id || 'new'}-${selectedCatalogItem?.mint || 'base'}-${selectedCatalogItem?.year || 'year'}`}
                     onClose={() => setIsModalOpen(false)}
                     initialCategory="euro"
                     initialType="coin"
@@ -683,6 +723,7 @@ const CommemorativeCountryView = () => {
                     initialQuantity={selectedCatalogItem?.quantity || 1}
                     initialDescription={selectedCatalogItem?.description || ''}
                     initialMint={selectedCatalogItem?.mint || ''}
+                    initialEstimatedValue={selectedCatalogItem?.initialEstimatedValue || ''}
                     compactMode={!!selectedCatalogItem}
                 />
             </Modal>

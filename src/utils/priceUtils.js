@@ -97,7 +97,22 @@ export const getItemValuation = (item) => {
 
     // B. Catalog Lookups
     // B1. Banknotes
-    if (item.category === 'banknote' || item.category === 'banknotes') {
+    // --- B. Estimated Value Calculation ---
+
+    // 0. TOP PRIORITY: Price Hint Extraction from Variant Name (e.g. "Variante (690.00€)")
+    // This is the most specific information we have.
+    if (item.mint && item.mint.includes('(') && item.mint.includes('€')) {
+        const hintMatch = item.mint.match(/\((\d+([.,]\d+)?)\s*€\)/);
+        if (hintMatch && hintMatch[1]) {
+            const hintValue = parseFloat(hintMatch[1].replace(',', '.'));
+            if (!isNaN(hintValue)) {
+                estimatedValue = hintValue;
+            }
+        }
+    }
+
+    // B1. Banknotes
+    if (estimatedValue === 0 && (item.category === 'banknote' || item.category === 'banknotes')) {
         const countryKey = Object.keys(BANKNOTE_DATA).find(k => BANKNOTE_DATA[k].country === item.country);
         if (countryKey && item.banknoteId) {
             const countryData = BANKNOTE_DATA[countryKey];
@@ -113,7 +128,7 @@ export const getItemValuation = (item) => {
         }
     }
     // B2. Commemoratives
-    else if (item.category === 'commemorative' || item.isCommemorative) {
+    else if (estimatedValue === 0 && (item.category === 'commemorative' || item.isCommemorative)) {
         if (item.year && item.country) {
             const countryCoins = COUNTRY_CATALOGS[item.country] || [];
             let match = countryCoins.find(c =>
@@ -132,22 +147,10 @@ export const getItemValuation = (item) => {
             if (match && match.estimatedPrice) {
                 estimatedValue = parseStringRange(match.estimatedPrice);
             }
-
-            // C. Price Hint Extraction (e.g. "Variant (80€)")
-            // If the mint (variant) name contains a price in parentheses, it takes priority
-            if (item.mint && item.mint.includes('(') && item.mint.includes('€')) {
-                const hintMatch = item.mint.match(/\((\d+([.,]\d+)?)\s*€\)/);
-                if (hintMatch && hintMatch[1]) {
-                    const hintValue = parseFloat(hintMatch[1].replace(',', '.'));
-                    if (!isNaN(hintValue)) {
-                        estimatedValue = hintValue;
-                    }
-                }
-            }
         }
     }
     // B3. Spain (Pesetas, Franco, Republic, Local)
-    else if (item.country === 'España' && (item.category === 'spain' || item.category === 'world')) {
+    else if (estimatedValue === 0 && item.country === 'España' && (item.category === 'spain' || item.category === 'world')) {
         const result = getSpainCoinPrice(item);
         if (result) {
             estimatedValue = result.price;
@@ -155,7 +158,7 @@ export const getItemValuation = (item) => {
         }
     }
     // B4. Abkhazia
-    else if (item.country === 'Abjasia' || item.country === 'Abkhazia') {
+    else if (estimatedValue === 0 && (item.country === 'Abjasia' || item.country === 'Abkhazia')) {
         let allAbCoins = [];
         if (ABKHAZIA_COMM_DATA && ABKHAZIA_COMM_DATA.seriesList) {
             ABKHAZIA_COMM_DATA.seriesList.forEach(s => allAbCoins.push(...s.coins));
@@ -179,8 +182,13 @@ export const getItemValuation = (item) => {
             estimatedValue = parseStringRange(match.estimatedValue);
         }
     }
+
     // B4. Euro Catalog (New Structure: Spain, etc.)
-    if (item.category === 'euro' && EURO_PRICING[item.country]) {
+    // We only run this if estimatedValue is still 0 OR if we have a mint/variant to check specifically.
+    // However, if we already extracted a hint from item.mint, we should NOT overwrite it with a generic price.
+    const hasHint = item.mint && item.mint.includes('(') && item.mint.includes('€');
+
+    if (!hasHint && item.category === 'euro' && EURO_PRICING[item.country]) {
         const valMap = {
             '1 cent. €': '1c', '2 cents €': '2c', '5 cents €': '5c',
             '10 cents €': '10c', '20 cents €': '20c', '50 cents €': '50c',
@@ -214,10 +222,6 @@ export const getItemValuation = (item) => {
         const countryData = EURO_PRICING[item.country];
         if (countryData && pricingKey && countryData[pricingKey]) {
             const entry = countryData[pricingKey][parseInt(item.year)];
-            // Entry can be an object or array of objects. 
-            // For auto-pricing, we pick the first one or the max price? 
-            // Usually just picking the first valid price is safe for default.
-            // If array, maybe take the lowest?
 
             if (entry) {
                 const entries = Array.isArray(entry) ? entry : [entry];
@@ -233,12 +237,17 @@ export const getItemValuation = (item) => {
                     validEntry = entries.find(e => e.price > 0);
                 }
 
-                if (validEntry) {
-                    estimatedValue = validEntry.price;
+                if (validEntry && validEntry.price > 0) {
+                    // Only override if we don't have a price yet, OR if this is a specific mint match (like 'G')
+                    // But remember we checked !hasHint at the top of this block.
+                    if (estimatedValue === 0 || item.mint) {
+                        estimatedValue = validEntry.price;
+                    }
                 }
             }
         }
     }
+
 
     // B5. Regular Prices (Fallback / Other Countries)
     if (estimatedValue === 0) { // Only if not found in EURO_PRICING

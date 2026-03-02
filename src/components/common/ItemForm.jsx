@@ -227,7 +227,7 @@ const ItemForm = ({
             }
 
             // 2. Suggested Prices & Automatic Labels
-            if (['value', 'year', 'condition', 'variantId', 'country', 'isCommemorative', 'subject'].includes(name)) {
+            if (['value', 'year', 'condition', 'variantId', 'country', 'isCommemorative', 'mint', 'subject'].includes(name)) {
                 // Use the global valuation utility for suggestions
                 const tempItem = {
                     ...next,
