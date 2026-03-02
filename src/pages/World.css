@@ -49,15 +49,28 @@
     border-radius: 16px;
     cursor: pointer;
     transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
-    background: rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.08);
+    /* Increased opacity */
     border: 1px solid rgba(255, 255, 255, 0.1);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    /* Added blur directly */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    min-height: 120px;
+    /* Ensure minimum height to prevent cutting */
+    overflow: hidden;
+    /* Ensure content stays inside */
+    position: relative;
+    /* Context for absolute children */
 }
 
 .country-card:hover {
-    transform: translateY(-5px) scale(1.05);
-    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-5px) scale(1.02);
+    /* Reduced scale slightly to avoid clipping */
+    background: rgba(255, 255, 255, 0.15);
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-    border-color: var(--primary-color);
+    border-color: var(--gold-500);
+    /* Use gold for hover */
 }
 
 .flag-wrapper {

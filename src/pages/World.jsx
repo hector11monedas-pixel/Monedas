@@ -1,25 +1,34 @@
 import React, { useState } from 'react';
 import { ArrowLeft, Globe, Star } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import { useCoin } from '../context/CoinContext';
+import { useCoin } from '../hooks/useCoin';
+import { calculateWorldCatalogSize } from '../utils/emissionUtils';
 import WorldMap from '../components/common/WorldMap';
 import Modal from '../components/common/Modal';
 import './World.css';
 
 const WORLD_COUNTRIES = [
-    { name: 'España', code: 'es', path: '/spain' },
-    { name: 'Estados Unidos', code: 'us', path: '/world/usa' },
-    { name: 'Japón', code: 'jp', path: '/world/japan' },
-    { name: 'México', code: 'mx', path: '/world/mexico' },
-    { name: 'Reino Unido', code: 'gb', path: '/world/uk' },
+    { name: 'Abjasia', code: 'ab', path: '/world/abkhazia', customFlag: 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Flag_of_the_Republic_of_Abkhazia.svg/320px-Flag_of_the_Republic_of_Abkhazia.svg.png' },
+    { name: 'Afganistán', code: 'af', path: '/world/afghanistan' },
+    { name: 'España', code: 'es', path: '/world/spain' },
     { name: 'República Checa', code: 'cz', path: '/world/czechia' }
-];
+].sort((a, b) => a.name.localeCompare(b.name, 'es'));
 
 const World = () => {
     const navigate = useNavigate();
-    const { favoriteCountry, setFavoriteCountry } = useCoin();
+    const { items, favoriteCountry, setFavoriteCountry, loadedGlobalData } = useCoin();
     const [isConfirmOpen, setIsConfirmOpen] = useState(false);
     const [pendingFavorite, setPendingFavorite] = useState(null);
+
+    // Helper to count collected items
+    const countCollected = (countryName) => {
+        return items.filter(i =>
+            i.country === countryName &&
+            (i.category === 'world' || i.category === 'europe') // Broad check for non-euro/non-banknote
+            && i.category !== 'banknote' // Explicitly exclude banknotes
+            && i.category !== 'euro' // Explicitly exclude euro
+        ).length;
+    };
 
     return (
         <div className="page-container world-page">
@@ -47,10 +56,13 @@ const World = () => {
                 <div className="countries-grid">
                     {WORLD_COUNTRIES.map((country) => {
                         const isFavorite = favoriteCountry.path === country.path;
+                        const collected = countCollected(country.name);
+                        const total = calculateWorldCatalogSize(country.name, loadedGlobalData);
+
                         return (
                             <div
                                 key={country.code}
-                                className="country-card glass-panel"
+                                className="country-card"
                                 onClick={() => country.path ? navigate(country.path) : null}
                                 style={{ position: 'relative' }}
                             >
@@ -81,12 +93,15 @@ const World = () => {
                                 </button>
                                 <div className="flag-wrapper">
                                     <img
-                                        src={`https://flagcdn.com/w160/${country.code}.png`}
+                                        src={country.customFlag || `https://flagcdn.com/w160/${country.code}.png`}
                                         alt={country.name}
                                         className="country-flag"
                                     />
                                 </div>
                                 <span className="country-name">{country.name}</span>
+                                <span className="country-counter text-secondary" style={{ fontSize: '0.8rem', marginTop: '4px' }}>
+                                    {collected} / {total}
+                                </span>
                             </div>
                         );
                     })}

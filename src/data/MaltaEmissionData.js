@@ -7,81 +7,64 @@ export const getMaltaCoinStatus = (year, denomination) => {
     const y = parseInt(year);
     const val = parseFloat(denomination);
 
-    // === RED: Not Issued ===
-    // 2009: All
-    if (y === 2009) return STATUS_NOT_ISSUED;
+    // Malta joined Euro in 2008
+    if (y < 2008 || y > 2026) return STATUS_NOT_ISSUED;
 
-    // 2010: 1c, 2c, 5c, 10c, 20c, 50c, 1€ (All except 2€)
+    // Red: Not Issued
+    if (y === 2009) return STATUS_NOT_ISSUED;
     if (y === 2010 && val !== 2.00) return STATUS_NOT_ISSUED;
 
-    // === GREEN: Circulation ===
-    // 2008: All
-    if (y === 2008) return STATUS_CIRCULATION;
+    // Circulation logic (Green) based on user data
+    // High mintage (>100k-250k and not marked as Prueba)
 
-    // 2010: 2€ (Implicitly handled if we return set_only for others, but let's be explicit)
-    if (y === 2010 && val === 2.00) return STATUS_CIRCULATION;
-
-    // 2013: 1c, 2c, 5c, 50c, 2€
-    if (y === 2013) {
-        if ([0.01, 0.02, 0.05, 0.50, 2.00].includes(val)) return STATUS_CIRCULATION;
+    // 1c
+    if (val === 0.01) {
+        if ([2008, 2013, 2016, 2019].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2014: User listed empty, implying None -> Yellow default.
-
-    // 2015: 2c, 5c, 2€
-    if (y === 2015) {
-        if ([0.02, 0.05, 2.00].includes(val)) return STATUS_CIRCULATION;
+    // 2c
+    if (val === 0.02) {
+        if ([2008, 2013, 2015, 2016, 2020].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2016: 1c, 2c, 5c, 10c, 20c, 50c, 1€, 2€ (All)
-    if (y === 2016) return STATUS_CIRCULATION;
-
-    // 2017: 1c, 5c, 10c, 50c, 1€
-    if (y === 2017) {
-        if ([0.01, 0.05, 0.10, 0.50, 1.00].includes(val)) return STATUS_CIRCULATION;
+    // 5c
+    if (val === 0.05) {
+        if ([2008, 2013, 2015, 2016, 2018, 2020, 2022, 2023, 2024, 2025].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2018: 1c, 2c
-    if (y === 2018) {
-        if ([0.01, 0.02].includes(val)) return STATUS_CIRCULATION;
+    // 10c
+    if (val === 0.10) {
+        if ([2008, 2016, 2018, 2020, 2022, 2023, 2024, 2025].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2019: 1c, 5c, 10c, 20c, 50c, 1€
-    if (y === 2019) {
-        if ([0.01, 0.05, 0.10, 0.20, 0.50, 1.00].includes(val)) return STATUS_CIRCULATION;
+    // 20c
+    if (val === 0.20) {
+        if ([2008, 2016, 2021, 2022, 2023, 2024, 2025].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2020: 2c, 5c, 10c, 20c, 50c, 1€
-    if (y === 2020) {
-        if ([0.02, 0.05, 0.10, 0.20, 0.50, 1.00].includes(val)) return STATUS_CIRCULATION;
+    // 50c
+    if (val === 0.50) {
+        if ([2008, 2013, 2016, 2017, 2023, 2024, 2025].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2021: 1c, 2c, 5c, 10c, 20c, 50c, 1€
-    if (y === 2021) {
-        if ([0.01, 0.02, 0.05, 0.10, 0.20, 0.50, 1.00].includes(val)) return STATUS_CIRCULATION;
+    // 1€
+    if (val === 1.00) {
+        if ([2008, 2016, 2017, 2021, 2023].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2022: 1c, 2c, 5c, 10c, 20c
-    if (y === 2022) {
-        if ([0.01, 0.02, 0.05, 0.10, 0.20].includes(val)) return STATUS_CIRCULATION;
+    // 2€
+    if (val === 2.00) {
+        if ([2008, 2010, 2013, 2016, 2023, 2024, 2025].includes(y)) return STATUS_CIRCULATION;
+        return STATUS_SET_ONLY;
     }
 
-    // 2023: 5c, 10c, 20c, 50c, 1€
-    if (y === 2023) {
-        if ([0.05, 0.10, 0.20, 0.50, 1.00].includes(val)) return STATUS_CIRCULATION;
-    }
-
-    // 2024: 20c
-    if (y === 2024 && val === 0.20) return STATUS_CIRCULATION;
-
-    // 2025: 2c, 20c, 2€
-    if (y === 2025) {
-        if ([0.02, 0.20, 2.00].includes(val)) return STATUS_CIRCULATION;
-    }
-
-    // 2026: All
-    if (y === 2026) return STATUS_CIRCULATION;
-
-    // === YELLOW: Set Only (Everything else) ===
     return STATUS_SET_ONLY;
 };
+

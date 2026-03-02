@@ -1,0 +1,33 @@
+.admin-dashboard {
+    padding-bottom: 4rem;
+}
+
+.admin-dashboard h1 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.admin-dashboard p {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.pending-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.pending-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.pending-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.image-container {
+    background: rgba(0, 0, 0, 0.2);
+}

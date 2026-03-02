@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCoin } from '../context/CoinContext';
-import { calculateTotalEuroCatalogSize, calculateCountryEuroCatalogSize } from '../data/EuroData';
+import { useCoin } from '../hooks/useCoin';
+import { calculateTotalNormalEuroCatalogSize, calculateCountryCatalogSize } from '../utils/emissionUtils';
 import { ArrowLeft, Plus, Settings, CheckSquare, Square, Star } from 'lucide-react';
 import Modal from '../components/common/Modal';
 import ItemForm from '../components/common/ItemForm';
@@ -88,7 +88,7 @@ const EuroCountries = () => {
         return acc + countCollected(safeItems, country.name);
     }, 0);
 
-    const totalCatalogCount = calculateTotalEuroCatalogSize(calcOptions);
+    const totalCatalogCount = calculateTotalNormalEuroCatalogSize(calcOptions);
 
     return (
         <div className="page-container">
@@ -152,7 +152,7 @@ const EuroCountries = () => {
             <div className="countries-grid">
                 {EURO_COUNTRIES.map((country) => {
                     const countryCollected = countCollected(safeItems, country.name);
-                    const countryTotal = calculateCountryEuroCatalogSize(country.name, calcOptions);
+                    const countryTotal = calculateCountryCatalogSize(country.name, calcOptions);
 
                     const isFavorite = favoriteCountry.path === `/euro/normal/${country.name}`;
 

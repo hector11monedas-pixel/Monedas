@@ -28,12 +28,12 @@
     /* Slightly less than 90vh to avoid browser bars */
     overflow-y: auto;
 
-    background: rgba(30, 30, 30, 0.95);
+    background: var(--bg-secondary);
     /* Ensure solid background */
-    padding: 1.5rem;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
-    border-radius: 16px;
+    padding: 1rem;
+    border: 1px solid var(--border-color);
+    box-shadow: var(--shadow-lg);
+    border-radius: 12px;
     z-index: 10000;
     /* Above overlay */
 
@@ -44,15 +44,15 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 1.5rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 1rem;
+    margin-bottom: 0.8rem;
+    border-bottom: 1px solid var(--border-color-light);
+    padding-bottom: 0.5rem;
 }
 
 .modal-header h3 {
     margin: 0;
     color: var(--text-primary);
-    font-size: 1.5rem;
+    font-size: 1.3rem;
 }
 
 .close-button {

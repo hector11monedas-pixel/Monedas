@@ -1,13 +1,13 @@
 .item-form {
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1rem;
 }
 
 .form-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    gap: 0.8rem;
 }
 
 @media (max-width: 600px) {
@@ -19,7 +19,7 @@
 .form-group {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.3rem;
 }
 
 .form-group label {
@@ -32,10 +32,10 @@
     background: rgba(255, 255, 255, 0.05);
     border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 8px;
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 0.8rem;
     color: var(--text-primary);
     font-family: inherit;
-    font-size: 1rem;
+    font-size: 0.95rem;
     transition: all 0.3s ease;
 }
 
@@ -46,11 +46,18 @@
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.2);
 }
 
+/* Fix visibility for select options */
+select.glass-input option {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 10px;
+}
+
 .type-selector {
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     background: rgba(0, 0, 0, 0.2);
-    padding: 0.3rem;
+    padding: 0.2rem;
     border-radius: 10px;
 }
 
@@ -58,7 +65,7 @@
     flex: 1;
     background: transparent;
     border: none;
-    padding: 0.8rem;
+    padding: 0.5rem;
     color: var(--text-secondary);
     border-radius: 8px;
     cursor: pointer;
@@ -89,7 +96,7 @@ textarea.glass-input {
     background: linear-gradient(135deg, var(--primary-color), #b4941f);
     color: var(--background-dark);
     border: none;
-    padding: 1rem;
+    padding: 0.8rem;
     border-radius: 8px;
     font-weight: 600;
     cursor: pointer;
@@ -98,7 +105,7 @@ textarea.glass-input {
     align-items: center;
     gap: 0.5rem;
     transition: transform 0.2s ease, box-shadow 0.2s ease;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
 }
 
 .submit-button:hover {

@@ -5,8 +5,24 @@ const CoinImage = ({ src, alt, fallback, isOwned, className, style, children }) 
     const [error, setError] = useState(false);
     const [loaded, setLoaded] = useState(false);
 
+    // Apply proxy to external URLs for better compatibility and hotlink bypass
+    const getProxiedSrc = (url) => {
+        if (!url) return null;
+        if (typeof url === 'string' && url.startsWith('http') && !url.includes('weserv.nl')) {
+            // BYPASS PROXY for stable sources
+            if (url.includes('ecb.europa.eu') ||
+                url.includes('numista.com') ||
+                url.includes('nb-ra.org')) return url;
+
+            return `https://images.weserv.nl/?url=${encodeURIComponent(url)}`;
+        }
+        return url;
+    };
+
+    const proxiedSrc = getProxiedSrc(src);
+
     // If no source or error occurred, render the fallback (CSS Coin)
-    if (!src || error) {
+    if (!proxiedSrc || error) {
         return <>{fallback}</>;
     }
 
@@ -31,9 +47,10 @@ const CoinImage = ({ src, alt, fallback, isOwned, className, style, children }) 
             )}
 
             <img
-                src={src}
+                src={proxiedSrc}
                 alt={alt}
                 loading="lazy"
+                referrerPolicy="no-referrer"
                 onError={() => setError(true)}
                 onLoad={() => setLoaded(true)}
                 style={{

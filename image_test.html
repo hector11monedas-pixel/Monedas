@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
+    <title>Image Test</title>
+</head>
+
+<body>
+    <h1>Wikimedia Image Test</h1>
+
+    <h3>1. Direct Upload (No Special Chars)</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/ea/Germany-2-euro-2008.jpg" width="100"
+        alt="Germany 2008">
+
+    <h3>2. Direct Upload (Special Chars Encoded)</h3>
+    <img src="https://upload.wikimedia.org/wikipedia/commons/4/40/2_%E2%82%AC_commemorativo_Spagna_2005.png" width="100"
+        alt="Spain 2005">
+
+    <h3>3. Thumb.php Proxy</h3>
+    <img src="https://commons.wikimedia.org/w/thumb.php?f=Germany-2-euro-2008.jpg&width=500" width="100"
+        alt="Germany 2008 Thumb">
+
+    <h3>4. Special:FilePath Proxy</h3>
+    <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Germany-2-euro-2008.jpg" width="100"
+        alt="Germany 2008 FilePath">
+
+    <h3>5. External CDN (Testing if domain is the issue)</h3>
+    <img src="https://images.numista.com/catalogue/photos/espagne/104-20.jpg" width="100" alt="Numista Test">
+</body>
+
+</html>

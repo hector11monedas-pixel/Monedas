@@ -1,0 +1,242 @@
+.banknote-card-container {
+    perspective: 1000px;
+    width: 100%;
+    max-width: 600px;
+    /* Adjust based on typical banknote aspect ratio */
+    height: 320px;
+    /* Enough height for image + info */
+    margin: 0 auto;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+
+
+.banknote-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.banknote-card-inner.flipped {
+    transform: rotateY(180deg);
+}
+
+.banknote-card-front,
+.banknote-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+    border-radius: 16px;
+    background: #1e1e1e;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.banknote-card-container.collected .banknote-card-front,
+.banknote-card-container.collected .banknote-card-back {
+    border-color: #4CAF50;
+    box-shadow: 0 0 15px rgba(76, 175, 80, 0.3);
+}
+
+.banknote-card-back {
+    transform: rotateY(180deg);
+}
+
+.banknote-image-wrapper {
+    width: 100%;
+    height: 200px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.banknote-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect on image just to show interactivity */
+.banknote-card-container:hover .banknote-img {
+    transform: scale(1.02);
+}
+
+.banknote-info {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: linear-gradient(180deg, #1e1e1e 0%, #252525 100%);
+}
+
+.banknote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.banknote-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.banknote-dims {
+    font-size: 0.8rem;
+    color: #888;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+.banknote-desc {
+    font-size: 0.95rem;
+    color: #ccc;
+    line-height: 1.4;
+    text-align: left;
+}
+
+.flip-hint {
+    position: absolute;
+    bottom: 10px;
+    right: 15px;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Collection Status Badge */
+.collection-status-badge {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.collection-status-badge:hover {
+    transform: scale(1.1);
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.status-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.status-icon.collected {
+    color: #4CAF50;
+}
+
+.status-icon.uncollected {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.banknote-card-container.collected .collection-status-badge {
+    background: #4CAF50;
+    border-color: #4CAF50;
+}
+
+.banknote-card-container.collected .status-icon.collected {
+    color: white;
+}
+
+.banknote-extra-details {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 10px;
+    padding-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.extra-item {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.extra-item .label {
+    font-size: 0.7rem;
+    color: #888;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.extra-item .value {
+    font-size: 0.85rem;
+    color: #eee;
+    font-weight: 500;
+}
+
+.extra-item .value.highlighting {
+    color: #FFD700;
+    font-weight: 700;
+}
+
+.banknote-status-badge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    z-index: 10;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.banknote-status-badge.válido {
+    background: #4CAF50;
+    color: white;
+}
+
+.banknote-status-badge.retirado {
+    background: #f44336;
+    color: white;
+}
+
+.no-image-placeholder-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #121212;
+    color: #444;
+    font-size: 0.9rem;
+    font-style: italic;
+    border: 2px dashed rgba(255, 255, 255, 0.05);
+}

@@ -4,14 +4,14 @@ export const STATUS_SET_ONLY = 'set_only';   // Yellow
 export const STATUS_NOT_ISSUED = 'not_issued'; // Red
 
 const ESTONIA_CIRCULATION = {
-    '1c': [2011, 2012, 2015, 2017, 2018, 2019, 2022, 2026],
-    '2c': [2011, 2012, 2015, 2017, 2018, 2020, 2021, 2022, 2026],
-    '5c': [2011, 2017, 2018, 2022, 2023, 2026],
-    '10c': [2011, 2018, 2022, 2023, 2026],
-    '20c': [2011, 2017, 2018, 2020, 2021, 2023, 2026],
-    '50c': [2011, 2018, 2026],
-    '1€': [2011, 2018, 2026],
-    '2€': [2011, 2018, 2023, 2026]
+    '1c': [2011, 2012, 2015, 2017, 2018, 2019, 2022],
+    '2c': [2011, 2012, 2015, 2017, 2018, 2020, 2021, 2022],
+    '5c': [2011, 2017, 2018, 2022, 2023],
+    '10c': [2011, 2018, 2022, 2023],
+    '20c': [2011, 2017, 2018, 2020, 2021, 2023],
+    '50c': [2011, 2018],
+    '1€': [2011, 2018],
+    '2€': [2011, 2018, 2023]
 };
 
 const ESTONIA_SETS = {
@@ -31,6 +31,7 @@ export const getEstoniaCoinStatus = (year, denomination) => {
 
     // Estonia started in 2011
     if (y < 2011) return STATUS_NOT_ISSUED;
+    if (y > 2026) return STATUS_NOT_ISSUED;
 
     // Map denom value to key
     let key = null;
@@ -51,10 +52,10 @@ export const getEstoniaCoinStatus = (year, denomination) => {
     }
 
     // Check Sets (Yellow)
-    if (ESTONIA_SETS[key]?.includes(y)) {
+    if (ESTONIA_SETS[key]?.includes(y) || y >= 2024) {
         return STATUS_SET_ONLY;
     }
 
-    // Default: Not Issued (Red)
+    // Default: Not Issued (Red) for years not in lists specifically
     return STATUS_NOT_ISSUED;
 };

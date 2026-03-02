@@ -1,0 +1,410 @@
+.inventory-manager-container {
+    padding: 1rem;
+    height: calc(100vh - 80px);
+    /* Fill space */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.inventory-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.inventory-filters {
+    display: flex;
+    gap: 10px;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 10px;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.search-box input {
+    background: transparent;
+    border: none;
+    color: white;
+    padding: 5px;
+    outline: none;
+}
+
+.filter-select {
+    background: #222;
+    color: white;
+    border: 1px solid #444;
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+/* BATCH BAR */
+.batch-actions-bar {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    padding: 10px 20px;
+    border-radius: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.batch-actions-bar .action-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.batch-actions-bar button {
+    background: rgba(0, 0, 0, 0.2);
+    border: none;
+    color: inherit;
+    padding: 8px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s;
+}
+
+.batch-actions-bar button:hover {
+    background: rgba(0, 0, 0, 0.4);
+}
+
+.batch-actions-bar .btn-delete:hover {
+    background: #ef4444;
+    color: white;
+}
+
+.divider {
+    width: 1px;
+    height: 20px;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 0 5px;
+}
+
+/* LIST HEADER */
+.inventory-list-header {
+    display: flex;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px 8px 0 0;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.inventory-list-container {
+    flex: 1;
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 0 0 8px 8px;
+}
+
+/* ROWS */
+.inventory-row {
+    display: flex;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+.inventory-row:hover {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.inventory-row.selected {
+    background: rgba(212, 175, 55, 0.1);
+}
+
+/* COLUMNS */
+.col-check {
+    width: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.col-img {
+    width: 60px;
+    display: flex;
+    justify-content: center;
+}
+
+.col-data {
+    flex: 1.5;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 10px;
+}
+
+.col-val {
+    width: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-end;
+    padding-right: 15px;
+}
+
+.col-status {
+    width: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.col-actions {
+    width: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+.row-flag {
+    width: 30px;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.row-title {
+    display: block;
+    font-weight: bold;
+    font-size: 0.95rem;
+}
+
+.row-subtitle {
+    display: block;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.status-badge {
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.status-badge.collected {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+}
+
+.status-badge.looking {
+    background: rgba(96, 165, 250, 0.2);
+    color: #60a5fa;
+}
+
+.status-badge.trade {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+}
+
+/* NEW: STATS ROW */
+.inventory-stats-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+}
+
+.inv-stat-card {
+    flex: 1;
+    min-width: 180px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.inv-stat-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.inv-stat-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.inv-stat-icon.pieces {
+    background: rgba(96, 165, 250, 0.15);
+    color: #60a5fa;
+}
+
+.inv-stat-icon.face {
+    background: rgba(74, 222, 128, 0.15);
+    color: #4ade80;
+}
+
+.inv-stat-icon.estimate {
+    background: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+}
+
+.inv-stat-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.inv-stat-label {
+    font-size: 0.75rem;
+    opacity: 0.6;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.inv-stat-value {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: white;
+}
+
+/* ROW ENHANCEMENTS */
+.row-main {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 2px;
+}
+
+.row-badges {
+    display: flex;
+    gap: 5px;
+}
+
+.qty-badge {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    padding: 0 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 800;
+}
+
+.condition-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: #eee;
+    padding: 0 6px;
+    border-radius: 4px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.row-price {
+    font-size: 1rem;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+.row-val-label {
+    font-size: 0.65rem;
+    opacity: 0.5;
+    text-transform: uppercase;
+}
+
+.btn-row-edit {
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    color: white;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-row-edit:hover {
+    background: var(--primary-color);
+    color: var(--bg-primary);
+    transform: scale(1.1);
+}
+
+/* EDIT MODAL */
+.inventory-edit-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.85);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.inventory-edit-modal {
+    width: 100%;
+    max-width: 600px;
+    height: 90vh;
+    /* Changed from max-height to a fixed-ish height to allow scrolling inside form if needed, but ItemForm usually handles its own scroll */
+    background: #111;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+@media (max-width: 768px) {
+    .inventory-stats-row {
+        gap: 10px;
+    }
+
+    .inv-stat-card {
+        min-width: 140px;
+        padding: 10px;
+    }
+
+    .col-val,
+    .col-actions {
+        display: none;
+    }
+
+    .inventory-list-header .col-val,
+    .inventory-list-header .col-actions {
+        display: none;
+    }
+}

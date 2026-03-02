@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useCoin } from '../context/CoinContext';
-import { calculateTotalEuroCatalogSize } from '../data/EuroData';
+import { useCoin } from '../hooks/useCoin';
+import { calculateTotalNormalEuroCatalogSize } from '../utils/emissionUtils';
 import { calculateCommemorativeCatalogSize } from '../data/CommemorativeCatalog';
 import { Euro, Award, ArrowLeft, Map as MapIcon } from 'lucide-react';
 import './Dashboard.css'; // Shared styles
@@ -10,11 +10,14 @@ import EuroMap from './EuroMap';
 
 const EuroMenu = () => {
     const navigate = useNavigate();
-    const { items } = useCoin();
+    const { items, germanMintsEnabled, greeceMintsEnabled } = useCoin();
 
     // Calculate Global Stats
     const collectedCount = (items || []).filter(i => i.category === 'euro').length;
-    const totalCatalogCount = calculateTotalEuroCatalogSize() + calculateCommemorativeCatalogSize();
+
+    // Use correct options from Context/Settings
+    const calcOptions = { germanMints: germanMintsEnabled, greeceMints: greeceMintsEnabled };
+    const totalCatalogCount = calculateTotalNormalEuroCatalogSize(calcOptions) + calculateCommemorativeCatalogSize();
 
     return (
         <div className="dashboard-menu">

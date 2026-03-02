@@ -8,88 +8,50 @@ export const getPortugalCoinStatus = (year, denomination) => {
 
     // === YELLOW: Set Only ===
 
-    // 2003: 1c, 2c, 5c
-    if (y === 2003) {
-        if ([0.01, 0.02, 0.05].includes(val)) return STATUS_SET_ONLY;
+    // 1c
+    if (val === 0.01) {
+        if ([2003, 2013, 2018, 2021, 2022, 2024, 2025, 2026].includes(y)) return STATUS_SET_ONLY;
     }
 
-    // 2007: 10c, 20c, 50c, 2€
-    if (y === 2007) {
-        if ([0.10, 0.20, 0.50, 2.00].includes(val)) return STATUS_SET_ONLY;
+    // 2c
+    if (val === 0.02) {
+        if ([2003, 2013, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026].includes(y)) return STATUS_SET_ONLY;
     }
 
-    // 2008: 2€
-    if (y === 2008 && val === 2.00) return STATUS_SET_ONLY;
-
-    // 2009: 2€
-    if (y === 2009 && val === 2.00) return STATUS_SET_ONLY;
-
-    // 2010: 10c, 2€
-    if (y === 2010) {
-        if ([0.10, 2.00].includes(val)) return STATUS_SET_ONLY;
+    // 5c
+    if (val === 0.05) {
+        if ([2003, 2013, 2014, 2015, 2022, 2025, 2026].includes(y)) return STATUS_SET_ONLY;
     }
 
-    // 2011: 10c, 50c, 2€
-    if (y === 2011) {
-        if ([0.10, 0.50, 2.00].includes(val)) return STATUS_SET_ONLY;
+    // 10c
+    if (val === 0.10) {
+        if ([2007, 2010, 2011, 2012, 2013, 2014, 2015, 2020, 2022, 2023, 2025, 2026].includes(y)) return STATUS_SET_ONLY;
+        // 2002-2006, 2008-2009, 2016-2019, 2021, 2024 are issued
     }
 
-    // 2012: 10c, 20c, 50c, 1€, 2€
-    if (y === 2012) {
-        if ([0.10, 0.20, 0.50, 1.00, 2.00].includes(val)) return STATUS_SET_ONLY;
+    // 20c
+    if (val === 0.20) {
+        if ([2007, 2012, 2013, 2014, 2019, 2022, 2023, 2025, 2026].includes(y)) return STATUS_SET_ONLY;
+        if (y === 2004 || y === 2008) return STATUS_SET_ONLY; // 1M
     }
 
-    // 2013: Todas
-    if (y === 2013) return STATUS_SET_ONLY;
-
-    // 2014: 5c, 10c, 20c, 50c, 2€
-    if (y === 2014) {
-        if ([0.05, 0.10, 0.20, 0.50, 2.00].includes(val)) return STATUS_SET_ONLY;
+    // 50c
+    if (val === 0.50) {
+        if ([2007, 2011, 2012, 2013, 2014, 2018, 2020, 2022, 2023, 2024, 2025, 2026].includes(y)) return STATUS_SET_ONLY;
+        if ([2004, 2005, 2006].includes(y)) return STATUS_SET_ONLY; // 1M
     }
 
-    // 2015: 5c, 10c, 2€
-    if (y === 2015) {
-        if ([0.05, 0.10, 2.00].includes(val)) return STATUS_SET_ONLY;
+    // 1€
+    if (val === 1.00) {
+        if ([2012, 2013, 2021, 2022, 2023, 2025, 2026, 2027].includes(y)) return STATUS_SET_ONLY;
     }
 
-    // 2016: 2€
-    if (y === 2016 && val === 2.00) return STATUS_SET_ONLY;
-
-    // 2017: 2€
-    if (y === 2017 && val === 2.00) return STATUS_SET_ONLY;
-
-    // 2018: 1c, 2c, 50c, 2€
-    if (y === 2018) {
-        if ([0.01, 0.02, 0.50, 2.00].includes(val)) return STATUS_SET_ONLY;
+    // 2€
+    if (val === 2.00) {
+        if ([2007, 2008, 2009, 2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017, 2018, 2019, 2020, 2021, 2022, 2024, 2025, 2026].includes(y)) return STATUS_SET_ONLY;
+        if ([2004, 2005, 2006].includes(y)) return STATUS_SET_ONLY; // 1M
     }
 
-    // 2019: 2c, 20c, 2€
-    if (y === 2019) {
-        if ([0.02, 0.20, 2.00].includes(val)) return STATUS_SET_ONLY;
-    }
-
-    // 2020: 2c, 10c, 50c, 2€
-    if (y === 2020) {
-        if ([0.02, 0.10, 0.50, 2.00].includes(val)) return STATUS_SET_ONLY;
-    }
-
-    // 2021: 1c, 2c, 1€, 2€
-    if (y === 2021) {
-        if ([0.01, 0.02, 1.00, 2.00].includes(val)) return STATUS_SET_ONLY;
-    }
-
-    // 2022: Todas
-    if (y === 2022) return STATUS_SET_ONLY;
-
-    // 2023: 2c, 10c, 20c, 50c, 1€
-    if (y === 2023) {
-        if ([0.02, 0.10, 0.20, 0.50, 1.00].includes(val)) return STATUS_SET_ONLY;
-    }
-
-    // 2024: 1c, 2c, 50c, 2€
-    if (y === 2024) {
-        if ([0.01, 0.02, 0.50, 2.00].includes(val)) return STATUS_SET_ONLY;
-    }
 
     // === GREEN: Circulation (The rest) ===
     return STATUS_CIRCULATION;

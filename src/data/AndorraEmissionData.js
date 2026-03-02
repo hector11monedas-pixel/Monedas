@@ -3,8 +3,7 @@ export const STATUS_CIRCULATION = 'circulation'; // Green
 export const STATUS_SET_ONLY = 'set_only';       // Yellow
 export const STATUS_NOT_ISSUED = 'not_issued';   // Red
 
-// Helper to check array inclusion
-const isSetOnly = (year, values) => values.includes(year);
+
 
 export const getAndorraCoinStatus = (year, value) => {
     // Andorra started in 2014

@@ -12,6 +12,10 @@ export const TRANSLATIONS = {
         login: "Entrar",
         importSuccess: "Colección importada correctamente.",
         importError: "Error al importar el archivo. Asegúrate de que es un JSON válido.",
+        resetCollectionBtn: "Borrar Colección",
+        resetDesc: "Elimina permanentemente todas tus monedas registradas.",
+        resetConfirm: "¿Estás seguro de que quieres borrar TODA tu colección? Esta acción es irreversible.",
+        abjasia: "Abjasia",
     },
     en: {
         settings: "Settings",
@@ -26,5 +30,9 @@ export const TRANSLATIONS = {
         login: "Login",
         importSuccess: "Collection imported successfully.",
         importError: "Error importing file. Ensure it is a valid JSON.",
+        resetCollectionBtn: "Reset Collection",
+        resetDesc: "Permanently delete all your registered coins.",
+        resetConfirm: "Are you sure you want to delete your ENTIRE collection? This action is irreversible.",
+        abjasia: "Abkhazia",
     }
 };

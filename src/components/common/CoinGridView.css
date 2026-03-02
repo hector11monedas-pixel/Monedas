@@ -1,0 +1,218 @@
+.coin-groups-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    padding: 1rem;
+}
+
+.denom-group-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.group-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 0.5rem;
+}
+
+.group-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--primary-color, #f4b400);
+    font-family: 'Playfair Display', serif;
+    line-height: 1;
+}
+
+.group-currency {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--text-dim, rgba(255, 255, 255, 0.5));
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    align-self: flex-end;
+    margin-bottom: 2px;
+}
+
+.group-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, rgba(255, 215, 0, 0.3), transparent);
+}
+
+.coin-grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+.coin-grid-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    text-align: center;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    height: 210px;
+    /* Fixed height for content fit and virtualizer stability */
+    overflow: hidden;
+    justify-content: space-between;
+}
+
+.coin-grid-card:hover {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.05);
+}
+
+.coin-card-image {
+    width: 65px;
+    height: 65px;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.coin-card-image img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.5));
+}
+
+.coin-placeholder {
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #444, #222);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 0.6rem;
+    border: 1px dashed var(--primary-color);
+    opacity: 0.5;
+}
+
+.coin-card-info {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.progress-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 4px;
+    position: relative;
+    /* Ensure context */
+}
+
+.progress-text {
+    font-size: 0.75rem;
+    font-weight: bold;
+    min-width: 35px;
+    text-align: right;
+    color: white;
+    /* Changed from var(--primary-color) for better contrast */
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+    /* Shadow for legibility against any background */
+    z-index: 2;
+}
+
+.variant-badge-grid {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background: var(--primary-color);
+    color: black;
+    font-size: 0.6rem;
+    padding: 2px 5px;
+    border-radius: 6px;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    z-index: 2;
+}
+
+.coin-card-info h3 {
+    margin: 0;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+    font-family: 'Playfair Display', serif;
+}
+
+.progress-bar-container {
+    width: 100%;
+    height: 6px;
+    /* Slightly taller */
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+    margin: 0.4rem 0;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    background: var(--primary-color);
+    box-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
+    /* Glow */
+}
+
+.coin-card-info p {
+    margin: 0 !important;
+    font-size: 0.7rem;
+    opacity: 0.6;
+}
+
+.add-coin-btn-grid {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    width: 100%;
+    padding: 0.35rem;
+    background: rgba(255, 215, 0, 0.05);
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    border-radius: 6px;
+    color: var(--primary-color);
+    font-size: 0.75rem;
+    font-weight: 600;
+    margin-top: 0.4rem;
+}
+
+.add-coin-btn-grid:hover {
+    background: var(--primary-color);
+    color: black;
+}
+
+@media (max-width: 480px) {
+    .coin-grid-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.5rem;
+        padding: 0.5rem;
+    }
+
+    .coin-grid-card {
+        height: 185px;
+        padding: 0.5rem;
+    }
+
+    .coin-card-image {
+        width: 55px;
+        height: 55px;
+    }
+
+    .coin-card-info h3 {
+        font-size: 0.9rem;
+    }
+}

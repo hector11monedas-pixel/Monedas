@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
+import { useAuth } from '../hooks/useAuth';
 import { Chrome } from 'lucide-react'; // Simulating Google Icon with Chrome/Globe if needed or use text
 import './LoginPage.css';
 

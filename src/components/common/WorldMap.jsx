@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ComposableMap, Geographies, Geography, Marker, ZoomableGroup } from "react-simple-maps";
-import worldTopo from '../../data/world.topo.json';
+import { useCoin } from '../../hooks/useCoin';
+import { calculateWorldCatalogSize } from '../../utils/emissionUtils';
 
 // Translation map for common countries to Spanish
 const COUNTRY_TRANSLATIONS = {
@@ -112,6 +113,7 @@ const COUNTRY_TRANSLATIONS = {
     "Malaysia": "Malasia",
     "Mali": "Malí",
     "Mauritania": "Mauritania",
+    "Mauritius": "Mauricio",
     // Mexico already defined
     "Moldova": "Moldavia",
     "Mongolia": "Mongolia",
@@ -149,6 +151,7 @@ const COUNTRY_TRANSLATIONS = {
     "Senegal": "Senegal",
     "Serbia": "Serbia",
     "Sierra Leone": "Sierra Leona",
+    "Singapore": "Singapur",
     "Slovakia": "Eslovaquia",
     "Slovenia": "Eslovenia",
     "Solomon Is.": "Islas Salomón",
@@ -188,25 +191,71 @@ const COUNTRY_TRANSLATIONS = {
 };
 
 const COUNTRY_PATHS = {
-    "Spain": "/spain",
+    "Spain": "/world/spain",
     "United States of America": "/world/usa",
     "United Kingdom": "/world/uk",
     "Japan": "/world/japan",
     "Mexico": "/world/mexico",
-    "Czechia": "/world/czechia"
+    "Czechia": "/world/czechia",
+    "Afghanistan": "/world/afghanistan"
 };
 
-const WorldMap = () => {
+const WorldMap = ({ highlightedCountries = null, interactive = true }) => {
     const navigate = useNavigate();
+    const { items, loadedGlobalData } = useCoin();
     const [tooltipContent, setTooltipContent] = useState('');
     const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+    const [topoData, setTopoData] = useState(null);
+
+    const getCompletionStats = (countryName) => {
+        if (!countryName) return { level: 0, percent: 0 };
+
+        // Only handle countries with implemented catalogs
+        const implementedCountries = ['España', 'República Checa', 'Afganistán'];
+        if (!implementedCountries.includes(countryName)) return null;
+
+        const totalCatalog = calculateWorldCatalogSize(countryName, loadedGlobalData);
+        if (totalCatalog === 0) return { percent: 0, level: 0 };
+
+        const countryItems = (items || []).filter(i => i.country === countryName && i.category === 'world');
+        const collectedCount = countryItems.length;
+
+        const percent = Math.min(100, Math.round((collectedCount / totalCatalog) * 100));
+
+        let level = 0;
+        if (percent === 100) level = 4;
+        else if (percent >= 75) level = 3;
+        else if (percent >= 40) level = 2;
+        else if (percent > 0) level = 1;
+
+        return { percent, level, collectedCount, totalCatalog };
+    };
+
+    const getFillColor = (completion) => {
+        if (!completion) return "#37474f"; // Gray for unimplemented/none
+        if (completion.level === 0) return "#37474f";
+        if (completion.level === 1) return "#2d4a3e"; // Subtle green
+        if (completion.level === 2) return "#1a5f43"; // Medium
+        if (completion.level === 3) return "#10b981"; // Bright
+        if (completion.level === 4) return "#34d399"; // Complete (mint)
+        return "#37474f";
+    };
+
+    React.useEffect(() => {
+        import('../../data/world.topo.json').then(data => {
+            setTopoData(data.default);
+        });
+    }, []);
 
     const handleMouseEnter = (geo, evt) => {
         const countryName = geo.properties.name;
-        // Translate or use original if no translation found
         const displayName = COUNTRY_TRANSLATIONS[countryName] || countryName;
-
-        setTooltipContent(displayName);
+        const completion = getCompletionStats(displayName);
+        let content = displayName;
+        if (completion && completion.totalCatalog > 0) {
+            content += ` (${completion.percent}%)`;
+        }
+        setTooltipContent(content);
         setTooltipPos({ x: evt.clientX, y: evt.clientY });
     };
 
@@ -228,44 +277,63 @@ const WorldMap = () => {
                 style={{ width: "100%", height: "100%", background: "#1a252f" }}
             >
                 <ZoomableGroup zoom={1} minZoom={1} maxZoom={6}>
-                    <Geographies geography={worldTopo}>
-                        {({ geographies }) =>
-                            geographies.map((geo) => {
-                                // Default styling
-                                const countryName = geo.properties.name;
-                                const path = COUNTRY_PATHS[countryName];
-                                const isInteractive = !!path;
+                    {topoData && (
+                        <Geographies geography={topoData}>
+                            {({ geographies }) =>
+                                geographies.map((geo) => {
+                                    // Default styling
+                                    const countryName = geo.properties.name;
+                                    const displayName = COUNTRY_TRANSLATIONS[countryName] || countryName;
+                                    const path = COUNTRY_PATHS[countryName];
 
-                                const fillColor = isInteractive ? "#455a64" : "#37474f";
+                                    // Determine Styling State
+                                    let fillColor = "#37474f";
+                                    let isClickable = false;
+                                    const completion = getCompletionStats(displayName);
 
-                                return (
-                                    <Geography
-                                        key={geo.rsmKey}
-                                        geography={geo}
-                                        onMouseEnter={(evt) => handleMouseEnter(geo, evt)}
-                                        onMouseMove={handleMouseMove}
-                                        onMouseLeave={handleMouseLeave}
-                                        onClick={() => {
-                                            if (isInteractive) navigate(path);
-                                        }}
-                                        fill={fillColor}
-                                        stroke="#121212"
-                                        strokeWidth={0.5}
-                                        style={{
-                                            default: { outline: "none", transition: "all 0.3s ease" },
-                                            hover: {
-                                                fill: isInteractive ? "#9c27b0" : "#00bcd4", // Purple for interactive, Blue for others
-                                                filter: "brightness(1.2)",
-                                                outline: "none",
-                                                cursor: isInteractive ? "pointer" : "default"
-                                            },
-                                            pressed: { outline: "none" }
-                                        }}
-                                    />
-                                );
-                            })
-                        }
-                    </Geographies>
+                                    if (highlightedCountries) {
+                                        // Custom Mode (Stats)
+                                        const isHighlighted = highlightedCountries.includes(displayName);
+                                        if (isHighlighted) fillColor = "#10b981"; // Emerald Green for owned
+                                        else fillColor = "#1f2937"; // Darker for not owned
+
+                                        isClickable = false; // Disable click in stats mode for now
+                                    } else {
+                                        // Default Mode (World Navigation)
+                                        const hasPath = !!path;
+                                        isClickable = hasPath && interactive;
+                                        fillColor = getFillColor(completion);
+                                    }
+
+                                    return (
+                                        <Geography
+                                            key={geo.rsmKey}
+                                            geography={geo}
+                                            onMouseEnter={(evt) => handleMouseEnter(geo, evt)}
+                                            onMouseMove={handleMouseMove}
+                                            onMouseLeave={handleMouseLeave}
+                                            onClick={() => {
+                                                if (isClickable) navigate(path);
+                                            }}
+                                            fill={fillColor}
+                                            stroke="#121212"
+                                            strokeWidth={0.5}
+                                            style={{
+                                                default: { outline: "none", transition: "all 0.3s ease" },
+                                                hover: {
+                                                    fill: isClickable ? "#9c27b0" : (highlightedCountries ? fillColor : "#00bcd4"),
+                                                    filter: isClickable ? "brightness(1.2)" : "none",
+                                                    outline: "none",
+                                                    cursor: isClickable ? "pointer" : "default"
+                                                },
+                                                pressed: { outline: "none" }
+                                            }}
+                                        />
+                                    );
+                                })
+                            }
+                        </Geographies>
+                    )}
                 </ZoomableGroup>
             </ComposableMap>
 

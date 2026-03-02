@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { useCoin } from '../context/CoinContext';
+import { useCoin } from '../hooks/useCoin';
 import { COMMEMORATIVE_YEARS, COMMEMORATIVE_COUNTRIES } from '../data/CommemorativeData';
-import { COMMEMORATIVE_CATALOG, calculateCommemorativeCatalogSize, getCatalogForCountry } from '../data/CommemorativeCatalog';
+import { calculateCommemorativeCatalogSize, getCatalogForCountry, getCommemorativesByYear } from '../data/CommemorativeCatalog';
 import { ArrowLeft } from 'lucide-react';
 import Modal from '../components/common/Modal';
 import ItemForm from '../components/common/ItemForm';
@@ -157,7 +157,7 @@ const CommemorativeMenu = () => {
 
                         // Calculate total catalog for this year
                         // This is expensive, better to memoize if slow, but for 20 items it's fine
-                        const yearTotal = COMMEMORATIVE_CATALOG.filter(i => i.year === year).reduce((acc, item) => {
+                        const yearTotal = getCommemorativesByYear(year).reduce((acc, item) => {
                             return acc + (item.variants ? item.variants.length : 1);
                         }, 0);
 
