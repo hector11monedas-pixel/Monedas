@@ -17,3 +17,5 @@ export const getVaticanCoinStatus = (year, denomination, seriesIndex = null) => 
     // === YELLOW: Set Only (Everything else is "Prueba" ~100k) ===
     return STATUS_SET_ONLY;
 };
+
+export const getEmissionStatus = getVaticanCoinStatus;

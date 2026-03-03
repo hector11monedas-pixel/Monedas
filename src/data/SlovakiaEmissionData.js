@@ -56,3 +56,5 @@ export const getSlovakiaCoinStatus = (year, denomination) => {
     // The user said: "Las que te digo son verdes, las demas amarillas"
     return 'set_only';
 };
+
+export const getEmissionStatus = getSlovakiaCoinStatus;

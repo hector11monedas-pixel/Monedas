@@ -1,3 +1,5 @@
+import { EURO_SERIES } from './EuroSeriesData';
+
 // Mappings for National Sides of Euro Coins across Series
 // Note: URLs are external references to reliable numismatic sources or placeholders.
 // Strategy: Use a representative image for each series.
@@ -509,48 +511,20 @@ export const getNationalSideImage = (countryName, value, year, explicitSeriesInd
         seriesIndex = explicitSeriesIndex;
     } else {
         // Fallback to year-based logic if no explicit series provided
-        if (countryName === 'España') {
-            if (year >= 2015) seriesIndex = 2;
-            else if (year >= 2010) seriesIndex = 1;
-            else seriesIndex = 0;
-        } else if (countryName === 'Bélgica') {
-            if (year >= 2014) seriesIndex = 3;
-            else if (year >= 2009) seriesIndex = 2;
-            else if (year === 2008) seriesIndex = 1;
-            else seriesIndex = 0;
-        } else if (countryName === 'Países Bajos') {
-            if (year >= 2014) seriesIndex = 1;
-            else seriesIndex = 0;
-        } else if (countryName === 'Vaticano') {
-            if (year >= 2017) seriesIndex = 4;
-            else if (year >= 2014) seriesIndex = 3;
-            else if (year >= 2006) seriesIndex = 2;
-            else if (year === 2005) seriesIndex = 1; // Sede Vacante
-            else seriesIndex = 0; // John Paul II
-        } else if (countryName === 'Mónaco') {
-            const numVal = parseFloat(value);
-            if (year >= 2025 && numVal >= 1.00) seriesIndex = 2;
-            else if (year >= 2006) seriesIndex = 1;
-            else seriesIndex = 0;
-        } else if (countryName === 'San Marino') {
-            if (year >= 2017) seriesIndex = 1;
-            else seriesIndex = 0;
-        } else if (countryName === 'Luxemburgo') {
-            if (year >= 2026) seriesIndex = 1;
-            else seriesIndex = 0;
-        } else if (countryName === 'Francia') {
-            const numVal = parseFloat(value);
-            if (numVal >= 1.00) {
-                if (year >= 2022) seriesIndex = 1;
-                else seriesIndex = 0;
-            } else if (numVal >= 0.10) {
-                if (year >= 2024) seriesIndex = 1;
-                else seriesIndex = 0;
-            } else {
-                seriesIndex = 0;
+        const countrySeries = EURO_SERIES[countryName];
+        if (countrySeries) {
+            const numVal = typeof value === 'number' ? value.toFixed(2) : parseFloat(value).toFixed(2);
+            for (let i = countrySeries.length - 1; i >= 0; i--) {
+                const s = countrySeries[i];
+                const sYears = s.denominationYears?.[numVal] || s.years;
+                if (year >= sYears[0] && year <= sYears[1]) {
+                    // Also check if this denomination is even allowed in this series
+                    if (!s.excludedDenominations?.includes(numVal)) {
+                        seriesIndex = i;
+                        break;
+                    }
+                }
             }
-        } else if (countryName === 'Portugal') {
-            seriesIndex = 0;
         }
     }
 

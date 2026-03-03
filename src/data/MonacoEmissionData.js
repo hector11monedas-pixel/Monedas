@@ -58,3 +58,5 @@ export const getMonacoCoinStatus = (year, denomination) => {
     return STATUS_SET_ONLY;
 };
 
+
+export const getEmissionStatus = getMonacoCoinStatus;

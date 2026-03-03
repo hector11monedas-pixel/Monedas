@@ -19,3 +19,5 @@ export const getBulgariaCoinStatus = (year, denomination) => {
     // 2026 marks the first year of circulation for all denominations.
     return STATUS_CIRCULATION;
 };
+
+export const getEmissionStatus = getBulgariaCoinStatus;

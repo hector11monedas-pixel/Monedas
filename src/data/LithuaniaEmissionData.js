@@ -36,3 +36,5 @@ export const getLithuaniaCoinStatus = (year, denomination) => {
     return STATUS_SET_ONLY;
 };
 
+
+export const getEmissionStatus = getLithuaniaCoinStatus;

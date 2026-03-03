@@ -73,3 +73,5 @@ export const getFranceSeriesIndex = (year, denomination) => {
 
     return 0;
 };
+
+export const getEmissionStatus = getFranceCoinStatus;

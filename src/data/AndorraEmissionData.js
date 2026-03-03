@@ -62,3 +62,5 @@ export const getAndorraCoinStatus = (year, value) => {
 
     return STATUS_CIRCULATION;
 };
+
+export const getEmissionStatus = getAndorraCoinStatus;

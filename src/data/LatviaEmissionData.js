@@ -25,3 +25,5 @@ export const getLatviaCoinStatus = (year, denomination) => {
 
 
 
+
+export const getEmissionStatus = getLatviaCoinStatus;

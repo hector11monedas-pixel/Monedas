@@ -71,3 +71,5 @@ export const getSanMarinoCoinStatus = (year, denomination) => {
     // === YELLOW: Set Only (Everything else) ===
     return STATUS_SET_ONLY;
 };
+
+export const getEmissionStatus = getSanMarinoCoinStatus;

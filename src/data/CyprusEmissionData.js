@@ -63,3 +63,5 @@ export const getCyprusCoinStatus = (year, denomination) => {
     return STATUS_SET_ONLY; // Default to Set Only if year exists but not high mintage
 };
 
+
+export const getEmissionStatus = getCyprusCoinStatus;

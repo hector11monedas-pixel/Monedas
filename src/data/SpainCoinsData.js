@@ -2072,3 +2072,5 @@ export const getSpainCoinPrice = (item) => {
 
     return null;
 };
+
+export const getEmissionStatus = getSpainCoinStatus;

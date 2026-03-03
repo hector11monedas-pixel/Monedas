@@ -73,3 +73,5 @@ export const getBelgiumCoinStatus = (year, denomination) => {
     // Otherwise, it's Set Only (Yellow)
     return 'set_only';
 };
+
+export const getEmissionStatus = getBelgiumCoinStatus;

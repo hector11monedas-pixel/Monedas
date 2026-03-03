@@ -54,3 +54,5 @@ export const getSloveniaCoinStatus = (year, denomination) => {
     // Years 2009-2014, 2017 etc are fully yellow if not in list
     return 'set_only';
 };
+
+export const getEmissionStatus = getSloveniaCoinStatus;

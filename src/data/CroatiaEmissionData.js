@@ -21,3 +21,5 @@ export const getCroatiaCoinStatus = (year, denomination) => {
 
     return 'not_issued';
 };
+
+export const getEmissionStatus = getCroatiaCoinStatus;

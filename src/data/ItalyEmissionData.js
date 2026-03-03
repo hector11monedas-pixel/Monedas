@@ -53,3 +53,5 @@ export const getItalyCoinStatus = (year, denomination) => {
 
     return STATUS_CIRCULATION;
 };
+
+export const getEmissionStatus = getItalyCoinStatus;

@@ -51,3 +51,5 @@ export const getIrelandCoinStatus = (year, denomination) => {
 
     return STATUS_CIRCULATION;
 };
+
+export const getEmissionStatus = getIrelandCoinStatus;

@@ -30,7 +30,7 @@ const EuroCountryView = () => {
     useEffect(() => {
         let isMounted = true;
         // Skip setting true if already loading to avoid cascading renders
-        setIsLoadingData(true);
+        if (!isLoadingData) setIsLoadingData(true);
         loadCountryData(countryName).then(data => {
             if (isMounted) {
                 setCountryData(data);
@@ -63,9 +63,9 @@ const EuroCountryView = () => {
     // Initial effect to set default mint for Germany
     useEffect(() => {
         if (countryName === 'Alemania' && germanMintsEnabled) {
-            setSelectedMint('A');
+            if (selectedMint !== 'A') setSelectedMint('A');
         } else {
-            setSelectedMint(null);
+            if (selectedMint !== null) setSelectedMint(null);
         }
     }, [countryName, germanMintsEnabled]);
 
@@ -77,49 +77,12 @@ const EuroCountryView = () => {
                 return EURO_DENOMINATIONS.map(denom => {
                     const valueStr = denom.value.toFixed(2);
                     let imgSrc = denom.image;
-                    // Initial series years
-                    let seriesYears = series.years;
 
-                    // SPECIAL LOGIC FOR SPAIN
-                    if (countryName === 'España') {
-                        if (denom.value < 1.00) {
-                            // 1c - 50c: Only Series 1 (Idx 0) and Series 2 (Idx 1 extends to present)
-                            if (idx === 2) return null; // Skip Series 3 for small coins
-                            if (idx === 1) {
-                                seriesYears = [2010, 2026]; // Extend Series 2
-                            }
-                        }
-                    }
+                    // CHECK EXCLUSIONS
+                    if (series.excludedDenominations?.includes(valueStr)) return null;
 
-                    // SPECIAL LOGIC FOR MONACO
-                    if (countryName === 'Mónaco') {
-                        if (idx === 2 && denom.value < 1.00) return null;
-                    }
-
-                    // SPECIAL LOGIC FOR FRANCE
-                    if (countryName === 'Francia') {
-                        const numVal = denom.value;
-                        if (numVal <= 0.05) {
-                            // 1c, 2c, 5c: ONLY Series 1 (Idx 0)
-                            if (idx === 1) return null;
-                            // Ensure Series 1 for these shows up to present
-                            seriesYears = [1999, 2026];
-                        } else if (numVal <= 0.50) {
-                            // 10c, 20c, 50c: Series 2 (Idx 1) starts in 2024
-                            if (idx === 0) {
-                                seriesYears = [1999, 2023]; // End Series 1 in 2023
-                            } else if (idx === 1) {
-                                seriesYears = [2024, 2026]; // Start Series 2 in 2024
-                            }
-                        } else {
-                            // 1€, 2€: Series 2 (Idx 1) starts in 2022
-                            if (idx === 0) {
-                                seriesYears = [1999, 2021]; // End Series 1 in 2021
-                            } else if (idx === 1) {
-                                seriesYears = [2022, 2026]; // Start Series 2 in 2022
-                            }
-                        }
-                    }
+                    // Series years logic
+                    let seriesYears = series.denominationYears?.[valueStr] || series.years;
 
                     if (NATIONAL_IMAGES[countryName]?.[idx]?.[valueStr]) {
                         imgSrc = NATIONAL_IMAGES[countryName][idx][valueStr];

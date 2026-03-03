@@ -9,7 +9,7 @@ if (commMatches) {
     let missingCommImage = 0;
     commMatches.forEach((m) => {
         if (!m.includes('estimatedPrice:')) missingCommPrice++;
-        if (!m.includes('imageUrl:')) missingCommImage++;
+        if (!m.includes('image:')) missingCommImage++;
     });
     console.log(`Commemorative catalog has ${commMatches.length} items. Missing values: ${missingCommPrice}, Missing images: ${missingCommImage}`);
 }

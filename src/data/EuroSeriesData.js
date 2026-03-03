@@ -18,7 +18,8 @@ export const EURO_SERIES = {
             name: 'Serie III (Felipe VI)',
             years: [2015, 2026],
             description: 'Nuevo busto del Rey Felipe VI en las monedas de 1€ y 2€.',
-            image: 'https://en.numista.com/catalogue/photos/espagne/63283-original.jpg'
+            image: 'https://en.numista.com/catalogue/photos/espagne/63283-original.jpg',
+            excludedDenominations: ['0.01', '0.02', '0.05', '0.10', '0.20', '0.50']
         }
     ],
     'Alemania': [
@@ -68,13 +69,27 @@ export const EURO_SERIES = {
             name: 'Serie I (Original)',
             years: [1999, 2021],
             description: 'Árbol de la Vida y Marianne.',
-            image: 'https://www.fleur-de-coin.com/images/coins/national/france/2euro.jpg'
+            image: 'https://www.fleur-de-coin.com/images/coins/national/france/2euro.jpg',
+            denominationYears: {
+                '0.01': [1999, 2026],
+                '0.02': [1999, 2026],
+                '0.05': [1999, 2026],
+                '0.10': [1999, 2023],
+                '0.20': [1999, 2023],
+                '0.50': [1999, 2023]
+            }
         },
         {
             name: 'Serie II',
             years: [2022, 2026],
             description: 'Nuevo Árbol de la Vida y Mujeres Ilustres.',
-            image: 'https://www.fleur-de-coin.com/images/coins/national/france/2euro2022.jpg'
+            image: 'https://www.fleur-de-coin.com/images/coins/national/france/2euro2022.jpg',
+            excludedDenominations: ['0.01', '0.02', '0.05'],
+            denominationYears: {
+                '0.10': [2024, 2026],
+                '0.20': [2024, 2026],
+                '0.50': [2024, 2026]
+            }
         }
     ],
     'Italia': [
@@ -180,7 +195,8 @@ export const EURO_SERIES = {
             name: 'Serie III (Nuevo Diseño 2025)',
             years: [2025, 2026],
             description: 'Actualización del diseño para las monedas de 1€ y 2€.',
-            image: '/img/coins/monaco/2e-s3.jpg'
+            image: '/img/coins/monaco/2e-s3.jpg',
+            excludedDenominations: ['0.01', '0.02', '0.05', '0.10', '0.20', '0.50']
         }
 
 

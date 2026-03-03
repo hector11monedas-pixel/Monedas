@@ -68,3 +68,5 @@ export const getMaltaCoinStatus = (year, denomination) => {
     return STATUS_SET_ONLY;
 };
 
+
+export const getEmissionStatus = getMaltaCoinStatus;

@@ -59,3 +59,5 @@ export const getEstoniaCoinStatus = (year, denomination) => {
     // Default: Not Issued (Red) for years not in lists specifically
     return STATUS_NOT_ISSUED;
 };
+
+export const getEmissionStatus = getEstoniaCoinStatus;

@@ -88,3 +88,5 @@ export const getNetherlandsCoinStatus = (year, denomination) => {
     // === GREEN: Circulation (The rest) ===
     return STATUS_CIRCULATION;
 };
+
+export const getEmissionStatus = getNetherlandsCoinStatus;

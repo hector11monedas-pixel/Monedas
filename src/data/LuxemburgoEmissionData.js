@@ -56,3 +56,5 @@ export const getLuxemburgoCoinStatus = (year, denomination) => {
 };
 
 
+
+export const getEmissionStatus = getLuxemburgoCoinStatus;

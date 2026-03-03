@@ -28,3 +28,5 @@ export const getAustriaNotIssuedCount = () => {
     // 2€: 2005, 2007, 2009, 2016, 2018 (5 coins)
     return 5;
 };
+
+export const getEmissionStatus = getAustriaCoinStatus;

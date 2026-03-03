@@ -38,3 +38,5 @@ export const getFinlandCoinStatus = (year, denomination) => {
 
     return STATUS_SET_ONLY;
 };
+
+export const getEmissionStatus = getFinlandCoinStatus;

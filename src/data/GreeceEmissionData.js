@@ -41,3 +41,5 @@ export const getGreeceCoinStatus = (year, denomination) => {
 
     return STATUS_CIRCULATION;
 };
+
+export const getEmissionStatus = getGreeceCoinStatus;

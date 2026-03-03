@@ -56,3 +56,5 @@ export const getPortugalCoinStatus = (year, denomination) => {
     // === GREEN: Circulation (The rest) ===
     return STATUS_CIRCULATION;
 };
+
+export const getEmissionStatus = getPortugalCoinStatus;
